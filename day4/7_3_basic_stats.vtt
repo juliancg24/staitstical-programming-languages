@@ -1,0 +1,429 @@
+WEBVTT
+
+
+00:00:01.741 --> 00:00:07.741
+Hello, welcome back to our course. Today we are going to continue talking about basic statistics
+
+00:00:11.496 --> 00:00:14.496
+and exploratory data analysis. Okay, let me dive straight in. Let us start with sampling.
+
+00:00:14.604 --> 00:00:23.604
+I would like to provide you with a short overview of two basic sampling schemes. The first one is called simple random sampling with replacement (SWR).
+
+00:00:23.946 --> 00:00:30.946
+Where, we draw units with replacement from a population, and the goal is to use that sample to make
+
+00:00:30.310 --> 00:00:42.310
+some inferential statements about the population of interest. The sample variables are independent and identically distributed.
+
+00:00:42.487 --> 00:00:54.487
+Another very popular sampling scheme is pure random sampling without replacement. It's called SOR. Here, we draw units without replacement.
+
+00:00:59.575 --> 00:01:06.575
+And the xi's are identically distributed, but not independent. The estimated variances are actually smaller than under SWR.
+
+00:01:10.152 --> 00:01:14.152
+And actually, there's a field of statistics called. service statistics, which deals with
+
+00:01:21.487 --> 00:01:24.487
+the ways we can sample from a population. Sampling is extremely important across many different domains of machine learning, statistics, etc.
+
+00:01:24.408 --> 00:01:31.408
+Some of these domains permit us to make these statements about the population, others
+
+00:01:37.492 --> 00:01:40.492
+not. Okay, so how do we now implement it in R? We could use this sample function.
+
+00:01:47.543 --> 00:01:51.543
+If we apply this sample function to Boston data and we would like to have a draw with replacement, we need to set this parameter to be true, replace true.
+
+00:01:52.068 --> 00:02:00.068
+Then you can see, that if I look at my units some of them are sampled twice. For example, this unit is sampled twice or that unit is sampled twice.
+
+00:02:12.209 --> 00:02:15.209
+On the other hand, if we would like to draw units without replacement, then we apply this sample function. Then we basically do not do anything here with the replace parameter, because the default for replace is false.
+
+00:02:19.181 --> 00:02:23.181
+You can see here that, indeed, all the indices are drawn only once.
+
+00:02:31.069 --> 00:02:36.069
+Alright, now let us talk about estimators. Once we build an estimator, the goal is to get a value from my
+
+00:02:42.249 --> 00:02:46.249
+sample as close as possible to my parameter of interest. So actually, an estimator is a function applied to
+
+00:02:46.992 --> 00:02:59.992
+random variables. There are many different methods to build an estimator. You might have heard about maximum likelihood, least square estimator, but there are many, many more and in machine learning or AI, we often call them learners.
+
+00:03:00.562 --> 00:03:08.562
+There are certain properties of estimators, deemed interesting or important. For example
+
+00:03:08.119 --> 00:03:16.119
+unbiasedness. So, if the expected value of my estimator minus the value of the parameter is 0.
+
+00:03:20.105 --> 00:03:29.105
+Efficiency, so if the asymptotic variance is minimal. Then consistency. Intuitively consistency is asking about what happens
+
+00:03:32.329 --> 00:03:35.329
+with a value of my estimated parameter. So estimate,
+
+00:03:40.489 --> 00:03:43.489
+if the sample size grows to infinity. Let us look at this particular plot.
+
+00:03:49.504 --> 00:03:52.504
+We can see that I now would like to get as close as possible to my true value of
+
+00:03:52.216 --> 00:03:58.216
+the parameter of interest. This is var theta, var theta is 0. And then I take a sample.
+
+00:03:58.124 --> 00:04:04.124
+If the sample is small, then that value is kind of farther away. But with a growing
+
+00:04:04.465 --> 00:04:11.465
+sample size, here I had only 25 observations, there 100, then 400, you can see that, indeed,
+
+00:04:16.772 --> 00:04:19.772
+that value of the estimated parameter converges to the true value of my var theta parameter.
+
+00:04:19.117 --> 00:04:25.117
+This is consistency. Alright, now let us talk about confidence intervals.
+
+00:04:27.747 --> 00:04:36.747
+This fluctuation interval, you can see in gray,
+
+00:04:36.125 --> 00:04:42.125
+covers a true parameter with the probability 1 minus alpha. So, the probability of
+
+00:04:42.729 --> 00:04:51.729
+the estimated parameter being between these two boundaries, cu and co, is 1 minus alpha.
+
+00:04:52.026 --> 00:05:00.026
+Cu and co cannot be computed or taken from that distribution, because var theta is unknown.
+
+00:05:03.850 --> 00:05:06.850
+However, the interval widths can be approximated thanks to the central limit theorem.
+
+00:05:07.141 --> 00:05:12.141
+How can I do it? We could basically look at the left-hand side
+
+00:05:12.404 --> 00:05:19.404
+inequalities. There you can see that I could basically play around with them and add/subtract my
+
+00:05:19.788 --> 00:05:26.788
+true parameter. What does it mean? It means that with a growing sample size
+
+00:05:33.110 --> 00:05:37.110
+that red interval should approximate my gray interval, if the assumptions are satisfied. Now the confidence interval
+
+00:05:40.766 --> 00:05:42.766
+is covering this parameter
+
+00:05:42.603 --> 00:05:49.603
+approximately. So asymptotically, with 1 minus alpha percent of confidence.
+
+00:05:50.807 --> 00:05:59.807
+Alright, now let us look at a few examples. Here, let us look at the variable, sibs, number of siblings.
+
+00:06:03.631 --> 00:06:07.631
+From that dataset GSS, general survey. First, I would like to exclude
+
+00:06:07.657 --> 00:06:15.657
+missing data. Now, I would like to construct a confidence interval for the mean number of siblings.
+
+00:06:16.005 --> 00:06:20.005
+I could use this package DescTools, and then I could
+
+00:06:20.586 --> 00:06:29.586
+access the function MeanCI(). Indeed the confidence level here is set to be 0.95 and this is the default.
+
+00:06:36.470 --> 00:06:42.470
+Then you can see that I immediately get this lower and upper boundary. We could also compute a confidence interval for the
+
+00:06:40.137 --> 00:06:46.137
+proportion. Here, let us have a look at that
+
+00:06:47.001 --> 00:06:54.001
+variable sex. Then I would like to compute the proportion of female. First I could
+
+00:07:00.127 --> 00:07:02.127
+sum the number of times that level 2 appears, which corresponds to females.
+
+00:07:13.305 --> 00:07:15.305
+And then I could extract the total number of observations in that vector. Once I pass these two to another function from the same package, BinomCI, I immediately get
+
+00:07:15.992 --> 00:07:20.992
+lower and upper boundary. In that particular package, there are many different
+
+00:07:27.840 --> 00:07:30.840
+options for computing confidence intervals. For the difference of proportions, for the ratio, for the mean, median, etc.
+
+00:07:37.008 --> 00:07:40.008
+Alright, now let us start talking about statistical tests. For a two-sided statistical test
+
+00:07:47.127 --> 00:07:50.127
+in the fluctuation interval, the parameter val theta is replaced by the hypothetical value, theta 0. Which allows to compute this
+
+00:07:54.267 --> 00:07:56.267
+lower and upper boundary. If the estimate
+
+00:07:56.220 --> 00:08:01.220
+is between the boundaries, then the null hypothesis cannot be rejected.
+
+00:08:04.171 --> 00:08:08.171
+If the estimate is lower than the boundary or higher than the boundary, then the null hypothesis
+
+00:08:10.880 --> 00:08:12.880
+can be rejected. There can be several pairs
+
+00:08:12.112 --> 00:08:19.112
+of hypotheses, two-sided, left-sided, right-sided, depending on the type of the test.
+
+00:08:20.043 --> 00:08:24.043
+And the test statistic, V, can be derived from the estimate
+
+00:08:27.238 --> 00:08:32.238
+hat-theta-n. V usually asymptotically follows a known distribution.
+
+00:08:42.845 --> 00:08:46.845
+Now, to simplify the test decision the statisticians community coined the term, p-value. So what is a p-value? P-value is a probability that the quantile from this
+
+00:08:49.881 --> 00:08:51.881
+assumed distribution is larger,
+
+00:08:52.772 --> 00:08:59.772
+more extreme, than a particular statistic level. So this is a probability, and it's only valid
+
+00:09:05.290 --> 00:09:08.290
+under the assumption of this distribution. If that probability, that p-value, is smaller than a significance level,
+
+00:09:08.420 --> 00:09:14.420
+the null hypothesis is rejected. And if the p-value is larger,
+
+00:09:17.895 --> 00:09:20.895
+then the null hypothesis cannot be rejected. Here, there is a note,
+
+00:09:24.568 --> 00:09:27.568
+that these tests and p-values are derived on the center certain assumptions.
+
+00:09:33.131 --> 00:09:38.131
+And these should be checked, or at least acknowledged. Alright let us start from the first test. The first test we are going to look at
+
+00:09:42.501 --> 00:09:46.501
+is the Z test/ normal test/ Gauss test. What are the assumptions? The assumption here is that we know
+
+00:09:55.847 --> 00:09:58.847
+the standard deviation of our data. Now, here we assume that Xi is either normal or that the central limit theorem applies.
+
+00:09:59.969 --> 00:10:10.969
+So, what can we test? Basically, in the two-sided test, under null hypothesis, we are checking whether the estimated expected value of my test statistic
+
+00:10:14.504 --> 00:10:20.504
+is equal to a postulated value from the population. In the left-sided
+
+00:10:25.789 --> 00:10:28.789
+hypothesis, I'm checking if that value from the sample is larger-equal than the value from the population.
+
+00:10:33.982 --> 00:10:36.982
+And then in the right-sided hypothesis we are checking if that value, the expected value, is smaller-equal than
+
+00:10:41.507 --> 00:10:44.507
+that postulated value. Let us look at the example. Here, I'm using the package "UsingR"
+
+00:10:49.629 --> 00:10:55.629
+and I'm checking the IQ. We are asking if the
+
+00:11:05.313 --> 00:11:09.313
+average IQ in the population is 100. Now I know, from somewhere, that the standard deviation in the population is 15.
+
+00:11:16.207 --> 00:11:18.207
+What is my test statistic here? My test statistic is the Z-test. And how I compute it is, I first take a mean
+
+00:11:18.647 --> 00:11:27.647
+of IQs from my sample. That would replace my expected value of the statistic, because we don't have the expected value. The closest we have is this mu.
+
+00:11:33.568 --> 00:11:35.568
+Then I'm subtracting that population value I'm asking about, so mu0.
+
+00:11:35.789 --> 00:11:41.789
+Divided by the standard error here, of actually that
+
+00:11:45.385 --> 00:11:49.385
+statistic. How do I get it? I take the standard deviation given,
+
+00:11:49.848 --> 00:11:55.848
+over square root of the number of units in that vector. And this value is 0.9.
+
+00:12:01.660 --> 00:12:04.660
+Alright, now let us look what our p-value looks like. So, the p-value here is this
+
+00:12:07.101 --> 00:12:11.101
+probability from a normal distribution. Because under our assumption
+
+00:12:15.275 --> 00:12:19.275
+this statistic should follow the normal distribution, so the probability from a normal distribution. We have a two-sided
+
+00:12:23.568 --> 00:12:27.568
+test. So here, I'm asking for the absolute value and then this p-value here is 0.36.
+
+00:12:35.639 --> 00:12:40.639
+Okay and this is a manual computation, but I could also get this test automatically from R, from a pre-programmed package. This package here is called
+
+00:12:42.911 --> 00:12:47.911
+"compositions". Then you can see that, indeed, I have exactly the same values. My mean is exactly the same,
+
+00:12:54.794 --> 00:12:57.794
+the mean, I'm asking for 100, 100 is passed. Standard deviation is passed and the p-value is 0.36. My manual computation
+
+00:13:02.751 --> 00:13:06.751
+got us the same value. Okay, what is the decision? The p-value, that probability, is larger than the alpha level. So
+
+00:13:09.970 --> 00:13:12.970
+we cannot reject the null hypothesis of the equality
+
+00:13:18.740 --> 00:13:21.740
+in the sample and in the population. Alright, but in practice, we usually do not know the standard deviation
+
+00:13:21.346 --> 00:13:27.346
+in the population. In practice, we actually replace Z-test with t-test.
+
+00:13:38.716 --> 00:13:43.716
+In the t-test, the standard deviation is unknown. Now we have, once again, this mu-parameter, its expected value of V, and then Xi's are either normal or
+
+00:13:50.119 --> 00:13:53.119
+the central limit theorem applies. Again, I have different options for my hypothesis, two-sided, left-sided and right-hand sided.
+
+00:13:58.487 --> 00:14:00.487
+Now my T-statistic is computed almost in the same way. But,
+
+00:14:00.277 --> 00:14:06.277
+as you can see, I replaced something. So, let us now look at
+
+00:14:14.658 --> 00:14:17.658
+this data set, the general survey data. I'm looking once again at the number of siblings. Then I'm asking if the
+
+00:14:22.187 --> 00:14:24.187
+average number of siblings, in the population, actually is 3.
+
+00:14:24.368 --> 00:14:28.368
+Okay, let us first look in the manual computation. As you can see
+
+00:14:33.953 --> 00:14:36.953
+T-statistic is very similar to Z-statistic. So basically, I take the mean from the data, I take the mean
+
+00:14:45.707 --> 00:14:49.707
+from the population, so basic expected value from the population. But here, I didn't have the standard deviation. I take it from my data, and once again, I divide by the square root of the number of units.
+
+00:14:49.290 --> 00:14:55.290
+This is my T-statistic. Then you can see, that if I apply
+
+00:15:00.107 --> 00:15:03.107
+a base R function t.test to that factor, I obtain exactly the same number up to
+
+00:15:10.686 --> 00:15:12.686
+digits. And now, to the p-value, once again I could compute it manually. And again, I get exactly the same value as
+
+00:15:20.545 --> 00:15:23.545
+by using this T-statistic. Then, what can we conclude? Well, we can conclude that here the p-value is very, very small.
+
+00:15:31.518 --> 00:15:33.518
+So the probability of being from the same distribution here, is very, very small. Meaning that I reject the null hypothesis of the equality
+
+00:15:39.589 --> 00:15:42.589
+between my statistic of interest, between my mean value in the sample and the
+
+00:15:41.887 --> 00:15:50.887
+mean value in the population. The true mean, we could also conclude, is most likely not equal to 3.
+
+00:15:51.704 --> 00:15:55.704
+Alright, we could also see that here we have a confidence interval.
+
+00:16:06.881 --> 00:16:09.881
+Right, we could extend that t-test to a two-sample t-tests or Welch-tests. Here, the assumptions are that these two samples, two vectors, are independent.
+
+00:16:12.306 --> 00:16:17.306
+And they are either normal or the central limit theorem holds. Once again, here,
+
+00:16:27.085 --> 00:16:31.085
+we have three pairs of hypotheses. And usually, we are asking for the equality in means. For example, think about a situation where I would like to ask for equality
+
+00:16:31.660 --> 00:16:39.660
+between the number of siblings, in two particular countries. I don't know, Germany and the US. We are asking, if
+
+00:16:49.352 --> 00:16:52.352
+these averages are the same. And here I could again, do manual computation. Then you could
+
+00:16:55.394 --> 00:17:00.394
+look at this website, to see the exact test statistics. But, once again, I could use that t-test.
+
+00:17:03.732 --> 00:17:08.732
+And then I could pass these two vectors. So here, actually, I'm asking for the equality
+
+00:17:16.325 --> 00:17:21.325
+of means between these two vectors, siblings and sex. Then what can I conclude? That my test statistic here is almost minus 3.
+
+00:17:21.801 --> 00:17:26.801
+And I'm using this number of degrees of freedom. So you will see
+
+00:17:26.564 --> 00:17:33.564
+in the formula, how to compute these degrees of freedom. It's not super complicated, but it's slightly more
+
+00:17:33.568 --> 00:17:38.568
+elaborate. The p-value is very tiny. So I reject
+
+00:17:38.935 --> 00:17:43.935
+the null hypothesis of the equality of these means. That means that
+
+00:17:43.130 --> 00:17:48.130
+the means between group 1 and group 2 are not equal.
+
+00:17:48.254 --> 00:17:54.254
+Alright, and let us now look at this binomial test for a proportion, pi0.
+
+00:18:02.014 --> 00:18:04.014
+Here, I assume that the Xi are binary and again, I have 3 hypotheses. Two-sided, basically here I'm
+
+00:18:03.862 --> 00:18:13.862
+testing whether this proportion from my data is the same as my population proportion. So for example
+
+00:18:13.764 --> 00:18:21.764
+in other terms here, that parameter pi is equal to pi0 in my population. And then again, left-sided and right-sided.
+
+00:18:22.386 --> 00:18:30.386
+This test doesn't use the normal approximation. So we can see how it works. Basically here,
+
+00:18:43.946 --> 00:18:45.946
+I'm checking first how it works for my, again, general survey data and for the sex variable. I'm basically, checking if the proportion of
+
+00:18:45.837 --> 00:18:50.837
+females or the number of females, if you think about frequencies.
+
+00:18:54.057 --> 00:18:57.057
+Follows a certain binomial distribution. Okay, so here we have first the number of
+
+00:19:02.209 --> 00:19:05.209
+women, the total number of observations and then this
+
+00:19:04.245 --> 00:19:11.245
+test statistic, here, would be the number of success. Or here, the proportion of success or, for example, the
+
+00:19:17.131 --> 00:19:19.131
+probability of success. Then, here you can see that, once again, I could
+
+00:19:24.630 --> 00:19:27.630
+use a pre-programmed function binom.test to test whether the true probability of success or the number
+
+00:19:30.606 --> 00:19:33.606
+of females in that particular vector, follows the binomial distribution.
+
+00:19:39.084 --> 00:19:43.084
+Or not. And indeed, here you can see that the number of success, so the number of females, was passed.
+
+00:19:52.471 --> 00:19:55.471
+And this is our statistic of interest. Then we had the number of trials and the p-value is very, very tiny. So it means that the true probability of success,
+
+00:19:59.720 --> 00:20:02.720
+here, is not equal to half. And again, we could
+
+00:20:08.347 --> 00:20:13.347
+get precisely the same results using manual computations. Okay, so let me stop here, and we are going to come back to the last few slides in the next video. Thank you.
+

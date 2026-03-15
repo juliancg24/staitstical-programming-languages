@@ -1,0 +1,249 @@
+WEBVTT
+
+
+00:00:00.780 --> 00:00:05.780
+Hello, welcome back to our course, and today we are going to continue talking about time series.
+
+00:00:05.916 --> 00:00:10.916
+So a time series is composed of these two elements, so the time periods.
+
+00:00:11.135 --> 00:00:22.135
+And the value of our variable of interest. For example, in the last video, we saw that that particular value could be, for example, the sales of a shampoo.
+
+00:00:22.609 --> 00:00:31.609
+And then, time series can be decomposed into an increasing or decreasing trend. This is a systematic component.
+
+00:00:32.072 --> 00:00:42.072
+Into a repeating short-term cycle. This is also a systematic component, and into a random variation, or a noise. This is an unsystematic component.
+
+00:00:41.516 --> 00:00:49.516
+Then we have different trend functions. We could try to fit the values of my XT, the observed values.
+
+00:00:49.831 --> 00:00:55.831
+We could have a geometric mean trend function, so basically it means that I try to model
+
+00:00:55.349 --> 00:01:02.349
+My values using the first element to times the rate parameter to the power of T minus 1. 
+
+00:01:03.103 --> 00:01:09.103
+We could also have a linear trend model, so basically here I would like to just fit a linear regression.
+
+00:01:08.485 --> 00:01:17.485
+We could also have an exponential trend, so we try to explain the sales using a model which uses observed values.
+
+00:01:18.190 --> 00:01:24.190
+But now, my model is exponent over parameter times the exponent of another parameter to the power of t.
+
+00:01:23.430 --> 00:01:29.430
+But here, bear in mind that we could apply on the left-hand side and right-hand side
+
+00:01:35.043 --> 00:01:37.043
+logarithm, and then this boils down to fitting a linear regression to log of my observed values.
+
+00:01:36.463 --> 00:01:43.463
+And we also can have a moving average trend function. So here, this moving average trend function, you can see that this is a sum over j's,
+
+00:01:48.658 --> 00:01:51.658
+and then we have a certain weight. And then we basically weigh our jth plus 1 elements
+
+00:01:51.426 --> 00:01:58.426
+from the particular period to the jth element. Alright, we could also have seasonality with sub-periods
+
+00:01:59.144 --> 00:02:10.144
+small p, from 1 to capital P, so capital P can be 4. When we have a seasonal seasonality measured quarterly, or, for example,
+
+00:02:15.296 --> 00:02:19.296
+that capital P could be 12, where we have monthly seasonality. And then
+
+00:02:17.522 --> 00:02:24.522
+if T falls in subperiod P, then we could have this additive effect
+
+00:02:24.878 --> 00:02:29.878
+of seasonality, so basically we have this value from the trend
+
+00:02:34.053 --> 00:02:38.053
+and the value from the seasonality effect. And then we could also have a multiplicative effect.
+
+00:02:44.099 --> 00:02:47.099
+So basically, the value from the trend, it's multiplied by seasonality. And then here you can see that in both cases, 
+
+00:02:46.923 --> 00:02:55.923
+We compute this seasonality effects slightly differently, so in the additive case, we have a mean of the observed value minus the trend.
+
+00:02:56.317 --> 00:03:01.317
+And then in multiplicative term, you have a mean of the observed value over
+
+00:03:09.436 --> 00:03:11.436
+The computed value from the trend. And here, just to show you a little bit better, what does this
+
+00:03:11.890 --> 00:03:18.890
+term where we have both trend and seasonality looks like. So, for example, if we look at this value of
+
+00:03:25.493 --> 00:03:30.493
+[capital] of hat x_tp for t equals 2, and for S equals 2, so basically this is this multiplicative
+
+00:03:30.985 --> 00:03:35.985
+seasonality, so we have the trend predicted using the trend
+
+00:03:35.968 --> 00:03:41.968
+modeling, and then we have seasonality predicted using the seasonality, so basically seasonality here
+
+00:03:45.922 --> 00:03:48.922
+was computed using the mean over the observed value over the value for the trend.
+
+00:03:48.783 --> 00:03:55.783
+And then, we could evaluate our model using this R squared, so basically we try to understand
+
+00:04:01.036 --> 00:04:03.036
+how much of the variation in my target parameter was explained by my model.
+
+00:04:03.016 --> 00:04:08.016
+So basically, here, in my model, we have both trend and seasonality.
+
+00:04:07.737 --> 00:04:17.737
+Alright, so let us now look at some data analysis. So here, first, let us look at the time series with a geometric mean model. So basically, first,
+
+00:04:20.172 --> 00:04:22.172
+we have to compute rates. 
+
+00:04:21.364 --> 00:04:29.364
+So, our N refers to the number of rows, the number of observation here in my XT value.
+
+00:04:29.822 --> 00:04:34.822
+And then, on the right, we have seen the formula for the right, so the right
+
+00:04:35.007 --> 00:04:47.007
+was completed as this last value of the sales over the first value to the power of what? 1 over N minus 1. So this is our rate value, our rate value is close to 1.
+
+00:04:50.724 --> 00:04:53.724
+And then you can see that now I could use that geometric mean trend model
+
+00:04:53.435 --> 00:05:03.435
+To try to predict the number of sales, so basically here we have the first value times the rate parameter to the power of 0 to N-1,
+
+00:05:03.668 --> 00:05:10.668
+so basically we estimate this geometric model, and then you can see that I could plot it. So basically, in this plot
+
+00:05:14.602 --> 00:05:17.602
+we have our observed sales. And then we have this trend
+
+00:05:24.269 --> 00:05:27.269
+plotted using geometric mean model. Alright, we could also use a linear trend model, so here, for the linear trend,
+
+00:05:28.190 --> 00:05:34.190
+first, what am I trying to do? I'm trying to coerce this time series to numeric values, so here you can see that I'm trying to do that.
+
+00:05:40.647 --> 00:05:44.647
+And then I'm creating a data frame, DF. So the data frame, which has, two variables, variable T,
+
+00:05:47.124 --> 00:05:49.124
+from 1 to the length of my vector.
+
+00:05:48.583 --> 00:05:56.583
+And then, the second parameter is, basically the sales here. So the sales are now,
+
+00:05:57.041 --> 00:06:02.041
+coerced from the time series. So basically, these are just the sales levels,
+
+00:06:02.879 --> 00:06:07.879
+and here I can fit this linear trend model, so a linear trend model here.
+
+00:06:18.052 --> 00:06:21.052
+I'm regressing T, so the time periods, on the sales. And then, here you can see the call of this function, we can see the residuals, they do not appear to be normal at all.
+
+00:06:30.665 --> 00:06:34.665
+And then we can see that our estimates, the intercept was fitted, and the coefficient of T was fitted, and both of them are significantly different from 0.
+
+00:06:34.696 --> 00:06:40.696
+Now we could also look at the exponential trend model. So here, a reminder that,
+
+00:06:50.110 --> 00:06:52.110
+we could basically, measure this trend using the exponential trend model, meaning that I have an exponent on a coefficient times the exponent on another coefficient to the power of t.
+
+00:06:51.909 --> 00:06:58.909
+But if I apply log on the left and right-hand side, then actually, I could once again go back and model
+
+00:07:02.559 --> 00:07:05.559
+log of my sales using a linear model. And indeed, here you can see that
+
+00:07:06.037 --> 00:07:11.037
+what do we have? We have a linear model applied to the log of my sales.
+
+00:07:11.287 --> 00:07:23.287
+And then I regressed T on that log of the sales, and my data is just from the data frame I have just created. And in this call of this function, we have also coefficients.
+
+00:07:24.014 --> 00:07:30.014
+And then we could also compute R squared, so we saw the formula for R squared, so how much of the
+
+00:07:29.624 --> 00:07:39.624
+variation, so we can see variance of data here, is explained by our model, and then we can see that almost 80%.
+
+00:07:42.734 --> 00:07:44.734
+This is not a bad result. And then, let us now plot
+
+00:07:44.705 --> 00:07:50.705
+our trends. So here you can see that I created a plotting window where 
+
+00:07:51.022 --> 00:07:56.022
+I have T on the x-axis, I have sales on the y-axis, and then
+
+00:08:01.601 --> 00:08:04.601
+in red, I have a linear trend, you can see. And then, in blue, I'm plotting the exponential trend, but here you can see that
+
+00:08:04.764 --> 00:08:14.764
+I need to go back to the exponent, because I applied here the log, and now I need to go back, so basically I apply exponent to the fitted value of my
+
+00:08:14.845 --> 00:08:20.845
+linear model, because before I used a linear model for just for the fitting.
+
+00:08:21.266 --> 00:08:26.266
+And then you can see that, indeed, this exponential trend looks pretty good in this plot.
+
+00:08:34.767 --> 00:08:38.767
+Now, let me pass to another time series. So here, I'm seeing the number of births per month in New York City from 
+
+00:08:37.444 --> 00:08:43.444
+January 1946 to December 1958, and once again, here, I would like to import the data first.
+
+00:08:54.749 --> 00:08:57.749
+The data was stored under this address. And, here, I'm transforming this XT object to time series object. I'm selecting the starting value, I'm selecting the frequency,
+
+00:08:57.578 --> 00:09:00.578
+and then you can see that if I plot the data,
+
+00:09:00.824 --> 00:09:07.824
+we have, both trend, and we have seasonality, and then I plotted the data by birth per month
+
+00:09:14.857 --> 00:09:16.857
+over the time periods. And then here, if we would like to decompose that time series object, first we could use the
+
+00:09:16.789 --> 00:09:25.789
+decomposition for moving average, and additive seasonality. So here, if I apply this function decompose to a time series object
+
+00:09:25.789 --> 00:09:32.789
+then, I have this object DT, and then if I look at the attributes of DT, what do I have? I have time series,
+
+00:09:32.926 --> 00:09:38.926
+and then you can see that we extracted this additive seasonal trends here.
+
+00:09:43.074 --> 00:09:46.074
+And now, we could also, have another decomposition, we could have a trend,
+
+00:09:45.326 --> 00:09:54.326
+and then we could have a moving average with multiplicative seasonality. So here, I need to just select the type to multiplicative.
+
+00:09:55.105 --> 00:10:00.105
+And now, let us just plot all the time series components, so here in this plot, what can we see?
+
+00:10:07.685 --> 00:10:10.685
+We could see our observed values. So, here, it's just enough to apply a plot function to a DT data frame.
+
+00:10:14.367 --> 00:10:18.367
+And then, here, we also have a trend decomposed, we have a seasonal effect
+
+00:10:18.752 --> 00:10:26.752
+and then we have this random, unsystematic component plotted. So we see, you can see very clearly how this
+
+00:10:32.659 --> 00:10:35.659
+time series can be decomposed into these three parts thanks to the application of the function decompose to t. OK, that's it for today, thank you!
+

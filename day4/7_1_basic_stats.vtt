@@ -1,0 +1,459 @@
+WEBVTT
+
+
+00:00:00.689 --> 00:00:08.689
+Hello, welcome back to our course and today we are going to talk about basic statistics and exploratory data analysis.
+
+00:00:19.332 --> 00:00:23.332
+Alright, so first, let us briefly talk about basic terms. So, a statistical unit, or an instance, or a record, is a single entity being studied. For example, a person, a household, a company, a country, etc.
+
+00:00:22.832 --> 00:00:30.832
+And then a variable, or a feature, or a predictor, is an attribute measured on each instance.
+
+00:00:32.305 --> 00:00:41.305
+In machine learning we also distinguish the label, or a target, variable. So basically, this is our outcome variable we wish to predict.
+
+00:00:46.767 --> 00:00:49.767
+We also have observations or rows or feature vectors and these observations are
+
+00:00:49.732 --> 00:00:57.732
+all feature values for one instance. But here be careful, because in machine learning, we also call observations samples.
+
+00:01:01.403 --> 00:01:04.403
+So please bear in mind of the context of, for example, your presentation.
+
+00:01:05.347 --> 00:01:10.347
+Then we also have a dataset, or a data matrix, so this is a set
+
+00:01:18.303 --> 00:01:21.303
+of observations and variables. And, basically, each observation is usually a row in a data matrix and it's variable.
+
+00:01:21.074 --> 00:01:26.074
+Each variable it's a column in a data matrix.
+
+00:01:25.925 --> 00:01:31.925
+Then we could also talk about population. So a population is this full set of entities
+
+00:01:36.587 --> 00:01:39.587
+from which data could be drawn. And a membership in a population is well-defined.
+
+00:01:40.067 --> 00:01:46.067
+And for each entity, we must be able to decide if it belongs to the population or not.
+
+00:01:46.198 --> 00:01:52.198
+And then, we also have a sample. So, in statistics, this is a subset
+
+00:01:51.821 --> 00:02:00.821
+of entities drawn from the population, but once again, be careful, because a sample could also mean an observation
+
+00:02:07.849 --> 00:02:09.849
+in machine learning. Alright, so now let us look at some, examples. So here, we are coming back to our
+
+00:02:08.800 --> 00:02:15.800
+iris data, so you might remember we had data on lengths of sepal
+
+00:02:15.985 --> 00:02:19.985
+and width of sepal and then petal length and petal width.
+
+00:02:24.465 --> 00:02:27.465
+For different species of irises, so here, these are our
+
+00:02:25.549 --> 00:02:35.549
+variables or features and each observation here is a different flower, basically. We plucked up flowers and then these are our observations.
+
+00:02:35.544 --> 00:02:42.544
+Here, another dataset, a Boston dataset, so here you can see that our observations are all census
+
+00:02:47.610 --> 00:02:52.610
+districts, suburbs of Boston. So this is our entire population. And then imagine, that in Boston we have 506
+
+00:03:01.243 --> 00:03:05.243
+districts and there were 14 variables measured. So here you can see that I printed the first two rows, the first two observations and the first 5 columns and you can see that
+
+00:03:10.459 --> 00:03:12.459
+there are different variables here associated, like, crime level and I think industrialization, etc.
+
+00:03:13.333 --> 00:03:19.333
+And this is our population. As I said, we have in our data set all districts
+
+00:03:19.371 --> 00:03:25.371
+and we imagine that we would like to draw a sample from that population, so how can we do it?
+
+00:03:31.809 --> 00:03:35.809
+Well, we basically could use that sample function sample(). And then, basically from the number of observations, so here it was 506,
+
+00:03:36.317 --> 00:03:46.317
+we like to draw 10 observations and this is our index, so we have drawn these particular observations, and then now, if I would like to
+
+00:03:46.170 --> 00:03:50.170
+take a sample from my dataset, I could basically apply that
+
+00:03:49.955 --> 00:04:01.955
+index variable to my row, once I access the data frame and indeed, you can see that the dimension of my Boston sample dataset, now it's 10 x 14,
+
+00:04:02.119 --> 00:04:08.119
+in contrast to my population, where I had 506 times 14.
+
+00:04:09.064 --> 00:04:14.064
+Okay, and we have also different levels of measurement or scales of measurements.
+
+00:04:14.148 --> 00:04:19.148
+So this is basically a classification of variables.
+
+00:04:18.516 --> 00:04:26.516
+So level of measurement describes the nature of information within the values assigned
+
+00:04:34.359 --> 00:04:38.359
+and it determines which methods and graphics can be applied. And here we have different levels. So, for example, we have this nominal variable, so here
+
+00:04:39.465 --> 00:04:45.465
+we could think about logical factor characters, and then here values can be compared.
+
+00:04:50.480 --> 00:04:53.480
+We also have ordinal variables, so they can be ordered. And then here values could be sorted.
+
+00:04:53.374 --> 00:04:59.374
+And metric variables, so here, values can be ordered and mathematical operations
+
+00:04:59.186 --> 00:05:06.186
+can be used. And then, within metric variables, we have continuous variables and discrete variables.
+
+00:05:10.734 --> 00:05:12.734
+And then here, once again, if I check what happens in my iris data, we can see that we have
+
+00:05:13.400 --> 00:05:23.400
+four numeric variables, and one factor variable, but you might remember in one of our past videos, we chatted about factor variables
+
+00:05:24.269 --> 00:05:35.269
+and we basically figure out that the factor variable is this variable with different levels, and it is stored as an integer, actually, in R.
+
+00:05:42.709 --> 00:05:45.709
+Now, let us talk about the distribution. So by saying a distribution, we could mean
+
+00:05:52.910 --> 00:05:56.910
+either a cumulative distribution function or probability density function or a probability mass function and you will see that people use them
+
+00:06:01.555 --> 00:06:06.555
+interchangeably and this is a building block in statistics, data analysis, machine learning, AI as well
+
+00:06:11.548 --> 00:06:13.548
+and it describes values a variable can take in the population
+
+00:06:19.270 --> 00:06:21.270
+and its frequency, probability or density, or precisely cumulative distribution functions.
+
+00:06:28.066 --> 00:06:32.066
+And let us look at a few plots. So here, the first plot on the left-hand side, I have this bar plot and then we apply this bar plot to a table
+
+00:06:32.312 --> 00:06:38.312
+and we are going to come back to a table function in a few minutes.
+
+00:06:38.453 --> 00:06:45.453
+But here, iris$Species was a nominal variable and then you can see if I
+
+00:06:45.708 --> 00:06:56.708
+now apply a bar plot, we're gonna get the number of observations, in each category, yeah? So, Setosa, versicolor, etc.
+
+00:07:04.910 --> 00:07:06.910
+Now, if I plot(table()) of that variable in the dataset mtcars, and that variable I'm referring to is gear,
+
+00:07:07.168 --> 00:07:14.168
+then you can see that that's actually metric discrete variable, because I have three different levels, 3, 4, 5,
+
+00:07:14.262 --> 00:07:20.262
+and then these are discrete variables, because I have
+
+00:07:19.720 --> 00:07:25.720
+observations for this particular level of 3, of 4 and of 5.
+
+00:07:34.260 --> 00:07:37.260
+And then we could also make a plot within this context of metric continuous variables. So a histogram could be seen as a wrath
+
+00:07:45.982 --> 00:07:47.982
+approximation of a PDF, actually, and then you can see that if I apply histogram to my iris data, in particular, to petal length,
+
+00:07:48.501 --> 00:07:56.501
+then you can see that indeed we have that histogram and it's, as I said, a rough approximation of a PDF.
+
+00:07:56.747 --> 00:08:02.747
+And then, if you'd like to see more colors in R, then definitely, 
+
+00:08:03.024 --> 00:08:09.024
+check it out, that cheat sheet with different colors in R.
+
+00:08:10.551 --> 00:08:15.551
+Alright, so a little bit more on histograms, even though we have already chatted
+
+00:08:15.664 --> 00:08:19.664
+about them, so we can definitely customize the choice of number of bins.
+
+00:08:20.294 --> 00:08:25.294
+So here, in the histogram, I could define that parameter breaks
+
+00:08:30.132 --> 00:08:33.132
+and here, if I define the parameter breaks = 20, well R will give me approximately 20 bins.
+
+00:08:32.935 --> 00:08:39.935
+Why, approximately? Because R treats our choice as a suggestion only here
+
+00:08:40.524 --> 00:08:47.524
+and actually it uses behind-the-scenes, this function pretty(), to choose nice edges.
+
+00:08:47.509 --> 00:08:56.509
+But if you would like to have exact bin edges, then we could define, a parameter breaks.
+
+00:08:56.953 --> 00:09:01.953
+And then I would like to have 7 breaks, and you can see that with 7 breaks, I have:
+
+00:09:01.760 --> 00:09:11.760
+1, 2, 3, 4, 5, 6, 7, so the edges are defined at the integers and then within each
+
+00:09:16.682 --> 00:09:20.682
+of these breaks, the edges, I have a bar here of my histogram. So these are defined precisely.
+
+00:09:27.867 --> 00:09:32.867
+Um, right. And then we could also define another parameter. So, here, for example, if we select these
+
+00:09:38.954 --> 00:09:43.954
+equidistant bins, then a histogram area sums to n, otherwise to 1. We can also choose this frequency parameter to be equal to false.
+
+00:09:44.534 --> 00:09:48.534
+So here, what am I having here? So I have, once again, this histogram
+
+00:09:49.316 --> 00:09:54.316
+and then, this is just a regular histogram, you have already seen that, so this is the first plot on the left.
+
+00:09:53.873 --> 00:09:58.873
+And then I didn't defined anything, basically, just, like, I plotted it as it is.
+
+00:09:59.154 --> 00:10:07.154
+But now, I defined a second histogram, and then here, the frequency is set to false, so we can see that, indeed,
+
+00:10:12.198 --> 00:10:15.198
+instead of having frequency, so how many different observations fall into a particular bin or that bar,
+
+00:10:14.656 --> 00:10:26.656
+I'm having a density, basically the percentage sort of how many of them falls into a particular bar. And then I said that, basically, 
+
+00:10:36.749 --> 00:10:41.749
+the area behind there are below the bars it's basically 1. So basically, you can really see it, because I just took the sum of that product, and indeed, this is 1.
+
+00:10:45.339 --> 00:10:47.339
+And then, in the third plot on the right-hand side
+
+00:10:47.181 --> 00:10:57.181
+I defined, once again, breaks, different breaks and you can see that these are not equidistant bins anymore, because I defined as breakes-like, kind of, sort of
+
+00:11:01.836 --> 00:11:04.836
+2.5 and then we have 3.5, so you can see that the width of bins
+
+00:11:07.672 --> 00:11:12.672
+varies, and indeed, you can see that here, this plot looks completely differently.
+
+00:11:13.262 --> 00:11:20.262
+Let us now look at frequency tables and frequency densities. So here, I told you, like, that, 
+
+00:11:19.775 --> 00:11:31.775
+a few minutes ago that you'd delve deeper into the table functions. So here, I'm applying a table function on iris$Species.
+
+00:11:31.711 --> 00:11:41.711
+So the table function gives me absolute frequencies here. So what does it mean? I get precisely the number of observations
+
+00:11:42.272 --> 00:11:47.272
+or rows in my dataset, which falls into a particular category 
+
+00:11:57.116 --> 00:11:59.116
+of a species of irises. And then, if I now apply a function prop.table() to table_iris, then I get a relative frequency
+
+00:11:59.745 --> 00:12:03.745
+for these numbers, so basically you can see that's 1/3.
+
+00:12:07.841 --> 00:12:12.841
+And then I could also see a frequency density. So, once again, if I define this histogram
+
+00:12:14.009 --> 00:12:19.009
+and store it as a variable, and then I apply this function str()
+
+00:12:17.716 --> 00:12:23.716
+which here displays the internal structure of R objects, what can I get? I get that,
+
+00:12:23.775 --> 00:12:30.775
+basically everything, almost everything about that histogram, I get the precise values of breaks
+
+00:12:38.030 --> 00:12:40.030
+(so where the edges are defined). I get the counts, so how many particular units falls into a particular category
+
+00:12:43.933 --> 00:12:47.933
+and I also get the density here. So, and mids are just the middle points between two different breaks.
+
+00:12:48.535 --> 00:12:53.535
+And then you have a name and if the equidistant parameter was set to true.
+
+00:12:53.715 --> 00:12:58.715
+Okay, so now, let us look at this empirical cdf.
+
+00:13:06.441 --> 00:13:12.441
+So empirical cdf is empirical cumulative distribution function and then here I could get it from R using this ecdf function, apply it to, for example, petal length
+
+00:13:18.113 --> 00:13:21.113
+and then here, if I once again evaluate or check the structure of that parameter
+
+00:13:29.615 --> 00:13:32.615
+then I get this variable, newly defined variable, has three classes: ecdf, step function and function, because it's indeed
+
+00:13:35.620 --> 00:13:41.620
+empirical cdf, a step function, because this empirical cdf is basically a step function, so basically we have the same value
+
+00:13:41.888 --> 00:13:49.888
+for certain elements of X, and then we have a step, etc, etc, and it's also a function. Why is it also a function? Because I can apply to this object,
+
+00:13:55.660 --> 00:13:58.660
+I could pass to this object a parameter and it would give me an evaluation and what
+
+00:13:59.511 --> 00:14:02.511
+would I get if I pass a parameter? So what does it mean if I
+
+00:14:02.203 --> 00:14:11.203
+pass 5 to plcdf(). Basically, it evaluates the cdf at 5, so basically a proportion of petals,
+
+00:14:16.543 --> 00:14:23.543
+whose length is smaller equal than 5. So here indeed it's like around 70 and the value is 0.72. And then you could also plot
+
+00:14:24.144 --> 00:14:29.144
+this object. So indeed, I plotted the empirical cdf of petal length.
+
+00:14:30.590 --> 00:14:35.590
+Alright, we could also describe distribution more succinctly.
+
+00:14:36.251 --> 00:14:41.251
+In particular, we could think about location spread parameter.
+
+00:14:40.909 --> 00:14:44.909
+So what is the purpose here? The purpose here is to summarize
+
+00:14:45.217 --> 00:14:51.217
+a distribution, in a few words, or actually in a few numbers and values.
+
+00:14:51.109 --> 00:15:03.109
+And there are different types of location and dispersion parameters. So, location parameters, you have most likely heard about all of them, like the mode, the mode is the most frequent value.
+
+00:15:12.008 --> 00:15:14.008
+But also, quantiles, means, medians, minimum, maximum, etc. And when it goes to dispersion parameters, like how
+
+00:15:14.570 --> 00:15:22.570
+spread out the data are, for example, here, they are not that spread out, but, for example, like, in other cases, they could be more spread out.
+
+00:15:27.169 --> 00:15:32.169
+And there are many parameters we could measure. For metric variables: standard deviation, variance, range, etc, etc.
+
+00:15:40.881 --> 00:15:44.881
+But of course, please bear in mind that this is the entire function of data, this is my PDF, I can basically see here everything, but
+
+00:15:43.131 --> 00:15:53.131
+if I look only at the locational spread, then I lose some information. So, here the bottom of the slide, you can see
+
+00:15:52.808 --> 00:16:01.808
+different distributions which have the same parameters, so the same mean, the same standard deviation, but you can see that they look completely differently
+
+00:16:07.868 --> 00:16:09.868
+and indeed, there are different distributions. Okay, so here are a few functions
+
+00:16:08.102 --> 00:16:15.102
+to get this location and dispersion parameters, so we have already seen mean(), median(), quantile().
+
+00:16:14.764 --> 00:16:26.764
+Please, here, bear in mind that if I apply quantile() to, for example, a variable, then I get this 5 quantiles, so minimum, maximum, and then 25, 50, and 75%
+
+00:16:26.920 --> 00:16:32.920
+and if I pass a parameter, then I will obtain quantiles of my choice.
+
+00:16:33.168 --> 00:16:40.168
+For the dispersion parameters, here I showed you how to compute standard deviation, variance and
+
+00:16:40.082 --> 00:16:48.082
+interquartile range.  There is a tiny note here that standard deviation and variance are not robust. This is related to
+
+00:16:54.553 --> 00:16:56.553
+something called robustness in statistics, so basically how susceptible to
+
+00:16:56.659 --> 00:17:07.659
+failure is a particular parameter if I insert to my data an outlier. And these two are not robust, so basically they could be
+
+00:17:08.321 --> 00:17:14.321
+blown up the proportion, if I include an outlier 
+
+00:17:17.186 --> 00:17:20.186
+Whereas the third dispersion parameter is more robust.
+
+00:17:20.420 --> 00:17:26.420
+Then these two tiny remarks, so basically mode and range
+
+00:17:34.001 --> 00:17:38.001
+are not implemented in Base R, but in different packages. And then to remove missing values, we need to set the parameter na.rm = true. Like, for example, for mean and median.
+
+00:17:39.270 --> 00:17:47.270
+Okay. And here, once again, something we have already seen are, like box plots for different variables.
+
+00:17:48.801 --> 00:17:54.801
+So here, I'm creating first a box plot for sepal length
+
+00:17:55.523 --> 00:17:59.523
+and you can see in a box plot, we have median, and we have this
+
+00:18:02.293 --> 00:18:06.293
+quartiles, we have whiskers, so whiskers are 1.5 times interquartile range.
+
+00:18:12.082 --> 00:18:15.082
+And we also have box plots by species, so you might remember here, if we use this ~parameter,
+
+00:18:15.440 --> 00:18:19.440
+we create box plots by species, so I have 3 different species
+
+00:18:18.554 --> 00:18:24.554
+of irises and I would like to create a box plot for all of them.
+
+00:18:24.842 --> 00:18:30.842
+And then here we could also summarize distribution parameters,
+
+00:18:39.266 --> 00:18:42.266
+using this summary function, so if I apply a summary function, this gives me the table where I can see a minimum,
+
+00:18:42.031 --> 00:18:48.031
+quartiles, median, mean, and maximum for this numeric
+
+00:18:47.975 --> 00:18:53.975
+variables, four-factor variables you might also remember from our past videos that it gives me the count
+
+00:18:53.891 --> 00:19:00.891
+of observations which falls into a particular category (here, a particular species of irises).
+
+00:19:01.945 --> 00:19:11.945
+Alright, and we also have other functions from other packages, and they give us even more parameters.
+
+00:19:12.001 --> 00:19:17.001
+So, for example, here, if I use that function describe() from psych
+
+00:19:17.087 --> 00:19:25.087
+distribution, then you can see that I get a column with the index of the variable,
+
+00:19:25.625 --> 00:19:33.625
+I get the number of observations, I get a mean, standard deviation, a median, a trimmed mean, maximum absolute deviation, minimum, maximum, range,
+
+00:19:41.432 --> 00:19:43.432
+skewness, kurtosis and standard deviation. And we could also apply another function from that particular package describeBy(),
+
+00:19:48.367 --> 00:19:51.367
+which gives us these values, but by
+
+00:19:55.989 --> 00:19:58.989
+an element, a level of my factor variable. So here, you can see that I'm just accessing the first element
+
+00:19:59.130 --> 00:20:05.130
+of that output and then this setosa, and then, indeed, you can see that
+
+00:20:12.893 --> 00:20:16.893
+the values have changed. For example, for mean here, the sample length is 5.01, and for mean, like, for the older data, the mean is larger, it's 5.84.
+
+00:20:18.016 --> 00:20:25.016
+Okay, let me stop here and then we are going to come back to talking about basic statistics in the next video. Thank you!
+

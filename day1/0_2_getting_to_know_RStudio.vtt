@@ -1,0 +1,357 @@
+WEBVTT
+
+
+00:00:10.755 --> 00:00:14.755
+Hello, welcome back to our statistical programming language course. Today, we are going to continue where we stopped last time. So, last time, we installed R and RStudio,
+
+00:00:14.697 --> 00:00:19.697
+and then in the video, you are able to see that particular window.
+
+00:00:24.584 --> 00:00:27.584
+You might be wondering why once you installed RStudio and R on your computers,
+
+00:00:31.504 --> 00:00:34.504
+your RStudio looked slightly different. And this is because I customised
+
+00:00:39.636 --> 00:00:42.636
+how my R studio looks like. And how do we do it? Well, first, we need to go to Tools,
+
+00:00:44.990 --> 00:00:47.990
+then click on Global Options. And then go to Appearance.
+
+00:00:51.902 --> 00:00:53.902
+Now, if we go to the Editor theme and scroll down,
+
+00:00:56.627 --> 00:00:59.627
+you will see that I selected "Tomorrow Night Bright" theme.
+
+00:00:59.846 --> 00:01:04.846
+Why did I do it? Well, because otherwise, it would be slightly difficult for you
+
+00:01:08.185 --> 00:01:12.185
+to see lightly colored captions. Most likely, once you downloaded
+
+00:01:17.491 --> 00:01:20.491
+RStudio, the default theme was selected for you, and the default theme
+
+00:01:20.437 --> 00:01:29.437
+is this text-made theme. And as you can see, the default theme is very light colored, so it would be
+
+00:01:35.881 --> 00:01:37.881
+quite difficult to see the captions there. So let me go back to my theme. Another difference is
+
+00:01:40.271 --> 00:01:44.271
+the pane layout. What is the pane? Pane is this tiny window here.
+
+00:01:46.006 --> 00:01:55.006
+And most likely, once you downloaded RStudio, the pane layout was the default one, and the default one was with
+
+00:01:57.580 --> 00:01:59.580
+having a console. On the left
+
+00:01:59.667 --> 00:02:05.667
+at the bottom. So, let us go back to that default layout,
+
+00:02:10.915 --> 00:02:14.915
+and then let us click "Apply".
+
+00:02:13.753 --> 00:02:19.753
+Let me just minimize that pane, because we are going to come back to it.
+
+00:02:25.241 --> 00:02:28.241
+Alright, so now let us do some coding. We can go straight to the console, and maybe we could write, for example,
+
+00:02:31.562 --> 00:02:34.562
+print("Hello World")
+
+00:02:46.069 --> 00:02:48.069
+Alright. And then we have enter. Alright, you can see that we printed our first line of code in RStudio,
+
+00:02:50.572 --> 00:02:54.572
+which is "Hello World". We can also define some covariates, for example
+
+00:02:59.646 --> 00:03:04.646
+A could be 4 and B could be a vector from 1 to 4.
+
+00:03:04.448 --> 00:03:13.448
+So, what are we seeing right now? On the left-hand side, we are seeing that I'm really coding something.
+
+00:03:14.160 --> 00:03:17.160
+And then, on the right-hand side, I can see in that
+
+00:03:21.297 --> 00:03:26.297
+pane on the right-hand side that in the environment, these values, the
+
+00:03:28.665 --> 00:03:31.665
+one variable, A, and this vector are defined.
+
+00:03:31.901 --> 00:03:38.901
+What can we also see on the right-hand side? We could click on that history tab
+
+00:03:41.387 --> 00:03:45.387
+and we could see that history records everything what we put
+
+00:03:48.373 --> 00:03:50.373
+inside the console. So this is sort of a record
+
+00:03:57.163 --> 00:04:00.163
+of what we have written during a particular session. Okay, but working with a
+
+00:04:04.507 --> 00:04:10.507
+console is not a traditional way of interacting. Once we would like to write big chunks of codes,
+
+00:04:10.729 --> 00:04:16.729
+we would like to then change them in the future. So, how do we do it? Usually, we need some
+
+00:04:20.092 --> 00:04:24.092
+file, where we store the code. And here in R, we use scripts.
+
+00:04:27.149 --> 00:04:30.149
+So, precisely, now we have that forth
+
+00:04:30.055 --> 00:04:36.055
+pane opened, and then here, once again, I can write certain
+
+00:04:35.612 --> 00:04:42.612
+lines of codes. For example, let me redefine that vector B, so B
+
+00:04:43.318 --> 00:04:49.318
+is from 1 to 4, and then to execute that line, either I click CTRL
+
+00:04:55.759 --> 00:04:59.759
+enter, or command enter. Depends if you are on Windows machine or Mac.
+
+00:04:58.807 --> 00:05:06.807
+What has happened here? Okay, so we can see that B was redefined, I cannot see the second B, it's just the same B, but redefined.
+
+00:05:06.961 --> 00:05:11.961
+We can see that we executed that line of code, because I have B
+
+00:05:11.852 --> 00:05:18.852
+for the second time in the console, and then if we go to the history, you can see
+
+00:05:23.522 --> 00:05:26.522
+that here, we have B executed for the first time, and B executed for the second time.
+
+00:05:30.309 --> 00:05:40.309
+Okay, now, um, what about writing something else? Let us write now, in our script, another line of code, for example, something like that.
+
+00:05:45.560 --> 00:05:48.560
+So I will tell you shortly what that is. I would like to now define
+
+00:05:54.378 --> 00:05:56.378
+a vector, which is
+
+00:05:59.451 --> 00:06:02.451
+one hundred elements long. And it spans from 0 to 5.
+
+00:06:08.277 --> 00:06:11.277
+How can I do it? Well, instead of thinking about all elements of the vector, I can use that function seq(),
+
+00:06:12.632 --> 00:06:16.632
+and then I just define the starting value, I define the
+
+00:06:19.128 --> 00:06:22.128
+last value, and I define the length of that particular vector.
+
+00:06:29.296 --> 00:06:32.296
+But how can I check? What does this particular function do? Well, we could basically write,
+
+00:06:34.193 --> 00:06:36.193
+?seq and then execute.
+
+00:06:38.267 --> 00:06:41.267
+Okay, what's going on now? Now, we could see that
+
+00:06:43.794 --> 00:06:46.794
+in the fourth pane, we have a description
+
+00:06:52.144 --> 00:06:56.144
+of this function. So we can see that this is a function which generates sequences, and then we could see
+
+00:06:59.381 --> 00:07:01.381
+how this function
+
+00:07:01.573 --> 00:07:07.573
+was defined. So, basically, we can select the first element and the last element,
+
+00:07:14.920 --> 00:07:19.920
+and we could select the length of that particular vector. Alright, this is the first function you have seen, this seq function, but let us now apply
+
+00:07:21.844 --> 00:07:24.844
+for each element of this function, another function:
+
+00:07:30.763 --> 00:07:32.763
+Sin function. So, what does it do? Basically, if I write at this particular line,
+
+00:07:37.416 --> 00:07:44.416
+I ask R to apply sine function to each and every single element of a vector C.
+
+00:07:47.895 --> 00:07:49.895
+How do I check? If it worked, well, of course we could see that
+
+00:07:53.474 --> 00:07:56.474
+In the environment, that particular, the second vector, is defined.
+
+00:08:03.725 --> 00:08:06.725
+But maybe we could actually plot these two elements
+
+00:08:13.314 --> 00:08:17.314
+and see if that sine function appears. And indeed, it appears. So we can see, that on the x-axis, we have that vector C,
+
+00:08:23.499 --> 00:08:26.499
+we have vector D on the y-axis, and you can see that the default option for the plot,
+
+00:08:33.016 --> 00:08:35.016
+the basic plot in R is this plot composed of these dots.
+
+00:08:38.748 --> 00:08:42.748
+We could, of course, change a different type
+
+00:08:47.454 --> 00:08:48.454
+of the plot. And now, we changed the
+
+00:08:53.167 --> 00:08:56.167
+type to just a solid line. In the right bottom pane,
+
+00:08:58.175 --> 00:09:01.175
+we could have seen already the help
+
+00:09:06.599 --> 00:09:10.599
+tab, we could have seen also the plots tab. But now I can also go back and see
+
+00:09:13.602 --> 00:09:15.602
+the first plot we generated. Here, we have the first plot. So we can see that it's
+
+00:09:21.253 --> 00:09:26.253
+very user-friendly to use RStudio. Now, if we
+
+00:09:24.859 --> 00:09:30.859
+would like to go further and see what is in other tabs,
+
+00:09:37.710 --> 00:09:40.710
+let us click on files tab. So what can we see here? Here we can just see directories in our home directory.
+
+00:09:42.826 --> 00:09:44.826
+And of course, it would vary for your machine.
+
+00:09:47.013 --> 00:09:51.013
+Then, we could also see that tab with
+
+00:09:55.382 --> 00:09:59.382
+packages. Okay, so what is a package? Package is a super useful thing, because basically, it's a bundle
+
+00:10:04.847 --> 00:10:07.847
+of different functions in R. So, you can see here different names of packages, and these names
+
+00:10:10.268 --> 00:10:15.268
+were already pre-installed on your machine. So now, for example, if I would like to
+
+00:10:21.732 --> 00:10:25.732
+access that bundle, that package, what do I do? I just check this box, and you can see immediately that on my
+
+00:10:28.509 --> 00:10:33.509
+bottom left, a code was actually executed. And then this bundle
+
+00:10:34.344 --> 00:10:39.344
+is just brought to me, and I can now access the function from that package.
+
+00:10:39.998 --> 00:10:44.998
+Another thing we could do is install packages. So, for example,
+
+00:10:53.179 --> 00:10:56.179
+people, once derived the packages, the functions, and they bundle them into the packages they would like to share them with the world,
+
+00:11:02.352 --> 00:11:05.352
+and they saw them on that, CRAN repository. And then, if I know the name of a package, I can just
+
+00:11:06.032 --> 00:11:14.032
+try to write the first letter, and then xgboost, it's a very popular package. Let's try to install it.
+
+00:11:20.651 --> 00:11:23.651
+Okay, so we click on xgboost. And then we install it. So we can see that once again, the installation was
+
+00:11:27.815 --> 00:11:30.815
+executed by RStudio.
+
+00:11:29.730 --> 00:11:36.730
+We could see that, indeed, the downloaded binary packages are stored in that particular
+
+00:11:44.421 --> 00:11:47.421
+directory, in that particular folder. Okay, so another thing here is
+
+00:11:46.162 --> 00:11:51.162
+viewer tab. A viewer tab is a sort of a tiny browser.
+
+00:11:52.363 --> 00:11:58.363
+And the presentation tab, the presentation tab is useful once we make presentations
+
+00:12:03.836 --> 00:12:05.836
+using RMarkdown. And we are going to come back to RMarkdown later.
+
+00:12:06.789 --> 00:12:11.789
+Alright, so I would say this is the basic intro into different panes.
+
+00:12:15.399 --> 00:12:21.399
+There is one last thing, which is extremely important: How to write comments in R. So basically,
+
+00:12:24.251 --> 00:12:26.251
+it's very important to write comments inside your code.
+
+00:12:25.794 --> 00:12:30.794
+Not only for others, to help them understand, but mainly for yourself.
+
+00:12:33.916 --> 00:12:37.916
+Trust me, in a few months' time, you won't remember many things from your code.
+
+00:12:38.243 --> 00:12:42.243
+And how do we do it? Well, we just write this hashtag.
+
+00:12:47.031 --> 00:12:50.031
+And then, for example, you can write "This is my first comment in RStudio."
+
+00:12:59.349 --> 00:13:03.349
+Alright, and this is my second comment "This is the second comment."
+
+00:13:02.060 --> 00:13:08.060
+All right. And once we are ready to then share
+
+00:13:07.666 --> 00:13:13.666
+our code, or once we are just ready with our work for today, of course,
+
+00:13:14.190 --> 00:13:17.190
+we need to save the script. How do we do it?
+
+00:13:16.900 --> 00:13:22.900
+We go to file, and then we save it as something.
+
+00:13:25.801 --> 00:13:27.801
+Let me just write code1, and I save it.
+
+00:13:28.459 --> 00:13:33.459
+And finally, let me just go back to Tools once again.
+
+00:13:33.807 --> 00:13:40.807
+Because, I told you that inside the tools, you can change the appearance of the entire
+
+00:13:40.356 --> 00:13:45.356
+Rstudio, but you could also change the appearance of how your
+
+00:13:46.115 --> 00:13:52.115
+script looks like. So, if we go to Tools, and we go to Global Options,
+
+00:13:53.046 --> 00:14:00.046
+and we go to Code, you can see that there are many different options. One of them,
+
+00:14:08.140 --> 00:14:11.140
+kind of important one for readability of your code, is this margin. So basically here, I can change where the margin is. The margin is this
+
+00:14:21.180 --> 00:14:25.180
+lightly colored grey line. Why is it important? Because it's easier to read code that isn't written in white. So the lines of codes.
+
+00:14:28.614 --> 00:14:32.614
+shouldn’t be written in colours that are too light. Okay that's it for now.
+
+00:14:32.636 --> 00:14:36.636
+Thank you, and yeah, we are going to see each other.
+

@@ -1,0 +1,195 @@
+WEBVTT
+
+
+00:00:01.381 --> 00:00:06.381
+Hello, welcome back to our course, and today we are going to talk about special matrices
+
+00:00:06.124 --> 00:00:13.124
+and arrays. Let us define this matrix A, and then let us apply to A, 
+
+00:00:13.269 --> 00:00:19.269
+a function diag. So what does it give us? Well, it gives us a diagonal of this matrix.
+
+00:00:18.984 --> 00:00:23.984
+If we apply diag to a vector, it provides us with a
+
+00:00:30.710 --> 00:00:35.710
+matrix with a diagonal composed of that particular vector. If we apply diag to scalar, it provides us with
+
+00:00:40.885 --> 00:00:42.885
+an identity matrix with a size predefined by the scalar. So, in our case, we have a 2x2 identity matrix.
+
+00:00:46.115 --> 00:00:49.115
+If we apply to our matrix, an upper.tri function,
+
+00:00:53.140 --> 00:00:55.140
+what do we get? We get as an output, a matrix of the same size.
+
+00:00:55.021 --> 00:01:01.021
+This matrix is filled with logicals, and these logicals are set to TRUE
+
+00:01:07.539 --> 00:01:10.539
+in the upper triangle. We could use that upper.tri to actually create a lower triangular matrix
+
+00:01:09.996 --> 00:01:16.996
+out of our matrix A. So how do I do it? I pass this upper.tri of A
+
+00:01:17.641 --> 00:01:21.641
+to a bracket, and then I replace all these elements with zeros.
+
+00:01:28.988 --> 00:01:33.988
+What do we get? We obtain a lower triangular matrix with non-zero elements below the diagonal and zero elements above the diagonal.
+
+00:01:42.649 --> 00:01:46.649
+Here, we could also replace certain elements in a matrix A. For example, if I would like to replace all the elements
+
+00:01:46.377 --> 00:01:51.377
+lower than 2, with 3, I could basically apply this replace function
+
+00:01:57.894 --> 00:01:59.894
+to my matrix A. I could perform a similar operation, using bracketing. So basically here,
+
+00:02:00.791 --> 00:02:08.791
+what I do? I write A, I open the bracket, I write a condition, and then I replace all the elements with 3. And you can see that the results,
+
+00:02:07.898 --> 00:02:14.898
+it's exactly the same. I could also replace one element, so here I would like to replace
+
+00:02:15.044 --> 00:02:21.044
+an element in the first row, and the first column with 1, and then, indeed, I replaced
+
+00:02:21.364 --> 00:02:26.364
+that number here instead of having 3, I have 1.
+
+00:02:27.209 --> 00:02:34.209
+Okay, so we could definitely carry out some mathematical operations with matrices, so here, let me define
+
+00:02:34.606 --> 00:02:40.606
+two matrices, which are the same, so basically A and B have the same elements
+
+00:02:41.427 --> 00:02:49.427
+from 1 to 4, and if I'd like to carry out element-wise sum, what do I do? I just write A plus B and
+
+00:02:54.932 --> 00:02:59.932
+indeed, all the elements from both matrices are added to each other. I could also carry out element-wise difference, so what do I do?
+
+00:03:00.019 --> 00:03:05.019
+I just write A minus B, and I obtain a matrix composed of only
+
+00:03:04.928 --> 00:03:12.928
+zeros. If I would like to carry out element-wise multiplication, then I just need to type A*B, and indeed.
+
+00:03:18.645 --> 00:03:21.645
+you can see that the first element from matrix A times first element from matrix B is 1, etc.
+
+00:03:21.092 --> 00:03:26.092
+So the second element here, 2 times 2 is 4.
+
+00:03:32.043 --> 00:03:34.043
+We could also carry out matrix product, so how do I do it? I just need to type A%*%B,
+
+00:03:34.065 --> 00:03:42.065
+and then, indeed, I obtain as an output this product of these two matrices.
+
+00:03:42.268 --> 00:03:48.268
+And to carry out element-wise division, I just need to write A\B.
+
+00:03:51.798 --> 00:03:53.798
+We could definitely also invert
+
+00:03:54.385 --> 00:04:00.385
+a matrix, and how do I do it? I apply to my matrix
+
+00:04:00.705 --> 00:04:11.705
+solve function. How can I check that this is an inverted matrix? I just can check if
+
+00:04:14.945 --> 00:04:16.945
+A product A inverse, and A inverse product A,
+
+00:04:17.880 --> 00:04:24.880
+give me as an output identity matrices. And indeed, that's the case. You can see that we have
+
+00:04:27.896 --> 00:04:31.896
+1 on diagonal and 0 off-diagonal. And then we could also
+
+00:04:32.602 --> 00:04:36.602
+carry out element-wise inverse, so what do I do? I just type
+
+00:04:40.615 --> 00:04:44.615
+A^(-1), so the power of minus 1, and then indeed, I inverted all the elements
+
+00:04:47.295 --> 00:04:51.295
+element-wise, not carried out inversion of an entire matrix.
+
+00:04:51.164 --> 00:04:58.164
+Now let us briefly talk about arrays. So, arrays can store elements of the same type
+
+00:04:58.408 --> 00:05:04.408
+in more than two dimensions. So, two-dimensional arrays are equivalent to matrices,
+
+00:05:05.376 --> 00:05:10.376
+and arrays are constructed using the array function. As you can see here.
+
+00:05:10.942 --> 00:05:17.942
+How do they do it? X is an array with elements from 1 to 6, and the dimensions: I would like to have
+
+00:05:20.530 --> 00:05:22.530
+one row, three columns, and two matrices.
+
+00:05:24.069 --> 00:05:28.069
+I have one row, three columns, and two matrices.
+
+00:05:36.365 --> 00:05:38.365
+And then we could collapse a vector to an array by changing its dimensions. So here, if I define this vector
+
+00:05:44.569 --> 00:05:47.569
+X, and this vector is from 1 to 6, the class of this vector here now is integer. Why? Because I have only integers as elements.
+
+00:05:52.352 --> 00:05:55.352
+In this vector, length is 6. And the dimension is null, because
+
+00:05:56.585 --> 00:06:00.585
+in R, vectors are null dimensional.
+
+00:06:08.100 --> 00:06:10.100
+If I now change the dimension of this vector, so basically I write dim of x is what? Is this 
+
+00:06:10.547 --> 00:06:15.547
+C(1, 3, 2), what do I get? Actually, I get the same array as before,
+
+00:06:16.503 --> 00:06:19.503
+meaning that I would have an array with two matrices
+
+00:06:19.205 --> 00:06:23.205
+and each of them would have one row and three columns.
+
+00:06:23.806 --> 00:06:28.806
+Now, the class is array, the length is 6, because I had still 6 elements,
+
+00:06:28.922 --> 00:06:35.922
+and the dimension is what? 1, 3, 2. First dimension refers to how many rows I have.
+
+00:06:36.307 --> 00:06:43.307
+Second, to how many columns I have, and the third dimension to how many matrices I would have.
+
+00:06:46.280 --> 00:06:50.280
+And then I can access array elements. Once again, by using brackets.
+
+00:06:50.631 --> 00:06:55.631
+So, if I would like to access the first rows
+
+00:06:58.806 --> 00:07:03.806
+of both my matrices, then I just write X and the first element, and you can see that these are the first rows.
+
+00:07:09.599 --> 00:07:11.599
+Now, if I would like to see and access the first columns of two matrices, then I
+
+00:07:16.837 --> 00:07:18.837
+just write one on the second space here, in brackets, and indeed,
+
+00:07:24.306 --> 00:07:27.306
+I can access the first columns of two matrices. And then, if I would like to access the first matrix, then I put 1 on the third
+
+00:07:31.221 --> 00:07:34.221
+space here, and then, indeed, I access the first matrix.
+

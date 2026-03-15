@@ -1,0 +1,183 @@
+WEBVTT
+
+
+00:00:01.602 --> 00:00:08.602
+Hello, my name is Katarzyna, and I'm going to guide you through the course material
+
+00:00:15.306 --> 00:00:18.306
+of this statistical Programming Languages course. As you can see, at the bottom of this video, they are automatically generated captions.
+
+00:00:25.425 --> 00:00:29.425
+And I hope they will be useful for you. So today, we are going just to go through the download and the installation of R and RStudio.
+
+00:00:29.835 --> 00:00:37.835
+Let us jump straight to it. So let us open a browser of our choice, and let us type RDownload.
+
+00:00:37.922 --> 00:00:41.922
+One of the first few options you should see is 
+
+00:00:43.895 --> 00:00:51.895
+the R project for Statistical Computing, this is www.r-project.org website. Let us click on this link.
+
+00:00:55.003 --> 00:00:58.003
+So here, you can see that there are many links up.
+
+00:01:02.613 --> 00:01:07.613
+But we need to download R first, so let us click on the link directing us to the downloading page, so Download R.
+
+00:01:08.067 --> 00:01:12.067
+And then once again, here you can see many links.
+
+00:01:11.406 --> 00:01:20.406
+So basically here, you are just asked to select a server location from which you are going to download R.
+
+00:01:29.137 --> 00:01:32.137
+So, since we are in Germany, let us scroll down and select one of the German servers, so I'm going to select the one in Gottingen.
+
+00:01:33.205 --> 00:01:41.205
+Alright, and then here we have 3 options for the download and the installation of R.
+
+00:01:47.541 --> 00:01:51.541
+We have a download for Linux, Mac, and Windows. Since I'm now currently on the Windows machine, I'm going to click Download R for Windows.
+
+00:01:51.648 --> 00:02:00.648
+But, as you will see, I shared with you a link to a YouTube video with a step-by-step installation for Mac.
+
+00:02:05.406 --> 00:02:10.406
+So let me just jump to the installation for Windows. And now, once again, we have a few subdirectories.
+
+00:02:11.410 --> 00:02:14.410
+We are installing R for the first time, so I'm going to click
+
+00:02:21.802 --> 00:02:23.802
+here, and once again, we need to click a link to the installation file, download R 4.5.1. 
+
+00:02:29.496 --> 00:02:32.496
+Okay, so it's going to take some time, so let me pause the video for now.
+
+00:02:33.503 --> 00:02:38.503
+Alright, so our file is downloaded, so let us go to
+
+00:02:38.194 --> 00:02:45.194
+the downloaded files in the directory with downloads.
+
+00:02:48.710 --> 00:02:50.710
+And now, let us click on this downloaded file, the installation file.
+
+00:02:50.641 --> 00:02:55.641
+Alright, so we are asked if we should proceed. Yes, we'd like to proceed.
+
+00:02:55.105 --> 00:02:59.105
+We select a language, so for us, it would be English.
+
+00:03:04.065 --> 00:03:07.065
+And we need to go through the agreement, the installation agreement
+
+00:03:07.588 --> 00:03:10.588
+and the license, so, let us scroll down through it.
+
+00:03:10.062 --> 00:03:15.062
+I strongly recommend you to read it at least once.
+
+00:03:20.484 --> 00:03:23.484
+Now, we need to select, the destination location, I suggest that we select the default one.
+
+00:03:23.141 --> 00:03:29.141
+Similarly for the components, we are supposed to install the default ones.
+
+00:03:29.241 --> 00:03:35.241
+Similarly, for the startup options. Similarly, I suggest that we select the default ones, and we click next.
+
+00:03:36.021 --> 00:03:40.021
+And then for the name, here, I clicked too fast.
+
+00:03:43.875 --> 00:03:46.875
+We would like to have it named R. And then, similarly for additional tasks.
+
+00:03:48.014 --> 00:03:52.014
+I suggest we just select the default option. Okay, let us click Next.
+
+00:03:56.776 --> 00:04:00.776
+Okay, and the software is being installed 
+
+00:04:05.307 --> 00:04:07.307
+right now. So, it shouldn't take that much
+
+00:04:12.969 --> 00:04:14.969
+time we are almost there. Okay, it's finished, so let us click Finish.
+
+00:04:14.546 --> 00:04:18.546
+And then let us go to our apps and click R.
+
+00:04:23.506 --> 00:04:27.506
+Okay, so here we have our R installed on our machine. So, as you can see,
+
+00:04:30.209 --> 00:04:39.209
+R is working already, but it is not the most user-friendly environment to work with, we have this
+
+00:04:45.302 --> 00:04:47.302
+red cursor over here. There is nothing around, also even the font is not very welcoming.
+
+00:04:47.405 --> 00:04:57.405
+So, maybe we should try to look for something which would be more user-friendly in terms of the interaction with the software.
+
+00:04:57.764 --> 00:05:02.764
+And for that, we need RStudio. So let us close R.
+
+00:05:03.348 --> 00:05:09.348
+And, would we like to save, this workspace image? We click no.
+
+00:05:09.647 --> 00:05:17.647
+And once again, let us go to the browser of our choice, and this time, let us type RStudio.
+
+00:05:17.434 --> 00:05:25.434
+Once again, one of the few first options you should see is this RStudio desktop. Let us click on this one.
+
+00:05:28.391 --> 00:05:36.391
+And here, if we scroll down, we have two options. So first is install R, and the second is Install RStudio.
+
+00:05:36.251 --> 00:05:43.251
+So, we have just installed R, so we are good with, with that first option.
+
+00:05:53.605 --> 00:05:56.605
+But now, the website automatically detected that I'm on Windows machine, so I'm going to download RStudio Desktop for Windows, but of course, if you are on Macs, then
+
+00:05:58.954 --> 00:06:00.954
+you would have an option to download it for Mac.
+
+00:06:05.912 --> 00:06:07.912
+Okay, I'm going to click on that. And once again, it's going to take some time, so let me pause the video for now.
+
+00:06:13.339 --> 00:06:16.339
+Alright, the file is downloaded. So, let us now click on the installation file here.
+
+00:06:21.574 --> 00:06:25.574
+Once again, we are asked if we should proceed. We click yes.
+
+00:06:31.468 --> 00:06:35.468
+Now we click just next. And we install it under the default directory.
+
+00:06:35.636 --> 00:06:40.636
+So we click Install, and once again, it's going to take some time, so let me pause the video for now.
+
+00:06:48.537 --> 00:06:51.537
+All right, we are back, basically the RStudio is installed, we just need to click on Finish.
+
+00:06:55.233 --> 00:06:58.233
+And then we can go to our apps, click search for R, and now we can see that we have
+
+00:07:02.337 --> 00:07:04.337
+R 4.5.1, and then we have RStudio, we click on RStudio.
+
+00:07:11.487 --> 00:07:12.487
+And now, you can see that it looks completely different.
+
+00:07:12.754 --> 00:07:17.754
+We have a console window, we have, this window with different options
+
+00:07:17.091 --> 00:07:22.091
+starting from files to presentation, and then we have this environment.
+
+00:07:22.469 --> 00:07:27.469
+We are going to stop here. We are going to come back to this particular. Thank you!
+

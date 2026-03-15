@@ -1,0 +1,308 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+% R code styling
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{Rstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=R
+}
+
+\lstset{style=Rstyle}
+
+% Header configuration
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Humboldt-Universität zu Berlin}
+\rhead{Chair of AI in Business and Economics}
+\cfoot{\thepage}
+
+\title{\textbf{Statistical Programming Languages Winter Semester 2025/2026 \\ Take-Home Exam}}
+\author{KATARZYNA RELUGA}
+\date{Due: 09 January 2026, 23:59}
+
+\begin{document}
+
+\maketitle
+
+\section*{General Instructions}
+
+The take-home exam consists of the following five programming tasks.
+
+\begin{enumerate}
+    \item \textbf{File Management:} Solve each exercise in a separate R-file, using \texttt{SPL25\_surname\_name\_X.R} as a template. Rename the file accordingly (X corresponds to the number of the respective exercise) and fill in your names and student ID (Matrikelnummer) at the designated place in each file.
+    \item \textbf{Code Requirements:} Your R code:
+    \begin{itemize}
+        \item must solve the exercises without errors or warnings when executed from top to bottom (exceptions are intended warnings or errors and ill-set working directories);
+        \item must provide self-contained solutions, i.e., the solutions to all exercises must be reproducible, obtained with R code, and each file must be executable on its own;
+        \item must include only one solution per task (otherwise only the first one will be considered);
+        \item must be comprehensible and include explanatory comments (also to structure the code and to answer specific questions);
+        \item must be your own intellectual work;
+        \item must not use any additional packages unless explicitly required/allowed in a specific exercise.
+    \end{itemize}
+    \item \textbf{External Sources/AI:}
+    \begin{itemize}
+        \item If parts of the code are taken from external sources or AI tools, they have to be cited properly using comments.
+        \item If you use AI tools, you are required to provide all prompts used as well as their output in an appendix.
+    \end{itemize}
+    \item \textbf{Grading Penalties:}
+    \begin{itemize}
+        \item Errors or warnings lead to 0 points for the respective task.
+        \item Using additional packages leads to 0 points for the respective task.
+        \item Any attempt to deceive results in the grade 'failed' (5.0).
+        \item Following this style guide is part of the grading.
+    \end{itemize}
+    \item \textbf{Submission:} You have to submit your solutions as \textbf{one ZIP file} by 09 January 2026, 23:59 via Moodle.
+\end{enumerate}
+
+\noindent Please contact me via email (\href{mailto:katarzyna.reluga@hu-berlin.de}{katarzyna.reluga@hu-berlin.de}) if anything is unclear.
+
+\subsection*{Grading Overview}
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Exercise} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & $\boldsymbol{\Sigma}$ \\
+\midrule
+\textbf{Points} & 3 & 17 & 25 & 25 & 30 & 100 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+\noindent \textbf{GOOD LUCK!} \\
+\small{You may use all packages loaded by default, namely: \texttt{stats}, \texttt{graphics}, \texttt{grDevices}, \texttt{utils}, \texttt{datasets}, \texttt{methods}, and \texttt{base}.}
+
+\newpage
+
+\section*{Exercise 1: Session Info [3 points]}
+
+Start a new R session and execute the following code:
+
+\begin{lstlisting}
+sink("my_session.txt")
+sessionInfo()
+sink()
+\end{lstlisting}
+
+\begin{itemize}
+    \item Include the resulting file \texttt{"my\_session.txt"} in your submission, i.e., in the zip file containing your solutions.
+    \item Use comments to briefly explain the output provided by the function \texttt{sessionInfo()} in your own words.
+\end{itemize}
+
+\vspace{1cm}
+
+\section*{Exercise 2: COVID-19 [17 points]}
+
+The file \texttt{corona.csv} contains information on the development of the COVID-19 pandemic in EU/EEA countries. Amongst others, the following variables were observed in the data set:
+
+\begin{center}
+\begin{tabular}{p{5cm} p{3cm} p{6cm}}
+\toprule
+\textbf{Variable (original name)} & \textbf{New name} & \textbf{Description} \\
+\midrule
+\texttt{dateRep} & \texttt{date} & Observation date \\
+\texttt{cases} & & Number of newly infected people on this date \\
+\texttt{deaths} & & Number of people who died from COVID-19 on this date \\
+\texttt{countriesAndTerritories} & \texttt{country} & Country/Territory of the observation \\
+\texttt{popData2020} & \texttt{population} & Population of the Country/Territory (as of 2020) \\
+\texttt{indicator14} & & Number of cases per 100,000 residents over the last 14 days (including current date) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{enumerate}[label=\alph*)]
+    \item Set your working directory appropriately and read the data conveniently into a data frame \texttt{corona}. Delete all variables not contained in the table above and rename the remaining ones according to \textit{New name}, if \textit{New name} is not empty for this variable. Transform the variable \texttt{date} to class \texttt{POSIXct} appropriately. Are the classes of the other variables represented adequately? Briefly justify your answer. \textbf{[2]}
+    
+    \item How many observations in the data set contain missing values? \textbf{[1]}
+    
+    \item How many observations in the data set counted less than 20 deaths? What's their share on the total number of observations? \textbf{[1]}
+    
+    \item Use an appropriate test to decide whether the average value of \texttt{indicator14} differs in the countries Czechia and Slovakia in January 2022 (significance level: 5\%). Briefly justify your decision on whether the average value differs. \textbf{[2]}
+    
+    \item Compute the total number of deaths per country in September 2020 and sort them in descending order. \textbf{[3]}
+    
+    \item In Germany, a 7 day indicator (\texttt{indicator7}) is used to evaluate the rate of new infections instead of \texttt{indicator14}. It is the number of cases per 100,000 residents over the last 7 days (including the current date) in one country, i.e.,
+    \[
+    indicator7_{i} = \frac{\sum_{k=i-6}^{i} cases_{k}}{population_{i}} \cdot 100
+    \]
+    for the $i$-th observation of the respective country. Create a new numeric variable \texttt{indicator7} containing this 7 day indicator and add it to the data frame \texttt{corona}. 
+    
+    \textbf{Adhere to the following:}
+    \begin{itemize}
+        \item Make sure that the order of observations in the data frame \texttt{corona} stays unchanged.
+        \item For the first 6 observed days of a country, the new variable \texttt{indicator7} has the value \texttt{NA}.
+        \item Always use the observations of the last 7 days existent in the data frame for your computation. (Some date-country-combinations are non-existent in the data frame, e.g., 9th January 2022 for Denmark.) \textbf{[6]}
+    \end{itemize}
+    
+    \item Add a new factor variable \texttt{alert\_level} to the data frame \texttt{corona} which is:
+    \begin{itemize}
+        \item "green" if \texttt{indicator7} is less than 35,
+        \item "yellow" if \texttt{indicator7} is at least 35 but less than 50,
+        \item "red" if \texttt{indicator7} is at least 50 but less than 100,
+        \item "darkred" if \texttt{indicator7} is at least 100.
+    \end{itemize}
+    If you did not manage to solve exercise f) use the variable \texttt{indicator14} instead, but double the threshold values (e.g., use 70 as upper bound for "green"). \textbf{[2]}
+\end{enumerate}
+
+\tiny{Source: https://www.ecdc.europa.eu/en/publications-data/data-daily-new-cases-covid-19-eueea-country as of 12 April 2022.}
+
+\newpage
+
+\section*{Exercise 3: Airquality Graphic [25 points]}
+
+Construct the following graphic and save it as a PDF file in your working directory (using R code!), with the width and height of the graphic region set to 7 inches, respectively. 
+
+\begin{itemize}
+    \item The graphic includes everything inside the thick black frame (of the example image).
+    \item It is a vector graphic, so you can zoom in on it.
+    \item It is based on the built-in data set \texttt{airquality}. Use the variables \texttt{Solar.R} (Solar Radiation), \texttt{Ozone} (Mean Ozone), and \texttt{Month}.
+\end{itemize}
+
+\noindent \textbf{Pay attention to the details, so your graphic looks as similar as possible. In particular:}
+\begin{itemize}
+    \item Arrangement of the plots and their proportion to each other (hint: \texttt{?layout}).
+    \item Top panel: Histogram of Solar Radiation.
+    \item Bottom Left panel: Scatter plot of Mean Ozone vs. Solar Radiation with different point symbols/colors for months.
+    \item Bottom Right panel: Boxplot of Mean Ozone by Month.
+    \item Width of cells in the histogram.
+    \item Axis labels, scaling, and orientation/position of inscription (hint: \texttt{?axis}).
+    \item Colors and point symbols.
+\end{itemize}
+
+\vspace{1cm}
+
+\section*{Exercise 4: Data Cleaning [25 points]}
+
+A lot of common first names in Bavaria have specific nicknames. This can be confusing to people outside and inside of Bavaria. Read in the file \texttt{bavarian\_nicknames\_fem.csv} (UTF-8 encoded), which contains a non-exhaustive list of Bavarian names and their short forms. Unfortunately, the file needs some data cleaning.
+
+Save the information as a \texttt{data.frame} named \texttt{nick}. Make sure that \texttt{nick} satisfies the following requirements:
+
+\begin{itemize}
+    \item No empty lines, leading or tailing white spaces.
+    \item The two character variables are named \texttt{Nickname} and \texttt{Name}, respectively (e.g. Agdi is a nickname of Agnes).
+    \item All square brackets [] and their containing text are removed from the values in the variable \texttt{Name}.
+    \item All shortening notation in the values of \texttt{Nickname} are replaced by a full notation of the alternatives (e.g. "Sieg-e/i, Sig(g)i, Sopherl/Sofferl" is replaced by "Siege, Siegi, Sigi, Siggi, Sopherl, Sofferl").
+    \item Each line contains only one name in the variable \texttt{Nickname} and there are no duplicated names in \texttt{Nickname}. The names of duplicated nicknames are merged.
+\end{itemize}
+
+\noindent \textbf{Example of Merging:}
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Before:} & \textbf{After:} \\
+\begin{tabular}{ll}
+Nickname & Name \\
+Mirl, Mall & Maria \\
+Mirl & Maria, Rosemarie \\
+\end{tabular} & 
+\begin{tabular}{ll}
+Nickname & Name \\
+Mirl & Maria, Rosemarie \\
+Mall & Maria \\
+\end{tabular}
+\end{tabular}
+\end{center}
+
+\noindent The merging should not create duplicated names in the variable \texttt{Name} (i.e. Maria, Rosemarie instead of Maria, Maria, Rosemarie).
+
+\noindent All of your data preprocessing steps have to be performed in R Base and pay attention to a good documentation of your steps. Write your code as general as possible, i.e. use regular expressions and refrain from explicit code such as manual editing. Your code will be applied to a separate data set that shows the same features and it will be graded based on the results on the separate data set.
+
+\newpage
+
+\section*{Exercise 5: Battleship [30 points]}
+
+The game Battleship is played by two persons. To prepare the game, every player generates a grid (usually $10 \times 10$), which illustrates the player's combat area. Then, every player marks the position of their fleet of ships in their combat area, obeying the following rules:
+
+\begin{itemize}
+    \item The ships may not touch horizontally or vertically (but they may touch diagonally!)
+    \item Every ship has to be line-shaped (horizontally or vertically; not diagonally!)
+    \item The ships may be located at the border (first/last row/column)
+\end{itemize}
+
+\noindent Usually, the fleet of ships consists of 10 ships:
+\begin{itemize}
+    \item One battleship (5 cells)
+    \item Two cruisers (4 cells each)
+    \item Three destroyers (3 cells each)
+    \item Four submarines (2 cells each)
+\end{itemize}
+
+\noindent Write a function \texttt{combat\_area}, which randomly generates a combat area for a specified grid dimension and number of ships, respecting the rules above. It should fulfill the following:
+
+\begin{enumerate}
+    \item The arguments of the function correspond to the number of rows (\texttt{n\_row}; default: 10), to the number of columns (\texttt{n\_col}; default: \texttt{n\_row}), and to the number of ships of the respective length: \texttt{n5} (battleships, default: 1), \texttt{n4} (cruisers, default: 2), \texttt{n3} (destroyers, default: 3), and \texttt{n2} (submarines, default: 4).
+    
+\begin{lstlisting}
+combat_area <- function(n_row = 10, n_col = n_row, n5=1, n4=2, n3=3, n2=4) {
+    # Your part
+}
+\end{lstlisting}
+
+    \item The starting point is an empty combat area of the specified dimension $(n\_row \times n\_col)$.
+    \item The ships are placed consecutively according to their size (starting with the largest).
+    \item To place a ship, start by determining its orientation (horizontal or vertical) randomly. Afterwards, choose a position at which the ship can be placed in the selected orientation (satisfying the rules above) randomly.
+    \item It is possible that there is no position left to place the next ship in the selected orientation. In this case draw a valid position for the remaining orientation.
+    \item If not even this is possible, the function should stop with the following error (appropriately adapted to the length of the respective ship; hint: \texttt{?stop} or \texttt{?stopifnot}):
+    \begin{verbatim}
+    Error in combat_area(): Ship of length 2 does not have enough space.
+    \end{verbatim}
+    \item If the ships were placed successfully, the function returns a plot of the combat area (in the Plots-tab of RStudio).
+\end{enumerate}
+
+\noindent \textbf{Expected Output Appearance:}
+
+\begin{verbatim}
+> combat_area()
+Combat Area
+  1 2 3 4 5 6 7 8 9 10
+A           # # #
+B
+C #         # # # #
+D #
+E           # #
+F   # #
+G
+H
+I   # # # # #
+J
+
+> combat_area(n_row = 12, n_col = 13, n5=3, ...)
+... (Grid adjusts to 12 rows A-L and 13 columns)
+\end{verbatim}
+
+\noindent \textbf{Hints:}
+\begin{itemize}
+    \item Outsource (self-contained) subproblems in separate functions, which are then called in the main function \texttt{combat\_area}.
+    \item Test the function with different calls. In particular, make sure that it also works for non-default parameters.
+\end{itemize}
+
+\end{document}

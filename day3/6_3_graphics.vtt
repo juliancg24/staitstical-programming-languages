@@ -1,0 +1,306 @@
+WEBVTT
+
+
+00:00:00.988 --> 00:00:06.988
+Hello, welcome back to our course. Today we are going to continue talking about graphics in R.
+
+00:00:07.512 --> 00:00:12.512
+So far, we have seen a few functions which were well handed to create plots in base R.
+
+00:00:12.551 --> 00:00:21.551
+But now, we would like to see other functions, from a package called ggplot2. Ggplot2 is based on the book "grammar of graphics",
+
+00:00:21.095 --> 00:00:33.095
+by Leland Wilkinson. The package uses a high-level graphic syntax that allows us to stack different levels of data visualization, and you will see, that it allows us to create really fancy-looking plots.
+
+00:00:33.553 --> 00:00:44.553
+There are many places to get help with gtplot2: RStudio community, Stack overflow or like chat boxes. Or you can basically use a browser of your choice and look for some additional info.
+
+00:00:45.537 --> 00:00:56.537
+Okay, so all ggplot2 plots start with a call to a ggplot function. Then in that ggplot function, we first set the default data
+
+00:00:59.294 --> 00:01:02.294
+and the aesthetic mappings with aes(). And then we add layers (geomes).
+
+00:01:02.303 --> 00:01:08.303
+We can add geom_point(), geom_abline(), geom_histogram(), we are going to see the examples of them. Scales:
+
+00:01:08.375 --> 00:01:14.375
+so basically, something about labels, axes or titles.
+
+00:01:14.616 --> 00:01:20.616
+And then facets. Basically, here we define a theme, and then we add all of that through a
+
+00:01:20.409 --> 00:01:26.409
+plus sign. Okay, now let us have a look at the first example. So in the first example,
+
+00:01:27.129 --> 00:01:41.129
+after installing and loading ggplot2, we are going to look into the data frame called "mtcars" and then we look at what it contains. Well, it contains different makes of cars. Then,
+
+00:01:47.811 --> 00:01:50.811
+as variables, we have characteristics of these cars. Now I would like to create a scatter plot. How can I do that using ggplot2 functions? Well,
+
+00:01:57.069 --> 00:02:02.069
+I call ggplot, then I insert my data. Then I select aesthetics, so x is wt, y is mpg and then after the plus sign, I
+
+00:02:02.688 --> 00:02:08.688
+would like to now create a scatter plot. So I'm calling geom_point. Okay, what can I see? I can see that, indeed, I have
+
+00:02:14.047 --> 00:02:17.047
+wt on the x-axis, I have mpg on the y-axis, and then I have points. Indeed, I created a scatterplot.
+
+00:02:18.109 --> 00:02:25.109
+Now I would like to adjust my scatter plot. For example, by changing the size and the shape. Basically, the first line is
+
+00:02:25.689 --> 00:02:30.689
+almost exactly the same and the second line, I would like to
+
+00:02:30.774 --> 00:02:35.774
+enlarge the size and change the shape. And you can see, that the plot
+
+00:02:43.069 --> 00:02:45.069
+looks already much better. I could even make a fancier plot. For example, I could make a plot in which the points would
+
+00:02:45.692 --> 00:02:53.692
+match different levels of another variable in my dataset. So, for example, here we have this cyl
+
+00:03:00.335 --> 00:03:05.335
+variable and it's numeric. But it has only 4 values, 6, 4, 8. So we could coerce it to be a factor variable using as.factor() function.
+
+00:03:05.317 --> 00:03:10.317
+And now, let us have a look at our plot. Once again, I'm passing
+
+00:03:10.823 --> 00:03:17.823
+my data, and I'm selecting aesthetics. These would be the same, x, wt, y, mpg, and now I would like to have
+
+00:03:21.113 --> 00:03:29.113
+points, which match different levels of that factor variable. So first, in geom_point(), I'm defining a size, I would like to have decently sized
+
+00:03:32.422 --> 00:03:36.422
+points. Then I would like my color matching different levels of my
+
+00:03:36.756 --> 00:03:43.756
+factor variable cyl. And I would like to have shapes matching different levels of my variable cyl.
+
+00:03:44.673 --> 00:03:48.673
+Now, I would also like to add labels to my scatter plot.
+
+00:03:51.376 --> 00:03:55.376
+So that can be done, using geom_text(). How can I do it? I pass to aes()
+
+00:03:55.427 --> 00:04:01.427
+parameter label and now my labels would be the row names of the mtcars
+
+00:04:01.857 --> 00:04:09.857
+data frame. And now, on top of that, I would also add linear regression lines. So basically here, I could do it through geom_smooth.
+
+00:04:12.630 --> 00:04:14.630
+Then in aes, I would like to have three lines,
+
+00:04:20.741 --> 00:04:24.741
+corresponding to 3 different levels of my cyl factor viable. I'm selecting a method to be a linear model, because I would like to fit this linear regression.
+
+00:04:23.983 --> 00:04:31.983
+And I wouldn't like to have any error bars around my linear regression, so I'm setting SE to false.
+
+00:04:32.812 --> 00:04:38.812
+And I would like to have these lines on a full range of x. Not only on those x's,
+
+00:04:39.786 --> 00:04:44.786
+which correspond to a particular level of this factor variable. Okay, what can we see?
+
+00:04:45.374 --> 00:04:50.374
+We can see, indeed, that our plot looks good. We have different colors
+
+00:04:51.327 --> 00:05:00.327
+for different levels of our cyl covariant. We have different shapes, we also have regression lines and indeed, we have different makes of cars for each dot.
+
+00:05:01.096 --> 00:05:17.096
+Okay, now we could also create a bar plot. So a bar plot here, could be once again created by calling ggplot functions. So first I'm selecting my data. I would like to create a data frame. In that data frame, I'm having two
+
+00:05:17.478 --> 00:05:22.478
+variables. The first one is this x variable, with only 3 different levels, repeated twice.
+
+00:05:25.710 --> 00:05:34.710
+And the second one is the y variable with different numeric values. Then I'm passing my data to ggplot function. I'm here, setting the aesthetics, so x is
+
+00:05:35.833 --> 00:05:46.833
+corresponding to my x variable, y is corresponding to my y variable. And then in my bar plot, what am I doing here? I'm calling geom_bar layer, and then in aesthetics, I'm selecting this
+
+00:05:58.389 --> 00:06:01.389
+fill parameter, and fill should match "A" "B" "C" to different fill colors. So I would like to have different fill colors corresponding to different levels of my x variable. Then I'm also setting stat to identity,
+
+00:06:01.299 --> 00:06:12.299
+because I would like to use y values as they are. Not summarize them or count them, etc. And then I'm also adjusting this theme to be a light
+
+00:06:19.210 --> 00:06:22.210
+theme. Okay, let us have a look. Indeed, now I have a bar plot. We have different colors for different levels of x values.
+
+00:06:22.231 --> 00:06:28.231
+And then we have x on the x-axis, y on the y-axis And then, indeed, you can see that
+
+00:06:31.027 --> 00:06:34.027
+these bars now correspond to the sums of y's for a specific "A".
+
+00:06:43.683 --> 00:06:47.683
+And indeed, the plot already looks quite good. We could also look at box plots, so here, let us call our dataset "iris". You might remember, that in that dataset, we had
+
+00:06:47.533 --> 00:06:56.533
+different widths of sepal for different species of irises. So now I'm passing that dataset to my ggplot function.
+
+00:07:01.170 --> 00:07:04.170
+And in aesthetics for x, I am selecting "species", because I would like to have different plots for different species.
+
+00:07:11.891 --> 00:07:13.891
+And for y, I'm selecting "sepal width". And then, I'm selecting this fill parameter to be "species", because I would like to have different fills of box plots
+
+00:07:14.017 --> 00:07:21.017
+corresponding to different levels of my factor variable "species".
+
+00:07:20.969 --> 00:07:25.969
+Okay, so now I'm adding a layer geom_boxplot, and then I could also adjust
+
+00:07:34.919 --> 00:07:36.919
+the titles of my main title and of the title of x- and y-axis. So here, for example
+
+00:07:39.917 --> 00:07:42.917
+I'm setting the main title to "Sepal Width by species". And then I'm setting x
+
+00:07:42.993 --> 00:07:48.993
+to be "species", and y-axis to be "sepal width".
+
+00:07:58.175 --> 00:08:01.175
+We could also style these titles. For example, I could set the color of the main title to be red and the face to be bold italic.
+
+00:08:07.053 --> 00:08:12.053
+And then I could adjust the color of the x-axis to be blue, and of a different size and face. You could also adjust
+
+00:08:12.672 --> 00:08:19.672
+the way the legend looks like. So here, I would like to have it in light blue. As you can see, instead of having it on a default
+
+00:08:19.452 --> 00:08:24.452
+background. Okay, now we can see that my box plots already look
+
+00:08:30.230 --> 00:08:33.230
+quite good. We have different colors for the titles of the x-axis, y-axis.
+
+00:08:32.808 --> 00:08:39.808
+We have a different colors for the main title and we indeed adjusted the background of our legend. Then you can see that fills
+
+00:08:46.713 --> 00:08:48.713
+match different levels of my species. And also the legend matches the colors in the plot.
+
+00:08:49.534 --> 00:08:56.534
+We could also create histograms. Let us create another dataset, mydata. In that myata, I would have two
+
+00:08:59.212 --> 00:09:02.212
+variables. The first variable is a factor variable, with two levels, "F" and "M",
+
+00:09:02.435 --> 00:09:10.435
+each repeated 200 times. The second variable is this vector, composed of two subvectors. These two subvectors
+
+00:09:10.355 --> 00:09:19.355
+are containing values from a normal distribution. So basically, each of them contains 200 values.
+
+00:09:19.375 --> 00:09:24.375
+Then they were sampled from a normal distribution, with a mean of 55
+
+00:09:24.089 --> 00:09:33.089
+and then with a mean of 65. I bundle them together and I round all the values not to have any digits.
+
+00:09:44.479 --> 00:09:47.479
+Now I pass that data set to my ggplot. Select my aesthetics, so x is white. "Color" now  corresponds to "sex", because I would like to have different colors for different sex values.
+
+00:09:48.808 --> 00:09:53.808
+Then, I would like to create a histogram, so I'm adding a layer geom_histogram.
+
+00:09:52.853 --> 00:09:58.853
+And then, in aesthetics, I would like to have that histogram with a density.
+
+00:09:59.684 --> 00:10:02.684
+Then I would like to have that histogram with bars,
+
+00:10:02.412 --> 00:10:07.412
+which are black. So the contouring would be black and the filling would be white.
+
+00:10:07.048 --> 00:10:15.048
+And then, I would like to also superimpose on these histograms a density function.
+
+00:10:15.543 --> 00:10:25.543
+I would like to fill that density function with that color "#FF6666" and I would like to have it semi-transparent. Basically that alpha parameter
+
+00:10:25.504 --> 00:10:31.504
+defines the transparency level. So "0" is
+
+00:10:43.873 --> 00:10:51.873
+for a fully transparent plot and "1" for a fully opaque one. Then I would like to have my legend at the top of the plot. Okay here we go. Indeed, very nicely looking histograms. For female and for male we have these two density plots. Indeed,
+
+00:10:52.397 --> 00:10:59.397
+they are semi-transparent. So through the density plots I can see my histograms.
+
+00:10:59.801 --> 00:11:06.801
+Alright, so now we could also talk about creating a snapshot of a three-dimensional plot in R.
+
+00:11:17.625 --> 00:11:25.625
+So this is handy for visualizing three-dimensional random variables. Let us install and call that package, "mvtnorm". Then I would like to define a grid of x and y values. These are defined through that seq() function.
+
+00:11:31.221 --> 00:11:36.221
+And now, I need to construct a function f. Which basically takes these two values and spits out
+
+00:11:36.124 --> 00:11:44.124
+a multivariate density function. That density corresponds to the normal distribution.
+
+00:11:44.383 --> 00:11:51.383
+Don't worry about the functions, just take it as given. You are going to understand the syntax later.
+
+00:12:00.538 --> 00:12:05.538
+Since this is a 3D plot, I need x-,y-axis and a z-axis. How do I compute that z? This z is basically that function f,
+
+00:12:06.242 --> 00:12:09.242
+applied to x and y. Then this is my z-
+
+00:12:09.108 --> 00:12:14.108
+axis. Once again, I would like to plot
+
+00:12:14.858 --> 00:12:19.858
+these. Here, I use the function persp(). I call
+
+00:12:26.892 --> 00:12:28.892
+persp() and there we have x, y and z. Then we have different parameters. We have this parameter theta,
+
+00:12:36.349 --> 00:12:41.349
+which corresponds to setting the rotation view around the z-axis. We have parameter phi, which tilts the camera from above towards the horizon. We have an expand parameter,
+
+00:12:41.492 --> 00:12:49.492
+that offers us vertical scaling of z. We have a color parameter, to set a color.
+
+00:12:49.802 --> 00:12:58.802
+And then we have a shade parameter, that is a shading strength. Let us have a look. Indeed, this is a two-dimensional snapshot of a three-dimensional picture.
+
+00:13:03.030 --> 00:13:05.030
+And it already looks quite good. We could adjust it, for example, by changing this theta parameter,
+
+00:13:05.530 --> 00:13:10.530
+phi parameter, expand parameter, etc. Then you can see the snapshot
+
+00:13:14.568 --> 00:13:17.568
+from a slightly different angle. We could also
+
+00:13:16.733 --> 00:13:22.733
+plot contour plots. For example, if we have three-dimensional data, these contour plots are 2D
+
+00:13:27.571 --> 00:13:32.571
+visualizations of a three-dimensional plot, basically a map. An object from 3D to a plane in 2D. There is this orthogonal mapping.
+
+00:13:32.296 --> 00:13:36.296
+Then, here I need to call a function contour.
+
+00:13:36.520 --> 00:13:44.520
+I pass x, y and z. Then I select the number of levels, here it's 20. Indeed, you can see that control plot.
+
+00:13:44.637 --> 00:13:53.637
+Of course, we could adjust it, for example, we could change the number of levels, but we could also adjust the coloring. So here I would like to see these contours
+
+00:13:52.934 --> 00:13:59.934
+in rainbow colors. Okay, that's it for the graphics from my side. Thank you for your attention.
+

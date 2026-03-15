@@ -1,0 +1,234 @@
+WEBVTT
+
+
+00:00:00.305 --> 00:00:07.305
+Hello, welcome back to our course, and today we are going to continue talking about programming in R.
+
+00:00:12.221 --> 00:00:15.221
+So let us talk about apply function families. So this is a set of highly optimized functions for iterative computations,
+
+00:00:15.110 --> 00:00:26.110
+and it's much faster than standard loops. And, there are various versions for matrices, vectors, lists, etc.
+
+00:00:29.252 --> 00:00:31.252
+So we have an apply function. So this is a function used on matrices.
+
+00:00:31.281 --> 00:00:35.281
+We have lapply, this is used on lists and vectors,
+
+00:00:35.869 --> 00:00:42.869
+it returns a list, we have sapply, like lapply, but returns a vector or a matrix.
+
+00:00:53.181 --> 00:01:00.181
+mapply, this is a multivariate version of sapply, and tapply, so this is like, applied version with a table grouped by factors. Alright, so let us start from apply functions. So apply function
+
+00:01:07.343 --> 00:01:11.343
+(it) applies a function sequentially to the rows, columns of a matrix, and it returns a vector. Okay, let us look at an example. I define a matrix A.
+
+00:01:12.134 --> 00:01:15.134
+You can see this is a matrix over with two rows.
+
+00:01:15.221 --> 00:01:20.221
+And then I would like to apply this function by row. 
+
+00:01:23.563 --> 00:01:27.563
+What am I doing? I pass a matrix A. I would like to apply means
+
+00:01:27.066 --> 00:01:34.066
+to each row of my matrix. So, mean for the first row, 
+
+00:01:34.843 --> 00:01:37.843
+mean for the second row. And indeed, I get two numbers.
+
+00:01:45.986 --> 00:01:48.986
+If I would like to apply my function mean by columns. Then I select margin to be 2, and indeed, you can see that I computed means for each column.
+
+00:01:54.044 --> 00:01:59.044
+lapply applies a function sequentially to a vector or a list. And it returns a list. So here
+
+00:02:04.902 --> 00:02:06.902
+we defined these two vectors. So these are realisations from normal distribution, and then,
+
+00:02:07.360 --> 00:02:12.360
+this C object is a list composed of these two vectors, A and B.
+
+00:02:12.725 --> 00:02:17.725
+And then we apply the min function to each element of the list C.
+
+00:02:22.804 --> 00:02:27.804
+So, if I now use lapply, applied to that list, and I select mean, then I compute a mean for the first element,
+
+00:02:29.838 --> 00:02:33.838
+so basically A, and the mean for the second element. B.
+
+00:02:38.660 --> 00:02:43.660
+sapply applies a function sequentially to a vector or a list, and it returns a vector or matrix.
+
+00:02:43.965 --> 00:02:48.965
+So here, let's just look at this example. We have two matrices,
+
+00:02:53.904 --> 00:02:56.904
+A and B, with two rows. And then, we bundled them together in that list.
+
+00:03:01.845 --> 00:03:04.845
+And then you can see that, I apply sapply to the list, and then
+
+00:03:04.564 --> 00:03:09.564
+the first function I would like to apply for this list is to return
+
+00:03:09.456 --> 00:03:15.456
+these matrices as vectors. So indeed, I have the first matrix as vector,
+
+00:03:18.649 --> 00:03:22.649
+and the second matrix as vector. Another way to kind of test what
+
+00:03:22.777 --> 00:03:27.777
+sapply does is to see what happens if I apply sapply to my list, 
+
+00:03:27.575 --> 00:03:35.575
+and then I ask it to compute mean. So you can see that it computes mean to each
+
+00:03:41.988 --> 00:03:45.988
+element of my list, so 4.5 and 3.5. Now, mapply function, so mapply is a multivariate version of sapply.
+
+00:03:48.724 --> 00:03:53.724
+It applies FUN function to the first, second, third elements of argument vectors.
+
+00:03:59.438 --> 00:04:03.438
+So here, I define these two vectors, A and B, with elements 1 and 2, and minus 1 and minus 2, and I would like to apply
+
+00:04:04.116 --> 00:04:09.116
+function mapply, and now this is my function, so basically I would like to
+
+00:04:09.936 --> 00:04:12.936
+add. What I would like to add? I would like to add
+
+00:04:12.851 --> 00:04:26.851
+each element of my vector. So basically, I'm adding the first element of vector A to the first element of vector B, I get 0. The second element of vector A, and the second element of vector B. I get 0. 
+
+00:04:31.191 --> 00:04:35.191
+Now, tapply applies a function to the elements of a vector
+
+00:04:38.185 --> 00:04:40.185
+grouped by factor. So let us access our IRIS data.
+
+00:04:43.045 --> 00:04:45.045
+And then apply function mean to sepal.width by species.
+
+00:04:46.528 --> 00:04:52.528
+So here, I apply a function tapply to my sepal.width,
+
+00:04:57.603 --> 00:05:00.603
+and then, here, by what? By different types of species of irises.
+
+00:05:00.861 --> 00:05:06.861
+And what function am I applying? I'm applying mean function, so you can see that, indeed, I have 3 different means
+
+00:05:13.150 --> 00:05:16.150
+of separate widths with respect to different species. Okay, so oftentimes it's very useful to take time,
+
+00:05:16.006 --> 00:05:21.006
+to track how much time it takes to perform certain computations.
+
+00:05:23.489 --> 00:05:27.489
+And basically, system.time function allows us to do it. So here you can see that
+
+00:05:32.840 --> 00:05:34.840
+I define this vector with zeros, and it's a long vector, and I would like to compute
+
+00:05:34.597 --> 00:05:39.597
+how much time it takes to fill this vector with
+
+00:05:46.446 --> 00:05:48.446
+realizations of random variable from a normal distribution step by step.
+
+00:05:48.990 --> 00:05:53.990
+So basically, I created that for loop for i in 1, 2, ..., 50,000,
+
+00:05:59.468 --> 00:06:01.468
+and I generate these numbers one by one. And you can see the time which has elapsed.
+
+00:06:07.053 --> 00:06:09.053
+In contrast. If I do it in one shot, using pre-programmed function, you can see that the time
+
+00:06:18.557 --> 00:06:21.557
+is shorter, so it's often recommended to check if there exists, like, highly efficiently programmed function in R, because it saves us time.
+
+00:06:23.904 --> 00:06:26.904
+Especially if we need to repeat certain time-consuming chunks many times.
+
+00:06:28.497 --> 00:06:36.497
+And, indeed, how can we make our code faster? So, we can use functions of the apply family.
+
+00:06:43.736 --> 00:06:46.736
+Instead of loops, whenever possible. If you use a loop, create the object, a vector matrix, in advance and fill it inside the loop.
+
+00:06:50.623 --> 00:06:54.623
+Never use cbind or rbind inside a loop. You could always parallelize
+
+00:07:01.493 --> 00:07:05.493
+to distribute CPU time to several cores. And code that can be expressed as a loop with independent iterations can be parallelized.
+
+00:07:05.308 --> 00:07:13.308
+And package parallel, it's pre-installed in R, and it can be used to basically redistribute
+
+00:07:21.126 --> 00:07:24.126
+certain tasks to certain CPUs. And, there are some helpful packages for profiling and micro-benchmarking.
+
+00:07:31.343 --> 00:07:34.343
+These are profvis, and bench. And finally, debugging. So when writing a more complicated code or functions
+
+00:07:34.682 --> 00:07:38.682
+with nested functions inside, it can be hard to find the part
+
+00:07:41.171 --> 00:07:43.171
+responsible for an error. And function trace back
+
+00:07:51.671 --> 00:07:55.671
+can be called after an error occurred, and then we can set certain options. So, for example, options error=recover, opens an interactive debugger
+
+00:08:00.885 --> 00:08:03.885
+whenever an error occurs. And when finished, set options back to default with options(error = NULL).
+
+00:08:03.413 --> 00:08:11.413
+Browser parenthesis opes an interactive debugger
+
+00:08:19.318 --> 00:08:22.318
+at the respective position in the source code. And then, debug, and debugonce inside the browser function in the first line
+
+00:08:26.447 --> 00:08:30.447
+Of the source code of the respective function. And, undebug removes it.
+
+00:08:41.517 --> 00:08:44.517
+So these are some options how to deal with debugging and finding bugs, but once again, it's great if you can test it, and then, you know, like, see what works for you.
+
+00:08:49.591 --> 00:08:51.591
+And a small example towards the end. So here you can see that I set these options to error.
+
+00:08:51.299 --> 00:08:58.299
+And to recover, and then I define two functions. First function is this function which returns
+
+00:09:02.349 --> 00:09:04.349
+logarithm of X. And the second function is a function which return a letter.
+
+00:09:06.897 --> 00:09:12.897
+And now, what happens? I apply first function G.
+
+00:09:12.202 --> 00:09:18.202
+And then I insert 1 to G, so it returns A for me.
+
+00:09:18.951 --> 00:09:24.951
+But then I apply F function, so logarithm of A. And indeed, here, I can see
+
+00:09:28.347 --> 00:09:32.347
+that I get an error, because a non-numeric argument was passed to a mathematical function.
+
+00:09:32.798 --> 00:09:40.798
+And then, once I set that option to recover, then you will see that window, basically in the console, you will be asked to
+
+00:09:45.784 --> 00:09:49.784
+enter a frame number, or 0 to exit. And then if you select one, then it opens debugging environment.
+
+00:09:58.469 --> 00:10:00.469
+and you can play with it. And then, after you are done with debugging, you should reset your options(error = NULL). Thank you!
+

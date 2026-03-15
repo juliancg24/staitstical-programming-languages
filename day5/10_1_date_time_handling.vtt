@@ -1,0 +1,186 @@
+WEBVTT
+
+
+00:00:06.084 --> 00:00:09.084
+Hello! Welcome back to our course. And today, we are going to talk about time and date handling and classical time series analysis.
+
+00:00:08.704 --> 00:00:16.704
+Alright, so, when it comes to the current time, R provides different object classes for handling time points.
+
+00:00:17.464 --> 00:00:22.464
+So we have this POSIXct, which is used if time zones and daylight saving is important.
+
+00:00:25.524 --> 00:00:30.524
+And POSIXlt, this is as before, but also it stores elements as list components.
+
+00:00:32.154 --> 00:00:35.154
+And then here you can see that if I ask R
+
+00:00:41.470 --> 00:00:43.470
+to give me an output of sys.time, then what do I get? I get year, month, day,
+
+00:00:43.550 --> 00:00:47.550
+Hour, minute, second and the time zone. And indeed, this is today's
+
+00:00:55.523 --> 00:00:57.523
+date, and then the time, and the time zone, and then if I now ask R to give me his date, then I get the current date.
+
+00:00:59.803 --> 00:01:01.803
+And CET stands for the Central European Time.
+
+00:01:10.620 --> 00:01:13.620
+And to UTC for Coordinated Universal Time. So, standard byte formats cannot span very long periods while maintaining precision.
+
+00:01:16.138 --> 00:01:18.138
+And time points are measured in seconds, or days
+
+00:01:18.328 --> 00:01:23.328
+from a reference time point, epoch, often this 1st January 1970.
+
+00:01:32.832 --> 00:01:37.832
+So, let us look how the internal storage looks like for this time. And indeed, you can see that as if I try to coerce this time to numeric, then I get this huge number.
+
+00:01:37.944 --> 00:01:42.944
+And this is actually the number of seconds since that particular date.
+
+00:01:48.986 --> 00:01:51.986
+We could convert it to the time point, using as.POSIXct, so we try to coerce it to that class.
+
+00:01:51.923 --> 00:01:59.923
+Where we need to select the origin. So we can see that, indeed, we managed to coerce it to that particular class.
+
+00:02:05.396 --> 00:02:09.396
+So, there is this, year two thousand problem, where before, years were stored with two digits.
+
+00:02:13.798 --> 00:02:16.798
+And after 1999 certain systems rolled back to 1900.
+
+00:02:20.547 --> 00:02:23.547
+And there's also this year 2038 problem. So we've signed 32 bit seconds
+
+00:02:26.085 --> 00:02:28.085
+since 1970, values overflow at
+
+00:02:34.949 --> 00:02:39.949
+2038, so later times cannot be represented. Here, let us look at day conversions. So, for example, here, we could coerce this Sys.Date
+
+00:02:39.663 --> 00:02:46.663
+To POSIXct, using that particular date as an origin, and indeed, we managed to do it.
+
+00:02:46.867 --> 00:02:53.867
+We could also use the function as.Date, and then here you can see that, once again, I tried to coerce this Sys.Date,
+
+00:02:58.666 --> 00:03:04.666
+and then I get today's date. And then if I try to coerce something from a German date format, where we have
+
+00:03:05.066 --> 00:03:12.066
+first day, month, and year, so basically we need to tell the function what is the format, and indeed we get what we wanted. 
+
+00:03:12.429 --> 00:03:19.429
+And then here, you have different codes for different values. So, for example, D stands for day of the month,
+
+00:03:25.884 --> 00:03:29.884
+but capital B for month, full name, etc. Here, when it comes to time conversions, we could, coerce time to POSIXct
+
+00:03:33.359 --> 00:03:38.359
+once again, using this as.POSIXct, and then by selecting the origin.
+
+00:03:45.497 --> 00:03:48.497
+And then you could also, convert German format, where the time is first and the date last, so you can see that the time is first, the date is last.
+
+00:03:47.985 --> 00:03:55.985
+And then we need to select the origin, and we need to select the format. So indeed, we selected the format, and we got our result.
+
+00:03:56.460 --> 00:04:10.460
+Right, and here, once again, a table with certain codes, which stand for certain values. So here, even more codes and more values, so you can see that, like, these conversion codes are very flexible, and many
+
+00:04:11.029 --> 00:04:21.029
+values have been already predefined. Similarly here, for example, we have different codes for hours, days, months, etc, so I definitely suggest that you have a look and play with them.
+
+00:04:30.381 --> 00:04:32.381
+And similarly here. We have different codes for weekdays, there's decimal points, so really, that package and that function
+
+00:04:32.304 --> 00:04:38.304
+are very flexible, and then they can, we can convert many different time and date formats. 
+
+00:04:47.042 --> 00:04:49.042
+Here, let us try to extract from a time point. So basically here, let us define this variable t, and this is, once again.
+
+00:05:01.557 --> 00:05:05.557
+This, object caused to POSIX CT class. So, here, if we now define this variable t, and then we apply to t function weekdays, and we set a parameter abbreviate to TRUE, then we get Friday.
+
+00:05:06.045 --> 00:05:11.045
+If we abbreviate, if we set now,
+
+00:05:18.143 --> 00:05:20.143
+this function months to t, and then we select a parameter abbreviate, then we get an April, and this is once again the case.
+
+00:05:20.524 --> 00:05:27.524
+And then, if we apply a function quarters to t, then we get the second quarter, and this is the case. 
+
+00:05:28.064 --> 00:05:37.064
+So here, now we try to go from as.POSIXct to as.POSIXlt, so here it uses
+
+00:05:42.958 --> 00:05:44.958
+list components, so for example, here we could access different elements by seconds, minutes, hours, mday,
+
+00:05:45.412 --> 00:05:50.412
+month, year, etc. So, for example, here, if I would like to access the year.
+
+00:05:56.111 --> 00:06:02.111
+I get 120, because this is a year since 1900. And then here, if I would like to access the time zone, this is indeed Central European time.
+
+00:06:03.164 --> 00:06:11.164
+Alright, and then we could also add time to time points, and we could create time point sequences. So, for example, here,
+
+00:06:11.306 --> 00:06:17.306
+once again, I defined that variable T, which is this coerces class
+
+00:06:17.488 --> 00:06:28.488
+POSIXct, and then I would like to add 360 seconds, so indeed, I just, typed T plus 3600 seconds.
+
+00:06:27.603 --> 00:06:34.603
+And indeed, you can see that I added these seconds to my original value.
+
+00:06:35.131 --> 00:06:41.131
+And then, we could, also add days. For example, here, if I define this variable T.
+
+00:06:48.228 --> 00:06:51.228
+And then I try to coerce this character value to as.Date, and then I add 30 days, then I get, indeed
+
+00:06:58.414 --> 00:07:00.414
+A correct number here. And indeed, the first date is in April, the second is in May.
+
+00:07:00.407 --> 00:07:05.407
+And then we could also create sequences, so you can see that, I could create a sequence
+
+00:07:13.365 --> 00:07:16.365
+from a particular day in April, to a particular day in April, and then by 3 days, and indeed, you can see that I created a sequence
+
+00:07:21.626 --> 00:07:24.626
+using this as date functions. Here we could also create time point differences using different functions.
+
+00:07:28.432 --> 00:07:31.432
+So once again, we have these two objects, T1 and T2, and then,
+
+00:07:39.970 --> 00:07:43.970
+they were created using this as POSIXct. And then you can see that if I now subtract T1 from T2, then I get the time difference of 3.5 hours
+
+00:07:46.707 --> 00:07:51.707
+as an output. We could also apply a function difftime, and we get exactly the same output.
+
+00:07:52.102 --> 00:07:58.102
+We could also apply function as numeric to difftime, and then we get just a number 3.5,
+
+00:08:05.007 --> 00:08:10.007
+and then we could also get these two parameters to function difftime, and then change the units. So here, before we had
+
+00:08:10.233 --> 00:08:16.233
+hours, now we would like to have seconds, and indeed, now we have the time difference in seconds.
+
+00:08:24.574 --> 00:08:26.574
+We could also transform that output into the numeric value, and indeed, we get a correct output.
+
+00:08:27.325 --> 00:08:31.325
+Okay, let me stop here, and we are going to come back to this slide. Thank you!
+

@@ -1,0 +1,510 @@
+WEBVTT
+
+
+00:00:01.201 --> 00:00:07.201
+Hello, welcome back to our course, and today we are going to continue talking about basic statistics.
+
+00:00:09.877 --> 00:00:12.877
+And exploratory data analysis. Alright, let us delve straight in.
+
+00:00:13.442 --> 00:00:19.442
+So here you can see that I'm calling that library tidyr , and this is needed for me to
+
+00:00:23.267 --> 00:00:27.267
+transform that Titanic data to the data frame. And in that titanic data, I have observations
+
+00:00:31.034 --> 00:00:34.034
+of people who survived, or not, the Titanic Catastrophe.
+
+00:00:34.520 --> 00:00:39.520
+And then there were cross-classified to different categories with respect to the ticket they had.
+
+00:00:38.869 --> 00:00:46.869
+So here, if I would like to see that cross-classification, I could apply a function "table"
+
+00:00:49.316 --> 00:00:51.316
+To two variables fom the data frame.
+
+00:00:50.864 --> 00:01:01.864
+And indeed, what do I get? I get this contingency table, or a cross table, where people were cross-classified according to different levels
+
+00:01:09.361 --> 00:01:12.361
+o these categorical variables. Similarly, I could apply prop.table function to that contingency table to get
+
+00:01:12.570 --> 00:01:19.570
+rlative frequencies. For example, if I look at this number, 0.3577010
+
+00:01:23.270 --> 00:01:28.270
+tis tells me that there were around 30% on Titanic wo are crew and didn't survive the catastrophe
+
+00:01:28.629 --> 00:01:34.629
+Similarly, I could look at marginals, so for example, if I apply this margin.table to my
+
+00:01:38.740 --> 00:01:43.740
+contingenc table, and then here I ask for the marginals. For each row, then I select this parameter
+
+00:01:51.966 --> 00:01:55.966
+To be 1, then you can see that, basically, what I have done, I summed over different columns, and then indeed, I have a total number of people who didn't
+
+00:02:01.161 --> 00:02:03.161
+survive the titanic catastrophe. Alright, we could also, check
+
+00:02:02.995 --> 00:02:09.995
+the conditional frequencies. So if I apply prop.table function to that contingency table
+
+00:02:15.937 --> 00:02:17.937
+and here, I would like to check what happens for columns? So here, I would like to actually check what is the probability
+
+00:02:25.695 --> 00:02:28.695
+Of survival, given being in a class 1, for example. So, probability of survival, given being on a class 1, it's 62%.
+
+00:02:28.551 --> 00:02:33.551
+And indeed, you can see that, actually, probability of survival decreases
+
+00:02:37.937 --> 00:02:40.937
+with the class of the ticket we had, and whether that we were crew members.
+
+00:02:41.654 --> 00:02:47.654
+We could also plot absolute frequencies, so for example here, you can see that,
+
+00:02:47.097 --> 00:02:53.097
+I could apply that function barplot to my contingency table, table_titanic
+
+00:02:53.504 --> 00:03:00.504
+and what can I get? Here, once again, we can see that number of people in the first class
+
+00:03:11.101 --> 00:03:15.101
+and then, how many of them didn't survive? And then, how many of them survived. And then you can see that actually now, if I look at the crew, the proportion is different, yeah? So basically, more people out of the crew
+
+00:03:17.975 --> 00:03:21.975
+didn't survive, versus they did survive. We could also plot these
+
+00:03:28.202 --> 00:03:32.202
+side-by-side. So if I change one parameter here. So if I apply barplot to table_titanic, but then I select beside parameter to be true
+
+00:03:32.205 --> 00:03:36.205
+then you can see that these bars are now plotted side by side.
+
+00:03:40.312 --> 00:03:43.312
+We could also plot conditional frequencies. So how do I do it? Well, I just apply function bar plot
+
+00:03:47.157 --> 00:03:50.157
+to prop.table, and that Contingency table. Now, with respect to columns.
+
+00:03:50.679 --> 00:03:56.679
+And what can we see? Indeed, now we can see that, once again, for the first class, for example
+
+00:03:57.001 --> 00:04:06.001
+more people survived than didn't survive, and then for the crew, the opposite is true. So indeed, it appears that there is some dependency
+
+00:04:16.659 --> 00:04:20.659
+between the type of the ticket and the survival status. Alright, another way to to present visualize the dependency between two categorical variables is this
+
+00:04:26.541 --> 00:04:29.541
+Mosaic plot. So here the width of bars is proportional to margin frequency, so probability of X
+
+00:04:29.583 --> 00:04:34.583
+Being this small X. So what does it mean? It means that if I look now the width
+
+00:04:34.550 --> 00:04:39.550
+of the bars, then I can immediately see in this mosaic plot
+
+00:04:39.290 --> 00:04:44.290
+that there were more people who didn't survive versus people who did survive.
+
+00:04:43.818 --> 00:04:52.818
+Now, the height of bars is proportional to conditional frequencies. So basically here, I can see that probability of being in the first class
+
+00:04:53.275 --> 00:04:58.275
+given not surviving is smaller than probability of being in the first class
+
+00:04:58.612 --> 00:05:04.612
+given surviving. And then the area is proportional to joint frequencies.
+
+00:05:05.593 --> 00:05:10.593
+Okay, and now, let us look at these two different plots at the bottom of the slide.
+
+00:05:11.480 --> 00:05:17.480
+So, I created synthetic data, where actually the survival status
+
+00:05:17.440 --> 00:05:27.440
+and the class of the ticket were independent. So what does it mean for two variables to be independent? So basically, it means that the joint distribution
+
+00:05:27.755 --> 00:05:33.755
+is equal to the product of marginals. And then I constructed
+
+00:05:37.180 --> 00:05:39.180
+synthetic data, such that this is true. And how can I immediately see that
+
+00:05:39.045 --> 00:05:45.045
+in my mosaic plot? So, you can see that, because probability
+
+00:05:51.363 --> 00:05:53.363
+of being in the first class given not surviving, is equal to the probability of getting in the first class, given surviving.
+
+00:05:55.942 --> 00:05:58.942
+So we can immediately see that these two are independent. But this is only synthetic data.
+
+00:05:59.416 --> 00:06:06.416
+On the left-hand side, we have our true data. And indeed here, you can see that actually the probability of being in a particular class
+
+00:06:10.784 --> 00:06:12.784
+given survival status varies, so it means that, indeed, there should be some
+
+00:06:19.019 --> 00:06:22.019
+association between these two variables. Alright, and now here, on the left-hand side, I'm plotting
+
+00:06:24.182 --> 00:06:27.182
+basically, probability of being in a particular class
+
+00:06:29.559 --> 00:06:33.559
+given the survival status. And now, if I transpose that table_titanic
+
+00:06:33.364 --> 00:06:39.364
+and then I apply a plot here then you can see that I'm plotting here the probability of
+
+00:06:38.911 --> 00:06:45.911
+surviving, given being in a particular class. So, for example, here, you can see that,
+
+00:06:50.338 --> 00:06:54.338
+given being in a first class, probability of surviving is higher than probability of surviving
+
+00:06:54.350 --> 00:07:00.350
+given being in the second class, yeah, because this bar is shorter than that bar.
+
+00:06:59.810 --> 00:07:09.810
+And there are many packages where mosaic plots are implemented, and then I provided you with a few references.
+
+00:07:10.595 --> 00:07:15.595
+Alright, so now let us look at the distribution of the continuous variables.
+
+00:07:14.877 --> 00:07:20.877
+So, we could, for example, as a first step in our analysis
+
+00:07:20.938 --> 00:07:25.938
+we could, create a scatter plot. So, a convention tells us that usually
+
+00:07:26.724 --> 00:07:31.724
+on the y-axis we plot dependent or a target variable
+
+00:07:32.332 --> 00:07:37.332
+and on X axis we plot independent variable or a feature.
+
+00:07:36.879 --> 00:07:43.879
+So here, you can see that, if I look at these two plots, it appears that on the left-hand side
+
+00:07:46.981 --> 00:07:48.981
+my target variable would be this lstat versus
+
+00:07:48.972 --> 00:07:53.972
+on the right-hand side, my target variable would be that variable.
+
+00:08:05.785 --> 00:08:07.785
+medv. Now, there are different association measures and here I provided you with an overview of different names of these measures and then for example for
+
+00:08:11.213 --> 00:08:14.213
+nominal variables, we have chi-square statistic where larger values indicate
+
+00:08:24.374 --> 00:08:29.374
+stronger evidence against independence. We have contingency coefficient C. This is, on the range between 0 to 1. Once again larger means stronger nominal association. We have Corrected C*
+
+00:08:31.677 --> 00:08:36.677
+contingency coefficient, once again, larger, stronger nominal association. We have Kramer's V
+
+00:08:47.114 --> 00:08:51.114
+this on the wrench, once again, between 0 and 1 and, the larger coefficient means stronger association, and similarly for Cramer큦 phi but here the range is minus 1 to 1. So here
+
+00:08:58.036 --> 00:09:01.036
+if the value is closer to 1 it means that The association is strongly positive. If it's closer to minus 1, it means that the association is strongly negative.
+
+00:09:01.471 --> 00:09:08.471
+And then for ordinal or metric variables we have Spearman's rho, and once again, minus 1 to 1
+
+00:09:08.105 --> 00:09:15.105
+closer to the boundaries, it means stronger association, and Kendall+s tau, similarly as for Spearman's.
+
+00:09:21.699 --> 00:09:24.699
+tho but Kendall큦 tau, actually, this is a rank association via concordant, versus disconcodant pairs.
+
+00:09:23.917 --> 00:09:31.917
+And this is just an overview. Of course, you can Google it, but I just wanted to show you that actually in R, all these
+
+00:09:32.243 --> 00:09:38.243
+are pre-programmed. So you can really carry out a variety of different analyses
+
+00:09:45.870 --> 00:09:47.870
+without even, you know, being forced to program them yourself. Alright, so now let's just look at the examples, of course.
+
+00:09:48.715 --> 00:09:54.715
+Now we have association between nominal variables, so here, for example, if I now look once again at my titanic data
+
+00:09:55.093 --> 00:09:59.093
+and then I would like to check the association between survived and class
+
+00:09:58.961 --> 00:10:04.961
+and then I look at the chi-square statistic. Well, it appears to be high, but
+
+00:10:05.604 --> 00:10:15.604
+you know, it doesn't give me the upper or lower boundary, so let us look at contingency coefficients an, the corrected version. And here you can see that
+
+00:10:17.120 --> 00:10:20.120
+once I see these values
+
+00:10:20.698 --> 00:10:28.698
+which are bounded, there is some association, but it doesn't appear to be that strong, because, this contingency coefficient is
+
+00:10:34.534 --> 00:10:36.534
+btween 0 and 1, and in our case, it's, 0.28. And then similarly
+
+00:10:42.439 --> 00:10:47.439
+for, corrected contingency coefficient, but here it appears that that association is stronger, yeah? I mean, it's already closer to 0.5.
+
+00:10:48.422 --> 00:10:58.422
+Now, when we look at Cramer큦 V, here, once again, the association appears to be not that strong, because it's close to 0.3.
+
+00:10:58.214 --> 00:11:05.214
+And now, let us look at Cramer큦 Phi. So, Cramer큦 Phi is only available for 2x2
+
+00:11:07.172 --> 00:11:10.172
+contingency tables. So here we can see that I actually applied
+
+00:11:09.842 --> 00:11:15.842
+that function to my data, Titanic data, but
+
+00:11:16.472 --> 00:11:22.472
+to another set of variables. So the first variable was survived, and the second was
+
+00:11:29.763 --> 00:11:34.763
+sex. And here, you can see that that value is, it's moderately high. Alright, and now let us look at correlation between ordinal or metric variables. So, for ordinal variable
+
+00:11:34.970 --> 00:11:43.970
+we could have a look at that dataset. This is general social survey 2018, and you can download it
+
+00:11:54.098 --> 00:11:56.098
+directly from a website. And, here I would like to, compute this Kendall큦 tau. Kendall큦 tau is a bounded coefficient, so it's between minus 1 and plus 1.
+
+00:11:56.436 --> 00:12:08.436
+And then we would like to measure the association for trust in court and big business. And zero here, this is no trust at all, and 10, it's complete trust. And you can see that here
+
+00:12:14.277 --> 00:12:17.277
+we measure that association, and it's equal to zero, almost close to 0.5, which means that it's like moderately
+
+00:12:28.940 --> 00:12:30.940
+associated, these two variables. And then, when it comes to metric variables we could compute Spearman's rank correlation. Once again, this is a bounded coefficient, so let us have a look.
+
+00:12:39.647 --> 00:12:44.647
+Here, I would like to, compute that correlation. For, Boston data variables, so here we have this LSTAT variable and MEDV variable, and here the value is
+
+00:12:51.101 --> 00:12:53.101
+close to minus 1, meaning like, relatively strong negative
+
+00:12:51.369 --> 00:12:57.369
+correlation, and similarly, for Pearson correlation, once again, a bounded coefficient.
+
+00:12:56.842 --> 00:13:03.842
+Here we can see once again that we have moderately strong, or even, like, strong
+
+00:13:13.846 --> 00:13:15.846 
+almost, correlation coefficient. And then we could also compute a covariance. Here, we could see that it's negative, we could see the value, but it's difficult to
+
+00:13:14.323 --> 00:13:22.323
+judge the magnitude if the particular coefficient is not bounded by,
+
+00:13:29.667 --> 00:13:32.667
+for example, minus 1 and plus 1. Alright, so now let us pass the linear regression. You might have seen a linear regression in your statistics 1 course.
+
+00:13:33.768 --> 00:13:37.768
+But here, what's the gist? Of course, because we are not going to go through
+
+00:13:38.448 --> 00:13:45.448
+details of linear regression. So here, basically, we define a dependent variable, or a target variable. Why?
+
+00:13:49.095 --> 00:13:51.095
+An independent variable X. And we are looking for a regression line
+
+00:13:54.342 --> 00:13:57.342
+Y equals beta 0 plus beta 1x. Such that Yi are fitted well.
+
+00:13:57.623 --> 00:14:02.623
+And then to find the regression coefficients, beta, this vector b
+
+00:14:03.369 --> 00:14:09.369
+composed of b0 and b1 we use list squares. So basically, we're looking for that vector such that
+
+00:14:17.249 --> 00:14:21.249
+this is a minimum of this optimization problem. Alright, and how can we do it? Well, there's a pre-programmed function, lm, and basically I just need to select my
+
+00:14:21.011 --> 00:14:27.011
+dependent variable, medv, and independent variable, and I just need to plug them in.
+
+00:14:27.577 --> 00:14:38.577
+And here we could also plot them. This is just a scatter plot. And we could also plot a regression line. So indeed, it appears that there is a negative
+
+00:14:45.565 --> 00:14:48.565
+correlation between these two variables. And then, when it comes to the output, if we look at the output of linear regression in R.
+
+00:14:48.440 --> 00:14:56.440
+What can we see? So first, we can see call of a function, so this is our formula, so we are basically regressing LSTAT on
+
+00:14:56.039 --> 00:15:03.039
+A MEDV, so MEDV is our dependent variable, LSTAT is independent variable, our data is Boston.
+
+00:15:06.837 --> 00:15:11.837
+Then, we estimated two coefficients. Our intercept and
+
+00:15:11.237 --> 00:15:19.237
+the coefficient with respect to our independent variable. Then if we now call a summary on our
+
+00:15:18.911 --> 00:15:28.911
+lmobject, what can we see? Once again, we can see a call of the function. We could also see some summary statistics of residuals. So, residuals are these
+
+00:15:29.590 --> 00:15:35.590
+values of estimated Y, so basically Y I obtained from my regression,
+
+00:15:35.222 --> 00:15:42.222
+and then the difference between the true Ys and these estimated Ys. So here we can see some summary statistics.
+
+00:15:47.959 --> 00:15:49.959
+And then we could see some summery statistics, actually some statistical analysis, for by coefficients.
+
+00:15:49.903 --> 00:15:57.903
+So we can see estimates, we could see the standard error, then the t-value here, you can see that it's just, like, an estimate divided by the standard error.
+
+00:15:58.256 --> 00:16:07.256
+And then we can see p-values, so the probability that a particular quantile from a t-distribution is larger than my t-statistic, and here we can see that it's
+
+00:16:13.696 --> 00:16:15.696
+really, really small. Alright, so now let us look, at the interpretation of
+
+00:16:21.322 --> 00:16:23.322
+particular parameters. So, for example, here b0, it's 34.55, and in our case
+
+00:16:22.873 --> 00:16:30.873
+basically, it means that if the percentage of lowest status people is zero, then this estimated Y
+
+00:16:40.101 --> 00:16:43.101
+is equal to 34.55. Now b1 is negative. So basically it means that if the percentage of lower status people increases by 1%
+
+00:16:43.670 --> 00:16:50.670
+then, the estimated Y will, decrease by 0.95, so $950.
+
+00:16:55.945 --> 00:16:57.945
+And then R-squared. So R-squared it's close to 50%. Basically, it means that the variance,
+
+00:16:57.916 --> 00:17:06.916
+close to 50% of the variance in Y, is explained by my regression, or my independent variable.
+
+00:17:06.793 --> 00:17:14.793
+And close to 50%, close to 46% of the variance it's not explained by this dependent variable.
+
+00:17:15.057 --> 00:17:21.057
+And then for classic time series analysis from Statistics 1, we will have also an extra block in this course.
+
+00:17:30.848 --> 00:17:35.848
+Alright, and now let us look at some common distributions. So you might have seen some of them already in your Statistics 1 course. So, for example, here we have binomial distribution
+
+00:17:36.157 --> 00:17:42.157
+with number of trials and probability of success. We can see Poisson distribution.
+
+00:17:42.657 --> 00:17:47.657
+with the parameter lambda, we could see exponential distribution with a rate parameter.
+
+00:17:48.306 --> 00:17:55.306
+And we could also see a uniform distribution with min and max, and of course, normal distribution. And we have seen some of them
+
+00:18:02.221 --> 00:18:04.221
+already in this course. And then here, you can see the R-function with certain parameters which would define
+
+00:18:10.610 --> 00:18:14.610
+how can I sample from this distribution? So, here, We could basically have through R the density or probability function.
+
+00:18:13.955 --> 00:18:25.955
+If we, basically apply these functions with d, starting with d, we could also have cumulative distribution function. If we start the functions here with.
+
+00:18:26.718 --> 00:18:32.718
+p, we could have quantile functions, so basically the value applied to my cumulative distribution function.
+
+00:18:32.396 --> 00:18:38.396
+And then we could also generate random variables from these distributions
+
+00:18:43.716 --> 00:18:46.716
+If I apply the functions starting with r. Alright, and now let us have a look at the examples.
+
+00:18:47.563 --> 00:18:51.563
+So here, I'm generating two vectors, vector x and vector p.
+
+00:18:51.169 --> 00:18:58.169
+And they are just from minus 3 to 3, and the length of our vector is 101.
+
+00:18:58.155 --> 00:19:03.155
+And then, here, I'm also generating another vector. This is a vector from 0 to 1, and
+
+00:19:03.492 --> 00:19:11.492
+this is a vector for my cumulative probability, because I would like to have it as an input in one of my plots.
+
+00:19:15.555 --> 00:19:19.555
+So, on the left-hand side, I can see a plot of density, so basically I'm computing a density
+
+00:19:19.884 --> 00:19:27.884
+for my values, from my realizations of random variable distribute according to a normal distribution, and then I'm
+
+00:19:30.303 --> 00:19:32.303
+computing the density. In the middle plot
+
+00:19:32.662 --> 00:19:38.662
+I'm computing, this CDF, yeah? So basically, once again, for the values
+
+00:19:38.840 --> 00:19:45.840
+for the realizations from my random distribution, I'm computing the CDF, so cumulative distribution function.
+
+00:19:50.038 --> 00:19:52.038
+And then on the right-hand side you can see that on the right-hand side the
+
+00:20:00.506 --> 00:20:02.506
+X axis is swapped with the Y axis in the middle plot. So here you can see that I'm computing the quantile
+
+00:20:07.890 --> 00:20:12.890
+for a particular cumulative probability. And In the middle plot it was the opposite. I was computing that probability, cumulative probability,
+
+00:20:17.404 --> 00:20:20.404
+for a given value, so for a given quantile. And then, at the bottom of this slide, we can see that I could also generate
+
+00:20:24.523 --> 00:20:29.523
+random variables from a normal distribution. So here if I pass to my function rnorm(5)
+
+00:20:38.652 --> 00:20:41.652
+then you can see that I have these 5 random, five realizations, of a random variable distributed according to the normal distribution with mean 0 and standard deviation 1.
+
+00:20:41.576 --> 00:20:46.576
+And now let's just look at this discrete case. So
+
+00:20:46.010 --> 00:20:55.010
+in case of a discrete distribution. here I would like to focus on binomial distribution. So binomial distribution with
+
+00:20:54.921 --> 00:21:05.921
+10 trials and probability of success, 0.3, and once again I'm generating these cumulative probabilities for my quantile function.
+
+00:21:06.164 --> 00:21:10.164
+And then here, on the left-hand side I'm plotting the density
+
+00:21:13.836 --> 00:21:16.836
+for my values of X. And you can see that this is now a discrete
+
+00:21:23.944 --> 00:21:26.944
+function, so we have these spikes. And then I'm also plotting the CDF, using the empirical CDF function.
+
+00:21:27.367 --> 00:21:33.367
+So once again here, I'm applying this empirical CDF function to
+
+00:21:40.388 --> 00:21:44.388
+randomly distributed variables from this binomial distribution and then I plot here this empirical CDF.
+
+00:21:45.583 --> 00:21:50.583
+And then you can see that on the x-axis I have values and then here I have probabilities
+
+00:21:58.847 --> 00:22:04.847
+cumulative probabilities, and then on the right-hand side. X and Y are swapped. So here on the X axis I have cumulative probabilities and then on the y-axis
+
+00:22:11.078 --> 00:22:14.078
+I have the values, so meaning, the context. Okay, let me stop here and then we are going to continue in the next video.
+

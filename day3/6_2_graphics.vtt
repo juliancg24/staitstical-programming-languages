@@ -1,0 +1,297 @@
+WEBVTT
+
+
+00:00:00.605 --> 00:00:06.605
+Hello, welcome back to our course and let us continue talking about graphics in R.
+
+00:00:06.802 --> 00:00:10.802
+So imagine now that I would like to have a plot which distinguishes
+
+00:00:17.626 --> 00:00:21.626
+different factors over a factor variable. So for example here. in that dataset iris, you might remember that we had two different species of irises.
+
+00:00:21.632 --> 00:00:28.632
+And now I would like to create a plot where these two different species are separated.
+
+00:00:29.015 --> 00:00:35.015
+So here, for example, I could change the style of a point, and I could change,
+
+00:00:43.381 --> 00:00:48.381
+a color depending on the particular species of this iris. So for example, how can I do it? Well, I could select a particular type of a point, so here I'm selecting
+
+00:00:56.236 --> 00:00:59.236
+type 16, 2 and 3. And I'm selecting a color, and I'm selecting colors 16, 2 and 3. And then, basically, here.
+
+00:01:09.554 --> 00:01:12.554
+If you look into Iris$species. You will see that actually this is a factor variable with 3 different levels. So basically, what does it mean? It means that I'm assigning the first
+
+00:01:12.657 --> 00:01:20.657
+style to the first level of that factor variable, the second style to
+
+00:01:21.177 --> 00:01:26.177
+the second level and the third style to the to the third level. Similarly for
+
+00:01:29.849 --> 00:01:33.849
+colors. And now, once I plot it. I would like to have a length on the x-axis.
+
+00:01:33.954 --> 00:01:45.954
+width on the y-axis and different colors and different styles, and then let us see how it looks like. It looks as follows, so basically you can see that we have 3 different
+
+00:01:49.073 --> 00:01:53.073
+species separated by different colors. And different types of points.
+
+00:01:59.812 --> 00:02:02.812
+Of course you could choose whatever color and point you like from the ones which are available in R.
+
+00:02:07.991 --> 00:02:13.991
+Alright. So, another thing, interesting thing, is to plot. Different graphics next to each other. For example to arrange them.
+
+00:02:22.882 --> 00:02:25.882
+in the way we like. One way to do it is to use this mfrow option in the function parameters. So here you can see that apart from passing
+
+00:02:25.572 --> 00:02:32.572
+our usual parameter, bg="grey", so background. I'm passing also mfrow.
+
+00:02:32.849 --> 00:02:37.849
+And then I'm saying to have one row, so 1, and then two
+
+00:02:41.558 --> 00:02:43.558
+corresponds to two columns, one, two. And then, now, if I plot two
+
+00:02:49.197 --> 00:02:51.197
+different plots. So basically, I plot pressure with type h, a solid line.
+
+00:02:57.081 --> 00:02:59.081
+And then pressure with type h. With this vertical bars, then you can see that they are arranged in a way
+
+00:02:59.034 --> 00:03:05.034
+I wanted them to be arranged, because I select that particular option in mfrow.
+
+00:03:11.558 --> 00:03:17.558
+there is also alternative, maybe more flexible alternative, through a function layout. So, in layout, I can basically select
+
+00:03:22.477 --> 00:03:25.477
+how I would like to have my plots arranged. Irrespective of,
+
+00:03:29.613 --> 00:03:31.613
+of when they appear in my plotting window. So what do I mean by that? So now, here
+
+00:03:32.454 --> 00:03:42.454
+look at the layout function. So here we have this layout function, and then I'm passing there a matrix. So matrix with 4 elements
+
+00:03:44.646 --> 00:03:46.646
+from 1 to 4. And with two rows,
+
+00:03:47.140 --> 00:03:53.140
+1, 2, and then two columns, 1, 2, and then I would like to have these numbers
+
+00:03:58.501 --> 00:04:01.501
+arranged byrow. So, I have 1, 2, 3, 4. These numbers
+
+00:04:09.198 --> 00:04:12.198
+refer to a particular plot I'm constructing. And then here you can see we are showing a layout with 4 panes, 1, 2, 3, 4.
+
+00:04:12.967 --> 00:04:17.967
+But now imagine that I would like to have a completely different layout. I would like to have a layout for
+
+00:04:25.637 --> 00:04:27.637
+three plots. And then this could be also created using a layout function, this time in my matrix, I have 3 numbers.
+
+00:04:34.985 --> 00:04:37.985
+1, 2, and 3, but. I would like to have the first plot in that first plotting window, the big one.
+
+00:04:38.359 --> 00:04:43.359
+Then, I would like to have my third plot in the next pane.
+
+00:04:42.749 --> 00:04:48.749
+And then I would like to have my second plot actually in the last pane.
+
+00:04:49.055 --> 00:04:53.055
+And then here, I'm showing the layout with 3 different
+
+00:04:53.158 --> 00:04:59.158
+panes. So you can see that, indeed, we could, like, basically arrange our plots in any way we want.
+
+00:05:00.214 --> 00:05:10.214
+alright, so now let us talk about box plots. So box plots are useful for visualizing the distribution of data, range, variability, outliers.
+
+00:05:09.996 --> 00:05:16.996
+So, here, how can I create a box plot? So basically, I could use that function boxplot.
+
+00:05:22.015 --> 00:05:26.015
+And then, I would like to create a box plot for lengths of
+
+00:05:25.496 --> 00:05:30.496
+samples, so what can I see in this box plot? This, solid
+
+00:05:30.390 --> 00:05:38.390
+black line, refers to median. Here we have a bottom and the top of a box. These two refer to
+
+00:05:38.268 --> 00:05:44.268
+quartiles, then we also have whiskers here and there. These refer to 1.5
+
+00:05:43.642 --> 00:05:50.642
+from my, quartiles, so basically from, from the range.
+
+00:05:50.851 --> 00:05:55.851
+And then, if I had outliers, they would be above or below the whiskers.
+
+00:05:57.459 --> 00:06:07.459
+we could also have a few box plots in the same plotting window. So here for example, I could also pass to Boxplot
+
+00:06:08.324 --> 00:06:13.324
+the data, pressure data, and then if I pass
+
+00:06:12.975 --> 00:06:17.975
+a data frame to a box plot, then you can see that I have two box plots.
+
+00:06:27.016 --> 00:06:29.016
+they are now in a vertical position, and then I have a temperature, I have a pressure, and indeed, I also can change
+
+00:06:29.068 --> 00:06:38.068
+the color of a box plot, like here I selected light gray, and then you can see that, indeed, for pressure, we have a few outliers, because they are above the
+
+00:06:43.975 --> 00:06:45.975
+top whisker. We could also have
+
+00:06:45.364 --> 00:06:52.364
+box plots separated by factors, so how can I do it? So here, if I now select in my function box plot
+
+00:06:58.688 --> 00:07:01.688
+that I would like to have the length in the box plot, but I would like to have this length to be separated
+
+00:07:02.450 --> 00:07:07.450
+by different species of irises. So basically, I use this ~ notation.
+
+00:07:16.935 --> 00:07:19.935
+So, you might remember that species were these factors in the factor variable and I would like to have lengths separated by species, so meaning I would like to have 3 different box plots.
+
+00:07:25.677 --> 00:07:28.677
+And I'm passing here Data Iris. Now I would like to have boxplot
+
+00:07:27.117 --> 00:07:35.117
+Sorted out horizontally, and I would like to assign different colors, 3 colors, red, blue, and green.
+
+00:07:34.940 --> 00:07:42.940
+And now I'm also inserting a legend to my plotting window, so here you can see that I´m inserting the legend at
+
+00:07:48.721 --> 00:07:50.721
+bottom right, bottom right. Instead of selecting a particular location on X and Y axis.
+
+00:07:57.195 --> 00:08:01.195
+I'm also here, selecting different styles of points. You can see in the legend.
+
+00:08:00.734 --> 00:08:12.734
+it's 2, and then I'm also selecting different colors, red, blue, green. So you can see that the colors correspond to different
+
+00:08:12.514 --> 00:08:20.514
+species, but actually, here, for the style of the points here, they are all the same, they're triangles.
+
+00:08:20.715 --> 00:08:28.715
+You could have selected anything you wanted, and then in the legend, I also selected the names of these species. So we have 3 different names.
+
+00:08:33.055 --> 00:08:38.055
+we could now see how our three plots would have been arranged.
+
+00:08:38.453 --> 00:08:48.453
+If our layout had been chosen as follows, yes, so you might remember that that was our first plot, so indeed this is the first plot in the first big pane of our plotting window.
+
+00:08:49.376 --> 00:08:55.376
+Then, we wanted to have our third plot, that was our last plot here, and then we wanted to have the second plot
+
+00:08:57.419 --> 00:09:01.419
+in the last plotting area of our plotting window.
+
+00:09:02.321 --> 00:09:08.321
+Okay, now let us talk about histograms. So histograms are also useful for visualizing
+
+00:09:08.111 --> 00:09:17.111
+the distribution of data and here we could see a histogram with different frequencies.
+
+00:09:19.978 --> 00:09:22.978
+So basically, here we can see that. On the x-axis, I have the sepal length.
+
+00:09:22.604 --> 00:09:28.604
+And then on the y-axis, I have frequency, so meaning how
+
+00:09:33.396 --> 00:09:36.396
+many observations where in that particular category? So, in the category for
+
+00:09:39.290 --> 00:09:44.290
+Sample length between 4 and 4.5. so I had 5. Then, for the sepal length between
+
+00:09:53.743 --> 00:09:56.743
+4.5 and 5 I had around 27, etc, etc. Another way to create a histogram is with density. So, if we assume that these.
+
+00:10:03.180 --> 00:10:07.180
+Lengths, where random variables from a normal distribution for example. Then we could also,
+
+00:10:08.895 --> 00:10:16.895
+here, instead of frequencies, select a density. So how can I do it? Well, I could just, change this freq parameter
+
+00:10:17.068 --> 00:10:27.068
+from, true to false, and then you can see, instead of frequencies, I have a density, which corresponds to a density of my random variables.
+
+00:10:27.202 --> 00:10:33.202
+Now, another option is to add, on top of that,
+
+00:10:42.377 --> 00:10:44.377
+density created from histograms. I would also like to have a curve of a density. So, here, let us expand a little bit our plot.
+
+00:10:52.140 --> 00:10:55.140
+So once again, I have a histogram. For the length of the sepals in the iris data, the frequency is selected to be false
+
+00:10:55.077 --> 00:11:02.077
+and now I'm also adjusting the limits of my y-axis from 0 to 0.6.
+
+00:11:02.459 --> 00:11:07.459
+Then I'm also adjusting the title of my xlab, so basically my
+
+00:11:07.429 --> 00:11:14.429
+X-axis, and then the main title of the histogram is NULL. I don't want to have any title.
+
+00:11:14.062 --> 00:11:21.062
+And then, as I said, we could now superimpose on that histogram
+
+00:11:20.711 --> 00:11:26.711
+a curve with the density. How can I do it? I could first select this
+
+00:11:30.250 --> 00:11:34.250
+grid of points. And I would like them to be passed then
+
+00:11:33.935 --> 00:11:40.935
+to the lines function. So here, for example, you can see that I'm defining this.
+
+00:11:46.144 --> 00:11:50.144
+Vector G. This vector is defined, Through seq function, so the minimum is the minimum of the length.
+
+00:11:52.621 --> 00:11:56.621
+The maximum is also a maximum of the length. And then I would like to have 100 elements.
+
+00:12:03.037 --> 00:12:06.037
+And then here, you can see that now i'm constructing
+
+00:12:09.652 --> 00:12:11.652
+the density for these points. So basically I'm now applying function
+
+00:12:16.809 --> 00:12:20.809
+density of normal distributed random variable for points in vector G and then that density
+
+00:12:25.463 --> 00:12:30.463
+corresponds to the random variable with mean defined through the mean of the lengths of sepals.
+
+00:12:29.665 --> 00:12:36.665
+And through the standard deviation of the length of sepals.
+
+00:12:42.291 --> 00:12:46.291
+And then, here, I could add the density line to a plot, so we can see that now I would superimpose that line
+
+00:12:46.327 --> 00:12:54.327
+where on X axis, we have G, on the y-axis, we have the density, and then the color of the slide is red3
+
+00:12:57.642 --> 00:13:01.642
+and then, the width of the line is 2. And then you can see, indeed, that now I have a histogram
+
+00:13:01.704 --> 00:13:10.704
+with density, and then the density line superimposed on that histogram. Let me stop here, and then we are going to come back.
+

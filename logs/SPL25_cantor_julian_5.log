@@ -1,0 +1,4 @@
+> pdf("logs/exercise5_plots.pdf"); source("SPL25_cantor_julian_5.R"); dev.off()
+null device 
+          1 
+> 

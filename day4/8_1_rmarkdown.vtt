@@ -1,0 +1,168 @@
+WEBVTT
+
+
+00:00:01.322 --> 00:00:14.322
+Hello, welcome back to our course, and today we are going to talk about R Markdown reports. Alright, so why R Markdown? Well, it helps us create a document that embeds both text and code,
+
+00:00:14.721 --> 00:00:23.721
+and there are several advantages: Research becomes more reproducible, makes it easier to share analysis results together with documentation.
+
+00:00:33.727 --> 00:00:35.727
+When you knit the document, the code is executed, and the output appears alongside text. And the document renders only if there are no errors
+
+00:00:36.565 --> 00:00:48.565
+and then you can render the document to HTML, PDF, or Word. So if you are not in RStudio, so basically you can install R Markdown by using this tinytex
+
+00:00:56.241 --> 00:00:59.241
+and then rmarkdown packages. And then this pandoc is our swiss-army knife to convert files from one markup format to another.
+
+00:00:58.824 --> 00:01:04.824
+But if you are in R studio, then basically what do you need to do? You need to click file, and then you need to go
+
+00:01:05.564 --> 00:01:16.564
+to new file, and then to R markdown. And then you can see this dialog box, and you can see that you can select the title, the author, and then the output format.
+
+00:01:17.425 --> 00:01:20.425
+All right, so this is a default file, you can see that,
+
+00:01:21.195 --> 00:01:30.195
+basically, there are two chunks. There's this chunk with, the title, author, output, and date, and there are other chunks, it's like R chunk, and then there's a text.
+
+00:01:30.213 --> 00:01:40.213
+And we are going to go through all these chunks today. So, the first chunk is basically this YAML chunk. So YAML is a human-readable data format,
+
+00:01:39.860 --> 00:01:46.860
+not markup, and the name is "YAML Ain't Markup Language". Originally, it was "Yet Another Markup Language".
+
+00:01:51.582 --> 00:01:54.582
+And then we have a markdown. So here, that
+
+00:02:02.027 --> 00:02:05.027
+language was defined by Gruber and Swartz. And it's a lightweight markup language with plain text formatting syntax, and can be converted to many output formats.
+
+00:02:05.038 --> 00:02:12.038
+And then we have R markdown, so this is the integration of R code into Markdown documents, and here we have a cheat sheet
+
+00:02:12.759 --> 00:02:16.759
+with many R markdown related things, so you can see that this is the header,
+
+00:02:17.727 --> 00:02:25.727
+and this is our R markdown with code chunks. Alright, so this is the YAML excerpt, so basically here we have a few elements, so
+
+00:02:34.240 --> 00:02:39.240
+how do we start a blog? How do we start a comment? How do we start a list with certain elements? Here we have in-line item lists, then we have a named list,
+
+00:02:46.459 --> 00:02:48.459
+and then we have a few other keys. So here under these links, you are going to find some methods to convert R data to YAML and back.
+
+00:02:49.655 --> 00:02:56.655
+Okay, so this is an example header. This is our header of our document, and then you can see that, actually
+
+00:03:01.470 --> 00:03:07.470
+if I study the attributes of that header, I can see that that header now,
+
+00:03:09.785 --> 00:03:13.785
+it's a list of four elements with a title, with an author, with date, and output.
+
+00:03:14.843 --> 00:03:18.843
+And how did I study it? Well, I needed to first upload this
+
+00:03:22.222 --> 00:03:28.222
+library, YAML, and then I applied the function read_yaml. Another header here 
+
+00:03:28.794 --> 00:03:33.794
+for a vignette, for example, so we have a title, once again, we have an author
+
+00:03:34.449 --> 00:03:42.449
+with two elements, name and email, we also have a date here, and this is an inline R code, which evaluates
+
+00:03:44.078 --> 00:03:47.078
+at each knit time. And then we have an output,
+
+00:03:47.102 --> 00:03:52.102
+I would like to have it in HTML document, and I would like to have
+
+00:03:52.181 --> 00:04:04.181
+table of contents, so toc true. And then there are some, other options for, R package vignette metadata.
+
+00:04:04.523 --> 00:04:10.523
+And once again, I could use this read_yaml from R
+
+00:04:14.654 --> 00:04:17.654
+package, and you can see that now these lists look slightly different, so we have 5 elements,
+
+00:04:16.780 --> 00:04:24.780
+and then we have a title, we have an author, and then the author is actually also a list of two elements, etc.
+
+00:04:26.921 --> 00:04:28.921
+But of course, now we have
+
+00:04:29.661 --> 00:04:34.661
+many options for output formats. For example, we can have an HTML notebook,
+
+00:04:39.845 --> 00:04:42.845
+HTML document, PDF document, Word document, beamer presentation, PowerPoint presentation, etc.
+
+00:04:52.123 --> 00:04:55.123
+So, of course, we choose the option we would like to do in that particular moment. For example, I'm using for this course
+
+00:05:02.082 --> 00:05:04.082
+beamer presentation. And then, of course, for details, you can have a look at the sling, and then there are more options and more formats.
+
+00:05:04.706 --> 00:05:11.706
+When it comes to rendering, how do we render a PDF document? So basically, actually, we go through
+
+00:05:20.821 --> 00:05:23.821
+Rmd, then there is, knitr, then it's transformed to md. From md, we go through pandoc to tex, and from tex
+
+00:05:30.133 --> 00:05:33.133
+through PDF, LaTeX to PDF. So, beamer is a LaTex document class for creating presentation slides.
+
+00:05:40.742 --> 00:05:43.742
+And then here, you have additional options only for PDFs, for example like toc_depth. So the lowest level of headings
+
+00:05:47.413 --> 00:05:49.413
+to add to table of contents. But you have also some special options only for beamer.
+
+00:05:49.213 --> 00:05:56.213
+So here we have color theme, or for example, a slide_level, which is the lowest heading level that defines
+
+00:05:56.668 --> 00:06:03.668
+individual slides. And of course, it's all up to you how you'd like to customize your document.
+
+00:06:04.448 --> 00:06:12.448
+And then some further options, rendering options. You can see that the list is long, but instead of me reading through all these options,
+
+00:06:13.597 --> 00:06:24.597
+I really suggest that you try yourself on RStudio, create new R markdown document, and play with these options. I think this is the best way to learn programming, just actually by doing it.
+
+00:06:25.535 --> 00:06:31.535
+What I would like to show you today is actually an example of that YAML header, so basically how I would like
+
+00:06:40.457 --> 00:06:43.457
+my beamer presentation to look like. For this particular deck of slides, you can see that I have a title, I have a subtitle, I have an author, then I didn't want to have any date,
+
+00:06:43.220 --> 00:06:51.220
+then for the output, I wanted to have a beamer presentation, I wanted to keep
+
+00:06:51.145 --> 00:06:56.145
+tex file associated with that presentation, and I would like to have
+
+00:06:56.415 --> 00:07:02.415
+the syntax highlighted in that zenburn. Then my header also includes
+
+00:07:02.568 --> 00:07:09.568
+this line with user package, so basically I created a special customized theme for this course.
+
+00:07:14.747 --> 00:07:18.747
+Then I would like to also hide beamer's navigation buttons. And then I would like to have these
+
+00:07:17.878 --> 00:07:24.878
+slide numbers in the footer. And then a few options for
+
+00:07:28.130 --> 00:07:31.130
+the color of the links, and the color of citations.
+
+00:07:30.795 --> 00:07:38.795
+Okay, let me stop here, and we are going to come back to R Markdown and text formatting in the next video.
+

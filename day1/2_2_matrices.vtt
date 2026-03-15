@@ -1,0 +1,414 @@
+WEBVTT
+
+
+00:00:01.070 --> 00:00:07.070
+Hello, welcome back to our course today we are going to talk about lists
+
+00:00:11.366 --> 00:00:13.366
+and matrices. Alright, so lists in R can contain
+
+00:00:13.504 --> 00:00:18.504
+all sorts of components, for example numeric values, character vectors, lists, etc.
+
+00:00:18.340 --> 00:00:24.340
+And these components of our list can have names. For example
+
+00:00:27.541 --> 00:00:30.541
+the first list here has two elements. It's of length two, actually.
+
+00:00:29.887 --> 00:00:36.887
+The first component is this vector, numeric vector, and the second component is the string "Hallo".
+
+00:00:43.378 --> 00:00:47.378
+Now, I defined a similar list. And here, our components are with names, so now I call the first component numeric
+
+00:00:49.552 --> 00:00:52.552
+and the second component character. How can I access
+
+00:00:58.045 --> 00:01:00.045
+the elements of the list? Well, I could use this double bracket, or a single bracket
+
+00:00:59.935 --> 00:01:05.935
+and dollar sign. How do they work? Imagine now that we have a family list
+
+00:01:06.488 --> 00:01:12.488
+with three elements. The first element is father, the second is mother, and the third is called
+
+00:01:16.181 --> 00:01:18.181
+n.children. If I would like to access the first element,
+
+00:01:18.544 --> 00:01:23.544
+either I can call it by its name, so then I could use the dollar sign:
+
+00:01:26.122 --> 00:01:30.122
+family$father, and then I have exactly: the first element is Joseph.
+
+00:01:30.056 --> 00:01:39.056
+Or, I could just write the number of that element, so the index of that element. So basically,
+
+00:01:43.241 --> 00:01:47.241
+family[[1]], and I get the same: Joseph. Now, if I use a single bracket,
+
+00:01:47.673 --> 00:01:53.673
+what do I obtain? I obtain a sublist. So, now imagine that I would like to see
+
+00:01:54.038 --> 00:01:59.038
+the second and the third component of that list.
+
+00:02:05.009 --> 00:02:07.009
+What do I get here? I get a sublist with two elements, mother and n.children.
+
+00:02:10.587 --> 00:02:14.587
+What happens now if I use unlist function for a list?
+
+00:02:18.043 --> 00:02:23.043
+First, let us define this new object, A. And I apply unlist to a family.
+
+00:02:23.706 --> 00:02:29.706
+And now, if I look at how A looks like, I can see a vector.
+
+00:02:29.947 --> 00:02:35.947
+I can see a vector with 3 elements, Joseph, Annie, 2.
+
+00:02:40.367 --> 00:02:45.367
+And elements of this vector have names: Father, mother, and children.
+
+00:02:46.563 --> 00:02:52.563
+If I check a class of a family, this is a list, of course, because as you might remember, we define it as a list.
+
+00:02:52.824 --> 00:02:57.824
+If I check the length of a family, it's 3, because we had 3 elements.
+
+00:03:01.616 --> 00:03:03.616
+Now, if I compare it to a class of A,
+
+00:03:04.681 --> 00:03:09.681
+then, this is character, because all the elements from that list
+
+00:03:15.092 --> 00:03:18.092
+where coerced to a character. And then, if I check the length of A, it's 3, because this is a vector with 3
+
+00:03:24.812 --> 00:03:29.812
+elements. Alright, so now let us talk about matrices. So, matrix can be constructed using the matrix function here in R.
+
+00:03:30.587 --> 00:03:33.587
+And now, how does it work? So here, I have A,
+
+00:03:33.070 --> 00:03:39.070
+which is now this matrix, and then with elements from 1 to 16.
+
+00:03:45.729 --> 00:03:48.729
+And I would like to have it 4 rows. Now we could see that these elements are indeed here,
+
+00:03:58.047 --> 00:04:01.047
+but all these elements are listed first, within the first column, so 1, 2, 3, 4, then within the second column, 5, 6, 7, 8, etc.
+
+00:04:06.230 --> 00:04:10.230
+If we would like to have elements listed by rows, then we need to
+
+00:04:13.737 --> 00:04:15.737
+define this third parameter here, byrow = TRUE.
+
+00:04:21.967 --> 00:04:23.967
+And now we can see that element runs by rows. So we have 1, 2, 3, 4
+
+00:04:23.946 --> 00:04:28.946
+in the first row, 5, 6, 7, 8 in the second row, etc.
+
+00:04:37.687 --> 00:04:39.687
+We could also construct matrices from vectors using functions cbind() and rbind().
+
+00:04:40.331 --> 00:04:46.331
+So basically, what do they do? If I use a cbind(), it binds vectors by column,
+
+00:04:49.534 --> 00:04:52.534
+and if I do rbind(), it binds vectors
+
+00:04:56.908 --> 00:04:59.908
+by row. Here, I would like to construct two vectors.
+
+00:05:05.338 --> 00:05:08.338
+I would like to have vectors with random variables, and this time
+
+00:05:10.570 --> 00:05:15.570
+from binomial distribution, so you might remember that, to define the random variable
+
+00:05:15.812 --> 00:05:20.812
+from a binomial distribution, I need to have a size,
+
+00:05:23.688 --> 00:05:26.688
+here, this n is called size, and we have 5. And the probability of success.
+
+00:05:33.014 --> 00:05:37.014
+Probability of success is 0.6 in the first case, and the probability of success is 0.1 in the second case, and I would like to have four elements.
+
+00:05:41.024 --> 00:05:43.024
+Now, if I apply a function bind to X and Y, what do I have?
+
+00:05:43.532 --> 00:05:48.532
+These two vectors are bound by rows. So the first row
+
+00:05:47.642 --> 00:05:54.642
+and the second row. And then, in the second case, we have these two vectors
+
+00:05:54.984 --> 00:06:00.984
+bound by column. So the first column is a vector X, and the second column is a vector Y.
+
+00:06:04.880 --> 00:06:06.880
+How can we access
+
+00:06:06.673 --> 00:06:11.673
+matrix elements? Well, once again, we can do it through brackets.
+
+00:06:17.387 --> 00:06:19.387
+And basically, if I apply bracketing to A, and then, for example, I ask
+
+00:06:25.746 --> 00:06:28.746
+for Ith and Jth element, it means that I'm asking for an element in row I and column J
+
+00:06:33.798 --> 00:06:35.798
+over matrix A. And here, row and column indexing starts at 1.
+
+00:06:36.422 --> 00:06:42.422
+And the same principle applies for rows and columns as for vectors. For example, here
+
+00:06:45.868 --> 00:06:50.868
+I define a matrix, A, with elements from 1 to 12,
+
+00:06:51.563 --> 00:06:56.563
+and I would like it to have 3 rows and 4 columns.
+
+00:07:00.313 --> 00:07:02.313
+So I can see, once again, here, the elements run
+
+00:07:04.753 --> 00:07:07.753
+first, within the first column, then, within the second column, etc.
+
+00:07:12.733 --> 00:07:14.733
+Now, I would like to access elements in the first and second row,
+
+00:07:14.922 --> 00:07:20.922
+and the third column. So, first, second row,
+
+00:07:26.648 --> 00:07:30.648
+and then third column. I have 7, 8. Now, I would like to access elements in minus one row.
+
+00:07:30.762 --> 00:07:39.762
+What does it mean? It means that my matrix has 3 rows, 1, 2, 3, and minus 1 means that I'm accessing elements
+
+00:07:42.651 --> 00:07:44.651
+in the second row, so here. And then, in the first column, it's
+
+00:07:50.188 --> 00:07:52.188
+2. And I have 3. So, from minus 1
+
+00:08:00.145 --> 00:08:02.145
+to the end. And, in the third example, what do we have? We have the first
+
+00:08:04.430 --> 00:08:08.430
+row, and then we would like to have the first and the fourth column.
+
+00:08:08.193 --> 00:08:13.193
+So, the first row, and then the first, and the fourth
+
+00:08:13.269 --> 00:08:18.269
+column. And then we end up with elements 1 and 10.
+
+00:08:26.527 --> 00:08:29.527
+Alright, so there are a few useful functions to get the dimension of X, so here you can see that my matrix
+
+00:08:32.649 --> 00:08:35.649
+X, once again, it has 10 elements. Which run from 1 to 10.
+
+00:08:41.962 --> 00:08:43.962
+I have 2 rows and 5 columns. And if I ask for the dimension of X, it's 2 and 5. Why? Because I have
+
+00:08:46.808 --> 00:08:48.808
+2 rows and 5 columns. If I ask for
+
+00:08:48.644 --> 00:08:54.644
+the number of rows, so nrow, this is 2.
+
+00:08:55.353 --> 00:09:00.353
+If I ask for the number of columns, I have 5, because I have 5 columns.
+
+00:09:05.409 --> 00:09:10.409
+What does length give me? Length gives me the total number of elements, so 2 times 5:
+
+00:09:10.341 --> 00:09:15.341
+The number of rows times the number of columns, and this is 10.
+
+00:09:21.909 --> 00:09:24.909
+Alright. We could also give names to rows and columns.
+
+00:09:24.548 --> 00:09:30.548
+Once these names are given, we could access the elements
+
+00:09:31.255 --> 00:09:36.255
+through the names of the rows and columns. So, for example, here, I'm defining this
+
+00:09:37.668 --> 00:09:42.668
+Matrix B with 4 elements and the number of rows is 2.
+
+00:09:49.264 --> 00:09:53.264
+And I'm giving the names to first, rows. My rows are called A and B, and second, I'm giving, names to colums
+
+00:09:58.543 --> 00:10:03.543
+A and B. So now, if I access the element in the row A, and in the column
+
+00:10:09.461 --> 00:10:12.461
+A, I'm accessing the first element, so 1. Now, if I redefine only columns,
+
+00:10:20.676 --> 00:10:23.676
+I could do it through colnames. And then I'm redefining the names of the columns in this matrix, and I'm giving it names B, A.
+
+00:10:30.967 --> 00:10:34.967
+I could also redefine only names of rows. And these are redefined through applying this function rownames, B and A.
+
+00:10:38.428 --> 00:10:40.428
+And now, if I look into the output
+
+00:10:43.790 --> 00:10:46.790
+of this matrix B, then
+
+00:10:50.970 --> 00:10:52.970
+I have here two rows, B, A, two columns B, A,
+
+00:10:55.593 --> 00:10:58.593
+and all the elements of my matrix. And now, if I would like to access element
+
+00:11:01.928 --> 00:11:06.928
+AA, it refers now to the second row and the second column, so my element is 4.
+
+00:11:07.899 --> 00:11:14.899
+Alright, let me briefly talk about constructing matrices from
+
+00:11:21.462 --> 00:11:24.462
+vectors. A vector can be transformed to a matrix by changing its dimension.
+
+00:11:30.487 --> 00:11:33.487
+For example, here, I have a vector X, 4, 2, 3, 2, and then I would like to transform it
+
+00:11:40.196 --> 00:11:43.196
+to a matrix. How do I do it? I just write dim(x), and then I write how many rows and how many columns
+
+00:11:48.370 --> 00:11:51.370
+this matrix should have. So this matrix, new matrix, so basically I transform that factor X to now
+
+00:11:53.521 --> 00:11:57.521
+a matrix X with 2 rows, 1, 2. And two columns 1, 2.
+
+00:12:01.760 --> 00:12:06.760
+Now let us talk about sums and products. If we have a matrix X
+
+00:12:10.876 --> 00:12:12.876
+with 20 elements, 4 rows and 5 columns,
+
+00:12:15.907 --> 00:12:18.907
+and we apply a sum function to X, I get to the sum of all elements.
+
+00:12:24.971 --> 00:12:28.971
+Similarly, if I apply prod function to X. I get a result of a product of all elements.
+
+00:12:32.110 --> 00:12:34.110
+If I apply colSums, then I get a sum
+
+00:12:37.210 --> 00:12:39.210
+over the elements in each column. So what do we have here?
+
+00:12:39.469 --> 00:12:46.469
+We have 10, 26, 42, 58, 74, so we have 5 sums, because we had 5 columns.
+
+00:12:52.111 --> 00:12:55.111
+Similarly, if I apply rowSums, then I can get the sums over the elements
+
+00:12:58.024 --> 00:13:01.024
+in each row. So, we had 4 rows, and we have
+
+00:13:05.489 --> 00:13:06.489
+four sums. If I apply a function colMeans,
+
+00:13:06.351 --> 00:13:12.351
+then I get the means over the elements in each column, so I had 5 columns,
+
+00:13:12.187 --> 00:13:19.187
+now, I get 5 means, because I took an average of elements in each column.
+
+00:13:24.844 --> 00:13:28.844
+Similarly, if I apply a function row means. What do I get? I get means of elements in each row, I had 4 rows,
+
+00:13:35.331 --> 00:13:37.331
+I get 4 means. Alright, and then let us,
+
+00:13:39.225 --> 00:13:44.225
+also talk about cumulative functions on vectors and matrices. So now imagine that I have this vector A,
+
+00:13:52.874 --> 00:13:57.874
+and, I would like to now apply this function cumsum(). Basically, what does it give me? It gives me a cumulative sum.
+
+00:13:57.887 --> 00:14:04.887
+The first element was just the first element, I'm not adding any other elements, because I have only
+
+00:14:07.370 --> 00:14:09.370
+just this first element. Now, if I add
+
+00:14:14.228 --> 00:14:18.228
+the second element to the first element, I get 3. If I add the third element to
+
+00:14:21.808 --> 00:14:24.808
+this second element of this vector, I get 6.
+
+00:14:33.711 --> 00:14:37.711
+Now, if I add 4, so 4th element to this element of a new vector, I get 10, etc. So it's a cumulative sum,
+
+00:14:42.806 --> 00:14:47.806
+it cumulates this summation over different elements. Similarly, cumprod():
+
+00:14:50.391 --> 00:14:53.391
+We multiply elements. In the first case, we have only one element, so it's 1.
+
+00:14:53.030 --> 00:15:00.030
+Then I multiply 1 times 2, this is 2, then I multiply this 2 times 3, this is 6.
+
+00:15:05.286 --> 00:15:09.286
+I multiply 6 by 4, this is 24, etc. Now, if I
+
+00:15:07.835 --> 00:15:13.835
+define another vector, B, and I would like to apply this function cummin(),
+
+00:15:20.584 --> 00:15:25.584
+then, what do we get? We get a cumulative minimum, so once again, in case of the first element, I had only one element, so the minimum of one element
+
+00:15:28.392 --> 00:15:30.392
+is just this element. Then, a minimum of
+
+00:15:32.671 --> 00:15:35.671
+two first elements is 2. A minimum of
+
+00:15:41.817 --> 00:15:43.817
+this 2 and 1 is 1, and etc. So a minimum of this 1, and
+
+00:15:43.669 --> 00:15:50.669
+the fourth element from the original vector is, once again, 1, etc.
+
+00:15:53.762 --> 00:15:58.762
+Similarly, for cummax(), so here we have the maximum of one value is 3,
+
+00:16:08.162 --> 00:16:13.162
+maximum of this 3, and the second value, it's 3. Maximum of this second value and the third value from the original value is 3,
+
+00:16:16.806 --> 00:16:20.806
+until we hit 4 here, because we always had 3. So the maximum of 3 and this
+
+00:16:21.355 --> 00:16:25.355
+4 here would be, finally, 4. So for this reason, we had
+
+00:16:27.745 --> 00:16:30.745
+4 until the end of this cummax(),
+
+00:16:37.209 --> 00:16:41.209
+aplication on the vector B. Okay so let me stop here, and then in the next video
+
+00:16:44.207 --> 00:16:47.207
+we are going to talk about special matrices. And a little bit about arrays.
+

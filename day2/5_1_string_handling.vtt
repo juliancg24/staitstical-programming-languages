@@ -1,0 +1,507 @@
+WEBVTT
+
+
+00:00:01.631 --> 00:00:07.631
+Hello, welcome back to our course, today we are going to talk about string handling in R.
+
+00:00:17.936 --> 00:00:20.936
+Alright, so strings are often a natural first step to save information, strings are text and numbers combined, and it's often the easiest
+
+00:00:22.671 --> 00:00:25.671
+to get data from external sources via strings.
+
+00:00:25.748 --> 00:00:33.748
+Strings are entered using this double quotation mark or single quotation mark, and here you can see that I'm defining the first string.
+
+00:00:39.961 --> 00:00:42.961
+And my first string is these two characters: "Hello42". In the second string, I have something which is longer.
+
+00:00:42.556 --> 00:00:53.556
+And then inside, I have a quotation mark. So basically, I start with a single quotation mark, and then inside, if I would like to include a quote,
+
+00:00:57.269 --> 00:01:00.269
+then I could use a double quotation mark.
+
+00:01:05.090 --> 00:01:09.090
+So, if we would like to concatenate strings or glue them together, then we use this function paste.
+
+00:01:12.238 --> 00:01:18.238
+Paste takes arbitrary number of arguments and concatenates them. So, as a default
+
+00:01:20.530 --> 00:01:24.530
+a separator between two different elements is this space,
+
+00:01:30.171 --> 00:01:32.171
+But we could also change it. For example, here we have two elements, A and B, and I would like to paste them.
+
+00:01:37.734 --> 00:01:41.734
+If I paste them, then I obtain "Hello 42". If I paste them, but I change a separator, then I have "Hello,42"
+
+00:01:46.021 --> 00:01:49.021
+And then a subfunction is paste0.
+
+00:01:50.000 --> 00:01:57.000
+So here, basically, I glue elements together, but without any space. So you can see that X
+
+00:01:57.685 --> 00:02:02.685
+is glued to 1, and Y is glued to 4 without any space.
+
+00:02:02.730 --> 00:02:11.730
+And then you can see that also a paste function recycles certain elements. For example, here, we had only two
+
+00:02:16.080 --> 00:02:19.080
+letters, X and Y, but full numbers. So we have X1, Y2, X3, and Y4.
+
+00:02:25.220 --> 00:02:27.220
+Here, let us define this identity matrix, C, and then, if we apply paste to c,
+
+00:02:31.251 --> 00:02:34.251
+then it spells out all the elements of that identity matrix.
+
+00:02:34.935 --> 00:02:44.935
+But then, if we apply here to that function collapse parameter, then you can see that we have all these elements, but without any quotation mark.
+
+00:02:45.777 --> 00:02:54.777
+We could also manipulate our strings, so how can we do it? Well, we could apply a function toupper().
+
+00:02:59.831 --> 00:03:05.831
+toupper() makes all the characters uppercase letter. And then, tolower() makes all the characters
+
+00:03:05.707 --> 00:03:09.707
+lowercase letters. So here you can see that we have all lowercase.
+
+00:03:12.608 --> 00:03:16.608
+We could also substitute certain characters in a string. So, for example, using this function chartr(),
+
+00:03:21.027 --> 00:03:25.027
+we select an old character and the new, and then you can see that instead of banana,
+
+00:03:24.386 --> 00:03:29.386
+we have Bonono, and then instead of a pineapple, we have
+
+00:03:34.388 --> 00:03:40.388
+Pineopple. We can also count how many characters there are in a particular
+
+00:03:43.187 --> 00:03:46.187
+string, so here you can see that the first element, we have 6 characters, and then in the second one, we have 9.
+
+00:03:51.232 --> 00:03:53.232
+And then, substr() extracts a substring. So, basically, here you can see that
+
+00:04:01.444 --> 00:04:04.444
+I would like to extract the substring, which starts at the second place and stops in the fourth. So, in case of the first element of our vector,
+
+00:04:04.056 --> 00:04:10.056
+the second character is A, the fourth is A, so we subtracted
+
+00:04:18.344 --> 00:04:22.344
+Here: "ana". And similar for the second element. Alright, so now let us briefly talk about regular expressions.
+
+00:04:20.362 --> 00:04:27.362
+Regular expressions are these patterns that describe a set of strings. So, for example, here the pattern
+
+00:04:27.355 --> 00:04:34.355
+Is ea, and then if I would like to find ea in this poem, then it appears in beauty,
+
+00:04:38.387 --> 00:04:40.387
+increases and Keats. And there are different types of regular expressions in R.
+
+00:04:40.690 --> 00:04:46.690
+We have this POSIX extended expressions and Perl-like, but basically, think about that as:
+
+00:04:51.460 --> 00:04:54.460
+How can I find a substring in a particular string? And there are different commands to do it.
+
+00:04:55.160 --> 00:05:05.160
+And then, regular expressions can be passed into many basic functions in R, and we are going to look
+
+00:05:05.656 --> 00:05:11.656
+into all of them, and also these are used in other functions, and here you have a link with a
+
+00:05:15.696 --> 00:05:19.696
+cheat sheet for regular expressions.
+
+00:05:24.566 --> 00:05:26.566
+If we would like to detect in which line a particular expression appears, we could use a function grep().
+
+00:05:32.340 --> 00:05:36.340
+greb(), it's used in the following way: So, we paste
+
+00:05:42.223 --> 00:05:45.223
+an expression we are looking for, and we paste our object here, we have this vector composed of four elements, and all of them are these characters.
+
+00:05:48.711 --> 00:05:50.711
+And then you can see that ea appears in the first element, first line,
+
+00:06:02.060 --> 00:06:05.060
+second element, second line, and fourth line. So these four. grepl() returns a logical vector. So basically, here we have four elements as an output, and then the first is true,
+
+00:06:11.765 --> 00:06:12.765
+because ea appears in the first element, in the second also true.
+
+00:06:12.086 --> 00:06:17.086
+But it doesn't appear in the third element, third line, so this is false.
+
+00:06:17.197 --> 00:06:24.197
+We have also functions to locate a particular pattern, so this function regexpr()
+
+00:06:25.002 --> 00:06:30.002
+returns the position of ea in the lines, and minus 1 indicates no match.
+
+00:06:33.022 --> 00:06:36.022
+So here, if we once again look at our poem and we apply the function regexpr()
+
+00:06:36.392 --> 00:06:41.392
+and we are looking for ea, what do we get? We get 13, so this is
+
+00:06:43.911 --> 00:06:49.911
+indicating us that ea appears on the place 13, 20 in the second line,
+
+00:06:49.262 --> 00:06:55.262
+Minus 1 here, third line. Why? Because in the third line, we didn't have ea.
+
+00:07:01.027 --> 00:07:05.027
+And then position 9 in the fourth line. We also have this attribute here. So the attribute match.length
+
+00:07:05.644 --> 00:07:11.644
+tells us what is the length of the expression we are looking for, and the length is 2.
+
+00:07:11.057 --> 00:07:18.057
+But in the third line, we didn't have it, so we can see minus 1 appearing.
+
+00:07:22.859 --> 00:07:24.859
+Another function 
+
+00:07:23.242 --> 00:07:32.242
+gregexpr() is useful if there are multiple matches in one line, so it returns as a list for each line
+
+00:07:32.914 --> 00:07:38.914
+of text containing all match positions in a vector. So now, if I apply it to our poem,
+
+00:07:38.185 --> 00:07:43.185
+and now, I would like to see only the results for the second line,
+
+00:07:47.420 --> 00:07:49.420
+you can see that in the second line, there are two appearances of es:
+
+00:07:49.339 --> 00:07:56.339
+On the 12th place and 23rd place. And then here, the match.length
+
+00:08:00.456 --> 00:08:02.456
+attribute gives us 2 and 2, because the length of these
+
+00:08:08.495 --> 00:08:12.495
+two patterns is two. Now, as you can see,
+
+00:08:17.425 --> 00:08:21.425
+ea is a fixed, exact string, so it's faster to actually
+
+00:08:25.974 --> 00:08:30.974
+specify another parameter in grep() and grepl() to specify fixed to true. In this case, these functions run faster,
+
+00:08:35.392 --> 00:08:38.392
+but these functions could be also used to look for non-constant patterns:
+
+00:08:42.616 --> 00:08:46.616
+Meta characters, character classes, and quantifiers. What do I mean by non-constant? So imagine that we are looking for
+
+00:08:48.269 --> 00:08:52.269
+a pattern which starts with O, but then the second
+
+00:08:52.258 --> 00:09:00.258
+letter is just lowercase letter. So here, we will have a few matches: We would have of,
+
+00:09:03.509 --> 00:09:05.509
+oy, or,
+
+00:09:08.033 --> 00:09:11.033
+ov in loveliness, and oh
+
+00:09:17.979 --> 00:09:20.979
+in John, oh, and also ot in nothingness. And there are different types of meta-characters. For example, we have anchors:
+
+00:09:28.426 --> 00:09:30.426
+The first symbol, caret. It starts a string, so basically indicates us
+
+00:09:31.124 --> 00:09:34.124
+where the string should start, how it should start,
+
+00:09:40.842 --> 00:09:42.842
+and the dollar sign how it should end. An example. Here we have an example with a vector X and a few elements.
+
+00:09:45.101 --> 00:09:49.101
+And then, if I apply now a function grepl(), and then I ask, hey, find me
+
+00:09:56.197 --> 00:10:00.197
+an element which starts, so a caret, with "cat". The first element, okay, this is true, because indeed, cat starts with cat.
+
+00:10:00.129 --> 00:10:06.129
+Then, scat. Scat doesn't start with cat, so we get false.
+
+00:10:07.018 --> 00:10:12.018
+But catfish indeed starts with cat, so we get true, etc.
+
+00:10:17.040 --> 00:10:20.040
+Now, we are looking for those elements which end with "cat". So what do we have here? We have this:
+
+00:10:20.256 --> 00:10:26.256
+True for the first element, because we have cat.
+
+00:10:26.495 --> 00:10:30.495
+We have true for the second element, because we have scat,
+
+00:10:35.691 --> 00:10:37.691
+but we have false for the, third element, because we have catfish.
+
+00:10:37.152 --> 00:10:43.152
+And then we have, once again, true for the fourth element, because we have a cat.
+
+00:10:45.142 --> 00:10:50.142
+And similarly for other elements.
+
+00:10:54.207 --> 00:10:59.207
+Another type of meta-characters are groups of and alternation. So a group
+
+00:11:09.404 --> 00:11:11.404
+is basically capturing group. So, we sort of evaluate it first, and then we also have this vertical bar, which is alternation, so basically, we are looking for something, OR something else.
+
+00:11:20.512 --> 00:11:25.512
+An example. So here, we would like to capture this "ha" three times, so instead of writing ha ha ha, I just
+
+00:11:31.940 --> 00:11:33.940
+wrote in "ha" in the parentheses, so it means that this is a capturing group. So basically, I would like to capture that entire group 3 times.
+
+00:11:34.134 --> 00:11:38.134
+So you can see that, we defined that vector A,
+
+00:11:38.593 --> 00:11:46.593
+and now I would like to capture "ha" 3 times in A. So, the first element here as an output is true, because we have ha-ha-ha.
+
+00:11:47.028 --> 00:11:51.028
+Then, the second element here is false, because we have ha only twice.
+
+00:11:51.568 --> 00:11:59.568
+And then the third element, it's also false, because we have ha 3 times, but with a space, and we are looking for something which was only ha 3 times.
+
+00:12:00.424 --> 00:12:05.424
+Now, when it comes to or expressions, so here we have another vector, B,
+
+00:12:07.506 --> 00:12:09.506
+and then I'm looking for "cat or dog".
+
+00:12:09.762 --> 00:12:14.762
+Clearly, I have a cat in a catfish, so I have true.
+
+00:12:14.167 --> 00:12:20.167
+I have a dog in a hot dog, so I have true as well, but I don't have
+
+00:12:20.904 --> 00:12:25.904
+either cat or fish in a hamster, so I have false here.
+
+00:12:30.860 --> 00:12:34.860
+Alright, and we also have character classes. So, character classes here, we have 3 different types. We have
+
+00:12:35.078 --> 00:12:42.078
+this character class in a bracket, ABC, so what does it mean? So I'm looking for any one
+
+00:12:47.618 --> 00:12:49.618
+of A, B, or C. Then, with a caret, I'm looking for any character except
+
+00:12:52.807 --> 00:12:55.807
+A, B, or C. So, caret here negates only the very first character after the bracket
+
+00:12:55.249 --> 00:12:59.249
+and then the dot is in any character except a new line.
+
+00:13:04.711 --> 00:13:06.711
+So once again, an example. So we have grepl(), we are looking for ABC in that character class,
+
+00:13:11.919 --> 00:13:15.919
+and then, in that particular vector. So as an output, we get true, because we have A in A.
+
+00:13:16.410 --> 00:13:20.410
+The second element is true as well, because we have B in B.
+
+00:13:20.508 --> 00:13:26.508
+And the third element is true, because we have C in cup, but the fourth element is false,
+
+00:13:26.433 --> 00:13:31.433
+because we don't have either A or B or C in dog.
+
+00:13:36.149 --> 00:13:40.149
+Now, when it comes to negating, remember, it only negates the very first character. So, now I'm looking for something which has
+
+00:13:48.517 --> 00:13:51.517
+not A, not B or C as a first character. Okay, so, as an output, I get false, because I have A here,
+
+00:13:51.793 --> 00:13:57.793
+the second one is ABC. It's also false, because I have A.
+
+00:13:58.104 --> 00:14:07.104
+The third element is false, because I have C, and I was looking for not A or not B or not C.
+
+00:14:09.907 --> 00:14:11.907
+But the fourth element is true, because D
+
+00:14:15.976 --> 00:14:19.976
+Is not A or B or C. So, indeed, I get true. And similarly for the last element
+
+00:14:20.090 --> 00:14:26.090
+and dot any character except new lines, so basically here, I'm looking for any character.
+
+00:14:26.693 --> 00:14:30.693
+Okay, this is true for A, because A is any character.
+
+00:14:31.031 --> 00:14:34.031
+This is false here, because I don't have anything, that's like
+
+00:14:41.734 --> 00:14:44.734
+emptiness, so, this is false. But it's true, in case of C, because C, lowercase c is also any character.
+
+00:14:45.719 --> 00:14:51.719
+Okay, and we also have quantifiers. So, quantifiers tell us how many times something should appear.
+
+00:14:55.052 --> 00:14:58.052
+So we have asterisks, that should appear zero or more times, plus
+
+00:15:01.112 --> 00:15:03.112
+one or more times, question mark. 0 or 1 time, and this
+
+00:15:03.365 --> 00:15:08.365
+M and N in the curly bracket, so the preceding element should be
+
+00:15:08.941 --> 00:15:17.941
+in the string at least m, but not more than n times. Okay, so let us look at the examples. So we have asterisks zero or more times.
+
+00:15:18.062 --> 00:15:24.062
+And then, here in this expression, what do I have? I should have something which starts with h.
+
+00:15:26.777 --> 00:15:31.777
+And then it has zero or more A's, and it should end that way.
+
+00:15:31.746 --> 00:15:38.746
+Okay, so H. This is true. Why? Because it starts with H, and it has 0 A, and it ends.
+
+00:15:42.869 --> 00:15:45.869
+Now, we have ha. Ha is true because it has H at the beginning, A
+
+00:15:49.851 --> 00:15:54.851
+at least once and there is the end of it. Then we have ha. This is also true, because I said that I'm looking for a string which has
+
+00:15:59.526 --> 00:16:02.526
+zero or more A's, and ba is false, because ba doesn't start with H.
+
+00:16:02.972 --> 00:16:06.972
+Now, let us look at the example with +.
+
+00:16:09.766 --> 00:16:13.766
+So plus one or more times. So, now the first element here is false. Why? Because
+
+00:16:17.831 --> 00:16:19.831
+plus indicates that we need to have A at least once.
+
+00:16:24.211 --> 00:16:26.211
+And here in h, we don't have any. But it's true for ha, because we have
+
+00:16:26.750 --> 00:16:33.750
+H and A at least once, and it's true for haaa, because we have h as the first element
+
+00:16:40.466 --> 00:16:43.466
+and three A's, which is under the requested condition to be one or more time.
+
+00:16:53.114 --> 00:16:56.114
+Now the question mark: zero or one time. Now, we look at this pattern color, and then, what does grepl() give us? So, in color
+
+00:17:10.189 --> 00:17:12.189
+we have true. Why? Because we need to have something that starts with the C-O-L-O, and then U should be there 0 or 1 time. So, actually, here is 0 time. This is true.
+
+00:17:15.070 --> 00:17:19.070
+Now, we have colour with U. And it's also true, because we ask
+
+00:17:23.828 --> 00:17:26.828
+to have in our pattern one or zero times, so this is true.
+
+00:17:31.644 --> 00:17:34.644
+But it's false in colouur, because we have U two times.
+
+00:17:34.685 --> 00:17:39.685
+And in curly brackets, at least M and at
+
+00:17:42.118 --> 00:17:44.118
+most N times, so we have this a.
+
+00:17:50.191 --> 00:17:53.191
+Okay, so the first element is false. Why? Because A appears only once, and we need to have
+
+00:17:56.247 --> 00:17:58.247
+A at least 2, and at most N times.
+
+00:17:59.067 --> 00:18:05.067
+It's true for aa. Why? Because we have A 2 times, and we said that we wanted to have A
+
+00:18:09.865 --> 00:18:11.865
+between 2 and 4 times. It's true for the third example, because we have three A's,
+
+00:18:17.736 --> 00:18:21.736
+and it's true for the fourth example, because we have 4 A's, but it's false for the
+
+00:18:20.955 --> 00:18:24.955
+last example, because we have 5 A's, and we ask only to have
+
+00:18:31.279 --> 00:18:33.279
+at most four. Okay, and if we go back to our poem, we are looking for joy or love.
+
+00:18:37.344 --> 00:18:39.344
+And then, indeed, as an output, that would match joy and love
+
+00:18:44.942 --> 00:18:47.942
+and then here, we are looking for something with i and lowercase letter at least
+
+00:18:52.222 --> 00:18:57.222
+twice. So, we have ing in thing, we have increases, and we have
+
+00:19:03.595 --> 00:19:07.595
+ing in nothingness, etc. And then, just
+
+00:19:10.906 --> 00:19:14.906
+a tiny bit of an additional info. So here we have these further characters to match
+
+00:19:14.348 --> 00:19:21.348
+any meta character, and then for that, we use a backslash. For example \. matches the dot.
+
+00:19:21.577 --> 00:19:27.577
+We have also a few special characters, so we have this \t, it matches tab,
+
+00:19:27.840 --> 00:19:32.840
+\n, a new line, \v, vertical tab, etc.
+
+00:19:32.228 --> 00:19:40.228
+And then, we also have character sequences. So character sequences here, any character sequences between A and Z,
+
+00:19:42.849 --> 00:19:45.849
+that matches all lowercase letters, and A and F matches
+
+00:19:54.338 --> 00:19:57.338
+A till F, for example. And then, to sum it up, I will just show you this table, but don't be concerned, because this is just like an overview, so
+
+00:19:56.768 --> 00:20:00.768
+what I said at the very beginning, that there are different character classes,
+
+00:20:06.221 --> 00:20:09.221
+and here you can see that sometimes I can use different ways to ask for the same thing. So, for example, if I would like to ask for a space
+
+00:20:14.696 --> 00:20:17.696
+and a tab, I can either write blank between two columns, or I could write
+
+00:20:22.791 --> 00:20:24.791
+space, and a tab. Then, for example for digits, we have 3 types to write it, so either I use this first
+
+00:20:25.777 --> 00:20:30.777
+style, then I could also choose the second style with D and a backslash, or
+
+00:20:35.866 --> 00:20:38.866
+0 and 9. They are all supported. And then it's up to your personal preference what to choose.
+
+00:20:38.425 --> 00:20:48.425
+They all should work fine in R. Okay, so let me stop here, and then we are going to come back to even more examples.
+

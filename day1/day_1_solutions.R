@@ -15,7 +15,7 @@ getwd()
 
 #Set your current working directory to “Statistical Programming”.
 # 1 b)
-#setwd(".../Statistical Programming")  # ... depends on your folder structure
+setwd(".../Statistical Programming")  # ... depends on your folder structure
 
 # 1 c)
 str1 <- "slumdog"
@@ -54,7 +54,7 @@ exp((2 + 3i) * (4 - 1i))
 exp(complex(real = 2, imaginary = 3) * complex(real = 4, imaginary = -1))
 
 # 2 e)
-482^(1/3)
+(482)^(1/3)
 
 ############################
 ### Exercise 3 (Vectors) ###
@@ -113,7 +113,7 @@ y = exp(-x)
 # 4 a)
 # Create a vector norm of size n = 100 from a normal distribution 
 # with mean 2 and standard deviation 4.
-n <- 100000
+n <- 100
 set.seed(1034) # make results reproducible
 norm <- rnorm(n, mean = 2, sd = 4)  # head(norm)
 
@@ -135,9 +135,9 @@ sd(norm.odd)
 # Furthermore, compute the mean and standard deviation of norm.even 
 # and norm.odd considering only the positive numbers.
 mean(norm.even[norm.even > 0])
-sd(norm.even[norm.even > 0])^2
+sd(norm.even[norm.even > 0])
 mean(norm.odd[norm.odd > 0])
-sd(norm.odd[norm.odd > 0])^2
+sd(norm.odd[norm.odd > 0])
 
 # 4 b)
 # Create a vector pois of size  n = 50 from a poisson distribution 
@@ -148,7 +148,7 @@ pois <- rpois(n, lambda = 15)  # head(pois)
 # Create a new vector pois3 that contains the elements in pois that 
 # are divisible by 3. 
 pois3 <- pois[(pois %% 3) == 0]  # head(pois3)
-n_pois3 <- length(pois3); n_pois3
+n_pois3 <- length(pois3)
 
 # Add random noise from a standard normal distribution to pois3 
 # and store it in a variable pois3.noise.
@@ -284,7 +284,7 @@ sum(List$x); sum(List$y); sum(List$z)
 # deviation of 0.5. Fit a simple linear model using:
 # model <- lm(y~x). Verify that model is a list. 
 # 7 b)
-x <- rnorm(200000, mean = 0, sd = 1)
+x <- rnorm(20, mean = 0, sd = 1)
 x
 y <- 3 + 2.5 * x
 y

@@ -1,0 +1,357 @@
+WEBVTT
+
+
+00:00:03.909 --> 00:00:06.909
+Hello, welcome back to our course. Today, we are going to talk about factors
+
+00:00:16.466 --> 00:00:18.466
+and data frames. What is a factor variable? So a factor variable is a
+
+00:00:22.680 --> 00:00:25.680
+variable or a vector of class 'factor'. And what are the advantages of having factors?
+
+00:00:26.015 --> 00:00:33.015
+Well, they are useful for a correct implementation in statistical modeling.
+
+00:00:32.706 --> 00:00:38.706
+and analyses. They are very useful in many different types of graphics,
+
+00:00:39.327 --> 00:00:43.327
+and they are more efficient when it comes to the memory usage
+
+00:00:46.841 --> 00:00:48.841
+compared to characters. But as you'll see, factors
+
+00:00:51.554 --> 00:00:53.554
+in R are stored as vectors of integer values.
+
+00:00:54.422 --> 00:01:01.422
+So here we have this example, we have a vector F, with two different values, 1 and 2.
+
+00:01:00.952 --> 00:01:05.952
+And then, if we check the class of F, the class of F is numeric.
+
+00:01:08.621 --> 00:01:11.621
+But, if we'd like to coerce that vector to a factor,
+
+00:01:11.950 --> 00:01:15.950
+we could write as.factor, and now we can see that the class
+
+00:01:19.323 --> 00:01:24.323
+has changed to factor, but the values stayed the same. But now we have an additional information, that
+
+00:01:33.186 --> 00:01:36.186
+we have two different levels, 1 and 2. Another way to create factors is to apply this factor function to our vector F
+
+00:01:41.108 --> 00:01:45.108
+and then to define two labels, M and F. Now, once we look at the output, we can see that f.labels
+
+00:01:52.842 --> 00:01:56.842
+has as its values M and F. And here, the levels are M and F, so indeed you can see that 1 and 2 were
+
+00:02:00.291 --> 00:02:02.291
+transformed to M and F. But actually, if now we check
+
+00:02:01.545 --> 00:02:09.545
+the structure of this object in R, you can see that the structure is as follows: We have
+
+00:02:14.717 --> 00:02:16.717
+this integer vector, with an additional information that it has two levels.
+
+00:02:20.288 --> 00:02:23.288
+So indeed, R stores factors as a vector of integers with
+
+00:02:33.011 --> 00:02:36.011
+labels, and labels are of our choice. An alternative way to create a factor is to apply this factor function to a vector with different
+
+00:02:35.828 --> 00:02:44.828
+characters. So, for example, here we have "smoker" and "non-smoker", and then you can see, as an output, we have
+
+00:02:44.698 --> 00:02:51.698
+smoker and no smoker, and then we have that additional information of different levels.
+
+00:02:53.104 --> 00:02:59.104
+Let us now pass to data frames. So, as you might remember from our previous videos,
+
+00:03:04.780 --> 00:03:07.780
+matrices can only contain one data type. And, oftentimes in machine learning, statistics or AI,
+
+00:03:13.242 --> 00:03:18.242
+analysis are often required for data of different types. And, data frame can contain several data types:
+
+00:03:21.732 --> 00:03:26.732
+Numeric integers, factors, and usually, in each row of a data frame, we have a different observation.
+
+00:03:27.270 --> 00:03:35.270
+And in each column, you have a different variable. For example, we can think about having different observations being different cities:
+
+00:03:39.632 --> 00:03:42.632
+Paris, Berlin, Rome, etc. And columns could correspond to different characteristics
+
+00:03:46.558 --> 00:03:49.558
+of these cities. For example the number of inhabitants, latitude, longitude, etc.
+
+00:03:50.047 --> 00:03:54.047
+And then to create a data frame, we need to have vectors
+
+00:03:57.647 --> 00:04:00.647
+of the same length. So now, here we have an example, we have three
+
+00:04:01.242 --> 00:04:10.242
+factors. The first one is A, with numeric values B, with this factor vector, and then we have another vector
+
+00:04:15.625 --> 00:04:17.625
+with numeric values. And now, how can we create a data frame? We could apply a function data.frame
+
+00:04:24.782 --> 00:04:26.782
+to these three vectors bundled together, and then we could also
+
+00:04:32.503 --> 00:04:37.503
+give names to different columns of our data frame. So here you can see that I gave them names age, sex, and siblings, and here,
+
+00:04:38.043 --> 00:04:41.043
+once we now look at the output, we can see that we have a
+
+00:04:40.500 --> 00:04:46.500
+data frame with different rows, and with different columns
+
+00:04:51.263 --> 00:04:54.263
+which correspond to age, sex, and siblings. Another way to construct a data frame is to
+
+00:04:53.903 --> 00:04:59.903
+do it directly from a matrix, so here you can see that I constructed that matrix A.
+
+00:04:59.428 --> 00:05:10.428
+The class of A is a matrix, an array, but if I now try to coerce that to a data frame, I could use a function as.data.frame.
+
+00:05:11.240 --> 00:05:19.240
+And indeed, now you can see that the elements inside are the same. We have different labels for columns
+
+00:05:21.728 --> 00:05:24.728
+V1 to V4, and our rows
+
+00:05:31.390 --> 00:05:33.390
+are just indexed: 1, 2, and 3, and then we can see that the class of A.df is now a data frame.
+
+00:05:34.480 --> 00:05:39.480
+How can we access the elements of our data frame? Well, we could do it through bracketing,
+
+00:05:39.521 --> 00:05:45.521
+or we could do it through using this dollar sign. For example, if I would like to access the first column,
+
+00:05:46.171 --> 00:05:52.171
+I could just apply this bracket to my data frame, and then put 1 on the second place.
+
+00:05:51.989 --> 00:05:55.989
+Another way is to use a dollar sign, and you might remember that
+
+00:05:58.691 --> 00:06:02.691
+in lists, it was similar. So, here I take mydf$Age,
+
+00:06:06.003 --> 00:06:11.003
+and then I can see all the observations for the age column.
+
+00:06:10.844 --> 00:06:17.844
+Another way is to put the name of a column inside the bracket on the second place.
+
+00:06:18.284 --> 00:06:26.284
+We could also access a particular element of our data frame. For example, here I would like to access an element
+
+00:06:26.258 --> 00:06:31.258
+in the third row and third column, and this element is 0 here.
+
+00:06:31.128 --> 00:06:39.128
+We could also change a particular element. How can we do it? Well, we access that particular element and assign it
+
+00:06:48.537 --> 00:06:51.537
+a value of our choice. Here, it would be 2. And now, if I once again check how this element looks like, you can see that, instead of having 0, we have now 2.
+
+00:06:52.586 --> 00:06:58.586
+If we would like to access not only one element or
+
+00:06:59.132 --> 00:07:02.132
+one column, but a few columns, how can we do it?
+
+00:07:09.028 --> 00:07:11.028
+For example, we could create a vector with two different names. Here, I would like to access columns age and sex
+
+00:07:14.080 --> 00:07:17.080
+and put it on the second place of our bracket. And here, also, I'm showing you how I can
+
+00:07:20.398 --> 00:07:22.398
+show you all the rows
+
+00:07:21.877 --> 00:07:27.877
+apart from the second one. So, for example, here you can see that I don't want to have
+
+00:07:33.347 --> 00:07:35.347
+the second row in my data frame, so basically I just use minus 2.
+
+00:07:42.470 --> 00:07:46.470
+Another way to access different columns, different variables,
+
+00:07:56.341 --> 00:08:01.341
+is through attaching the entire data frame. So, if I use function attach, and the name of my data frame, then you can see that I can access these different variables directly. I just type Age
+
+00:08:04.071 --> 00:08:07.071
+and then you can see that as an output. I can just type sex, and we have
+
+00:08:09.315 --> 00:08:13.315
+a factor vector with different levels. And similarly for siblings.
+
+00:08:19.637 --> 00:08:21.637
+If I now would like to, not be able to
+
+00:08:26.581 --> 00:08:30.581
+access these elements directly, then I can detach my data frame from my session.
+
+00:08:29.601 --> 00:08:35.601
+And indeed, if I detach it, then I cannot anymore access
+
+00:08:36.103 --> 00:08:41.103
+particular elements from that data frame. Here you can see that we
+
+00:08:48.696 --> 00:08:52.696
+have an error. Okay. We could also access elements through creating these
+
+00:08:57.428 --> 00:08:59.428
+logical operations. For example, imagine that I would like to access
+
+00:09:06.039 --> 00:09:09.039
+elements, which correspond to males and males who are
+
+00:09:10.369 --> 00:09:12.369
+more than 30 years old. So here you can see that
+
+00:09:16.796 --> 00:09:19.796
+on the first place of our bracket, I inserted this logical expressions,
+
+00:09:24.047 --> 00:09:26.047
+and then you can see that, indeed, I now can see only the fifth row,
+
+00:09:26.463 --> 00:09:31.463
+which correspond to a person who is 76 years old, so indeed, the condition is checked,
+
+00:09:35.738 --> 00:09:39.738
+and then to a male, because sex is M. If I would like to, for example, access males and
+
+00:09:46.743 --> 00:09:48.743
+people over 30, but not necessarily males, so basically male or over 30,
+
+00:09:49.203 --> 00:09:54.203
+how can I do it? I put these two conditions, but instead of AND operator,
+
+00:10:02.425 --> 00:10:04.425
+I insert OR. How can we see that this indeed worked? Well, in the output, now I can see that I have.
+
+00:10:05.750 --> 00:10:09.750
+males, M, M, M, M of different ages,
+
+00:10:16.895 --> 00:10:19.895
+and I have females, but only who are more than 30 years old, because we have females,
+
+00:10:25.035 --> 00:10:28.035
+And then this is 43, 41, and 46.
+
+00:10:32.703 --> 00:10:34.703
+We could also see how can I add a particular variable to my data frame:
+
+00:10:34.602 --> 00:10:40.602
+In my data frame, we had 3 variables, age, sex, and siblings.
+
+00:10:41.332 --> 00:10:46.332
+But now, imagine that I would like to add an income variable to my data frame.
+
+00:10:45.514 --> 00:10:52.514
+How do I do it? Well, through a dollar sign. So, I do mydf$,
+
+00:11:00.250 --> 00:11:03.250
+I give a name to my variable, to my column. And then I assign to it that vector with different values, and you can see now that I
+
+00:11:03.500 --> 00:11:10.500
+have an enlarged data frame with 3 columns, and then the fourth one is the one I have just added.
+
+00:11:19.062 --> 00:11:21.062
+We could also rename and delete certain variables, certain columns, so here you can see that if I apply function names to my data frame,
+
+00:11:28.119 --> 00:11:30.119
+then I have 4 different columns. I have age, sex, siblings, and income, and imagine that now I would like to change the name Income
+
+00:11:30.103 --> 00:11:35.103
+to IncomeUSD. So how do I do it? I apply this function names
+
+00:11:34.733 --> 00:11:42.733
+to my data frame, and then in the bracket, I select that particular name, so names, once again, of my data frame.
+
+00:11:43.080 --> 00:11:50.080
+Was before Income, but now I would like to assign to it a name, IncomeUSD.
+
+00:11:49.693 --> 00:11:53.693
+So here you can see that I'm doing it through that arrow.
+
+00:11:58.943 --> 00:12:00.943
+And another way is to select a particular
+
+00:12:00.663 --> 00:12:04.663
+value from these names, because you can see that names have
+
+00:12:10.282 --> 00:12:13.282
+four elements, so I could just access the fourth element, and I could assign the new name IncomeUSD.
+
+00:12:16.377 --> 00:12:20.377
+I could also remove certain variables. How can I do it? Well, I could just access
+
+00:12:24.950 --> 00:12:27.950
+that particular variable, that particular column through a dollar sign, and I could assign to it
+
+00:12:34.026 --> 00:12:38.026
+NULL. Then you can see if we see the output of my data frame, we have now 3 columns: Sex,
+
+00:12:38.413 --> 00:12:45.413
+Siblings, we removed age, we cannot see age anymore, and then instead of Income, we have IncomeUSD.
+
+00:12:48.376 --> 00:12:53.376
+Another handy thing we could do with our data frames is to
+
+00:12:55.824 --> 00:13:00.824
+sort them. How do I do it? Well, I apply function order to
+
+00:13:07.355 --> 00:13:09.355
+my bracket on the first place. So here you can see that I would like to sort
+
+00:13:11.683 --> 00:13:16.683
+by column Sex. So, to my data frame, I apply this function order by sex,
+
+00:13:17.080 --> 00:13:23.080
+and what is the result? Indeed, I can see that my entire data frame
+
+00:13:23.276 --> 00:13:29.276
+is sorted by values of the column sex. So we have F, F,
+
+00:13:34.916 --> 00:13:37.916
+F, and then M, M, M. We can also sort by several variables.
+
+00:13:39.868 --> 00:13:41.868
+So here, first, I would like to order by sex, 
+
+00:13:41.608 --> 00:13:48.608
+and then, for each sex, I would like to have them ordered by the number of siblings.
+
+00:13:49.189 --> 00:13:54.189
+So here, we can see that I do it through inserting order with two different
+
+00:13:54.655 --> 00:13:59.655
+conditions. And indeed, as an output, I can see that I have a
+
+00:13:59.932 --> 00:14:05.932
+data frame ordered by sex, because first I have F, then I have M.
+
+00:14:06.219 --> 00:14:11.219
+And then I have, within each category of sex, I have
+
+00:14:10.474 --> 00:14:16.474
+different number of siblings. So, you can see that I have 1, 1, 1, 3
+
+00:14:17.198 --> 00:14:22.198
+For females, and then also males are sorted by the number of siblings.
+

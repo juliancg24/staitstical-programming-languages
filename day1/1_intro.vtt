@@ -1,0 +1,540 @@
+WEBVTT
+
+
+00:00:00.506 --> 00:00:07.506
+Hello, welcome back to our course, and let us get started with learning R.
+
+00:00:07.470 --> 00:00:14.470
+What is R? R is a programming environment mainly used for data manipulation,
+
+00:00:20.261 --> 00:00:22.261
+calculation and graphical display. R can be regarded as an implementation of the S language,
+
+00:00:24.997 --> 00:00:28.997
+and it was written by Ihaka and Gentlemen in New Zealand in the 90s.
+
+00:00:29.359 --> 00:00:36.359
+R is great, because it's an open source software, and it offers a great variety of
+
+00:00:41.390 --> 00:00:46.390
+packages covering all fields of statistics and machine learning. It is also available for Windows, Linux, or Mac.
+
+00:00:47.248 --> 00:00:52.248
+We have already learned how to download and install R on
+
+00:00:51.744 --> 00:01:00.744
+our machines, and we definitely do not recommend using the R Graphical User Interface
+
+00:01:01.060 --> 00:01:06.060
+for the development. Instead, it would be a good idea to use a good
+
+00:01:09.765 --> 00:01:14.765
+text editor, or an integrated development environment. In this course, we are going to use RStudio, but
+
+00:01:23.218 --> 00:01:26.218
+feel free to use any other of your choice. And we have already seen that particular window, so you might remember that in R studio, we have
+
+00:01:25.669 --> 00:01:32.669
+4 panes. We have a pane with an editor, we have a pane with a console,
+
+00:01:32.681 --> 00:01:40.681
+we have a pane with these tabs for environment, workspace and the history.
+
+00:01:40.926 --> 00:01:46.926
+And we have a pane with tabs for files, plots, packages, help, etc.
+
+00:01:46.876 --> 00:01:54.876
+How can we use R? Well, definitely we could use it as a calculator, so we could use it for adding numbers,
+
+00:01:54.715 --> 00:02:01.715
+we could use it for subtracting numbers, multiplying numbers, dividing, taking a power of a number,
+
+00:02:08.234 --> 00:02:12.234
+doing integer division or modular operators. There are also many pre-programmed functions we could apply to
+
+00:02:19.645 --> 00:02:23.645
+numbers, for example SQRT. Apply to a number gives us the square root of that particular number. So here we have a square root of 2.
+
+00:02:24.378 --> 00:02:33.378
+Then, also, sine, cosine, and tangent are pre-programmed. So, for example, if we apply SIN
+
+00:02:37.977 --> 00:02:39.977
+to pi, we'll get a sine of
+
+00:02:41.444 --> 00:02:45.444
+this constant pi, which is also pre-programmed in R.
+
+00:02:51.083 --> 00:02:55.083
+We have also R cosine, R sine, etc., exponent, and here, another example of a pre-programmed function is,
+
+00:02:55.406 --> 00:02:59.406
+natural logarithm, which is just log applied to a particular number.
+
+00:03:05.253 --> 00:03:10.253
+Right. There are also many other functions, for example a floor function applied to pi gives us
+
+00:03:10.163 --> 00:03:15.163
+the largest integer, smaller equal to pi. So in this case, it would be 3.
+
+00:03:21.763 --> 00:03:24.763
+A ceiling function applied to pi gives us the smallest integer, larger equal than pi. In this case, it would be 4.
+
+00:03:25.222 --> 00:03:31.222
+We have also trunc function, which, after applying it to
+
+00:03:40.103 --> 00:03:44.103
+pi, would give us an integer, but closer to zero. So basically, here, we can see that 3 is closer to 0 than 4, so definitely we'd get 3.
+
+00:03:51.984 --> 00:03:54.984
+But now, attention when it comes to using trunc and floor to negative numbers, because here, once again, trunc, what trunc does, is to
+
+00:03:55.045 --> 00:04:02.045
+give us an integer part closer to zero. So if we apply trunc to minus pi,
+
+00:04:10.512 --> 00:04:13.512
+integer part closer to 0 is minus 3. Whereas, for floor function, applied to minus pi,
+
+00:04:13.854 --> 00:04:18.854
+we have the largest integer smaller equal than minus pi. In this case it's
+
+00:04:23.042 --> 00:04:26.042
+minus 4. So, as you can see, trunc and floor applied to negative numbers,
+
+00:04:30.062 --> 00:04:34.062
+give us, different outputs, minus 3 minus 4. Whereas trunc and floor applied to positive
+
+00:04:37.003 --> 00:04:40.003
+numbers give us the same output. There is also a round function,
+
+00:04:46.360 --> 00:04:51.360
+which is basically, applied once again to number pi, and it gives us the nearest integer, in this case, it's 3.
+
+00:04:59.442 --> 00:05:01.442
+Right. And now, let us talk about logical operators, so definitely we have a smaller, smaller or equal, larger, larger or equal,
+
+00:05:01.962 --> 00:05:09.962
+unequal and equal, and how can we test them? Well, we could ask, is 2 smaller than 3, and then the answer is
+
+00:05:15.065 --> 00:05:17.065
+yes, it's true. Then we have an ampersand symbol for AND,
+
+00:05:16.488 --> 00:05:24.488
+and a vertical bar, symbol for OR. And if we use ampersand or vertical bar once,
+
+00:05:24.701 --> 00:05:32.701
+it also applies to vectors, so basically it applies to every element of a vector, is an element-wise operator.
+
+00:05:32.507 --> 00:05:38.507
+Whereas if we use it twice, then it only applies to the first element of a vector,
+
+00:05:45.363 --> 00:05:47.363
+or just a scalar. And once again, here we could test if they work, we could ask R: "Is 2 smaller than 3 AND
+
+00:05:47.566 --> 00:05:53.566
+is 2 larger than 4?" and the answer is clearly false, because the second element
+
+00:05:57.695 --> 00:05:59.695
+is not satisfied here. Alright, how do you write R scripts?
+
+00:06:04.023 --> 00:06:09.023
+So definitely you could write them in the editor, so it was, the
+
+00:06:15.259 --> 00:06:18.259
+top left pane in RStudio. And then, these codes could be stored in files with ending .r.
+
+00:06:17.742 --> 00:06:23.742
+And then to run single lines from a script, we could just hit
+
+00:06:24.484 --> 00:06:29.484
+Ctrl and Enter, and then definitely I advise you to
+
+00:06:35.008 --> 00:06:38.008
+comment on your code, using this hashtag. So if I write hashtag, this line is a comment, then
+
+00:06:40.644 --> 00:06:45.644
+R knows that this is just a comment, and it shouldn't execute the operation in that particular line.
+
+00:06:47.507 --> 00:06:53.507
+Now, let us briefly talk about objects, so what is an object? An object in R
+
+00:06:53.975 --> 00:06:58.975
+can be nearly everything. It can be scalar, a matrix, a function, or even a plot.
+
+00:06:59.244 --> 00:07:06.244
+And the name of an object can be every combination of letters, numbers, and special characters.
+
+00:07:09.808 --> 00:07:12.808
+Names should begin with the letter, and Names are case sensitive.
+
+00:07:17.143 --> 00:07:19.143
+This is, like, something to be reminded while you code. This is very important.
+
+00:07:18.695 --> 00:07:27.695
+And, also overwriting objects causes no warning in R, something, another thing to have a note of.
+
+00:07:33.056 --> 00:07:35.056
+Now let us talk about the variable assignment. So, if we'd like to
+
+00:07:35.116 --> 00:07:40.116
+assign 2 to A, what do I do? I just write A
+
+00:07:39.891 --> 00:07:43.891
+and an arrow directed at A, and then I write 2.
+
+00:07:44.006 --> 00:07:50.006
+We could also use the equality symbol, so I could also use here B equals 2.
+
+00:07:56.026 --> 00:08:01.026
+This arrow could be directed in the different direction, so I could assign 2 to C.
+
+00:08:00.743 --> 00:08:06.743
+And now, always the arrow directs towards the name of a variable.
+
+00:08:06.883 --> 00:08:13.883
+And then we could also do the assignment in one line. So basically, I could write D is E is F is 3.
+
+00:08:21.605 --> 00:08:25.605
+And we could definitely also use the assign function. And while he printed the results, we could definitely
+
+00:08:36.253 --> 00:08:39.253
+print them, like, by asking to have printed C, E, and Y in one line, but this is not really recommended, it's not a great coding style to have them all in one line
+
+00:08:46.042 --> 00:08:49.042
+and with that semicolon. So, as you can see, there are many choices when it comes to variable assignment.
+
+00:08:55.743 --> 00:08:57.743
+This arrow is recommended in Headley Wickham's style guide,
+
+00:09:02.549 --> 00:09:05.549
+but of course select whatever works for you. When it comes to my personal usage,
+
+00:09:11.487 --> 00:09:13.487
+I use arrows for functions and this quality sign for variables,
+
+00:09:19.766 --> 00:09:21.766
+vectors and matrices. Now, if we would like to list
+
+00:09:21.076 --> 00:09:33.076
+all the objects, then we just can type ls and parentheses, and we have all the objects listed, so these are all the objects you saw.
+
+00:09:32.894 --> 00:09:39.894
+in the past slice: a, b, c, d, e, f, y.
+
+00:09:46.285 --> 00:09:48.285
+If we would like to remove one object from a workspace, then what do we type? We type
+
+00:09:48.169 --> 00:09:53.169
+rm(a), because I would like to remove object a, and indeed
+
+00:09:59.050 --> 00:10:03.050
+once again, once I type ls(), a is removed. If I would like to remove all objects, then we can write
+
+00:10:08.945 --> 00:10:10.945
+rm list equals to ls, and it removes all objects. And as you can see now, if I type ls,
+
+00:10:19.886 --> 00:10:22.886
+there are no objects in my workspace. Now let us briefly talk about data types. So, we could use, function mode applied to object,
+
+00:10:29.050 --> 00:10:31.050
+to get the object's type. So we have different types of objects. So, for example, we could have a character.
+
+00:10:35.309 --> 00:10:39.309
+A character is a string of arbitrary characters. And these are always enclosed in quotation marks
+
+00:10:46.912 --> 00:10:48.912
+like this one, or the other one. We could also have a numeric as a type, which is, for example, a real number.
+
+00:10:49.024 --> 00:10:57.024
+And, logical, true or false, and complex number, a function or a list. And here, as you can see, once I apply
+
+00:11:00.805 --> 00:11:02.805
+mode, for example, to that character string, to "Hallo", then I get
+
+00:11:03.102 --> 00:11:09.102
+character as an object type, if I applied it to TRUE, then I get logical
+
+00:11:14.925 --> 00:11:16.925
+as an object type. When it comes to the R main structures:
+
+00:11:19.357 --> 00:11:23.357
+We have vectors. Vectors are one-dimensional arrays of, for example, length m.
+
+00:11:24.230 --> 00:11:28.230
+And in vectors, all elements must be of the same type.
+
+00:11:37.164 --> 00:11:41.164
+Matrices are two-dimensional, m times n arrays. In the array, all elements must be of the same time once again.
+
+00:11:45.683 --> 00:11:48.683
+And then, an array: It's a generalization of matrices
+
+00:11:54.504 --> 00:11:58.504
+and it can be more than two-dimensional. Very useful data frames, so data frames are two-dimensional structures
+
+00:11:59.051 --> 00:12:10.051
+like matrices, but data frames allow different types in different columns, and this is very handy for data analysis. You'll see that you'll work a lot with
+
+00:12:10.055 --> 00:12:20.055
+data frames, and we have lists, once again, extremely popular, because this is a collection of objects of arbitrary types and structure, so very, very handy
+
+00:12:24.978 --> 00:12:26.978
+while doing data analysis. Now, let us talk about classes. So, the class of an object
+
+00:12:26.856 --> 00:12:32.856
+determines how it is treated, and this is related to object-oriented programming.
+
+00:12:32.933 --> 00:12:37.933
+And then to learn about the class of an object, we apply class
+
+00:12:41.519 --> 00:12:45.519
+to our object, and we get its particular class. So, all object types
+
+00:12:51.023 --> 00:12:53.023
+correspond to classes. A vector, it's not its own class. So, basically, if I apply
+
+00:13:00.385 --> 00:13:02.385
+class to a vector, it will return the type of its element. So, for example, if I have numbers, it will return
+
+00:13:07.285 --> 00:13:09.285
+"numeric", if I have some letters or names, it will return "character", etc.
+
+00:13:10.903 --> 00:13:15.903
+All other main structures listed here, apart from the vector,
+
+00:13:22.269 --> 00:13:25.269
+have their own distinct classes. And all the important classes include integer, so here we have integer values, and factor.
+
+00:13:27.046 --> 00:13:32.046
+Factor is categorical data stored as integers with associated labels.
+
+00:13:37.102 --> 00:13:41.102
+We have also these two, other handy functions, is.*() a certain name, and as.*() a certain name.
+
+00:13:41.463 --> 00:13:46.463
+So, basically, if we write is.*() and a certain class, we are asking:
+
+00:13:47.037 --> 00:13:52.037
+"Is a particular object of this certain class, so is this numeric?"
+
+00:13:52.138 --> 00:13:57.138
+If we apply it, for example, to 1, and then we have an answer, yes, this is numeric.
+
+00:13:59.787 --> 00:14:01.787
+If we apply is.character() to 1,
+
+00:14:01.940 --> 00:14:05.940
+then we have false, because it's clearly not character, it's numeric.
+
+00:14:09.705 --> 00:14:11.705
+as.*(), so as and the name of a class,
+
+00:14:16.241 --> 00:14:19.241
+this function attempts to coerce an object to
+
+00:14:18.599 --> 00:14:23.599
+a particular kind. So, for example, here, if I type as.character,
+
+00:14:29.889 --> 00:14:31.889
+it will try to coerce, so change, the class of this particular object to a
+
+00:14:34.147 --> 00:14:38.147
+character 1, and then indeed what has happened, it has done it. So now one is
+
+00:14:42.789 --> 00:14:46.789
+treated as a character, not a number anymore. Right, so,
+
+00:14:53.475 --> 00:14:58.475
+first of all here, what is a workspace? A workspace in R, is all the objects, vectors, scalars, functions, created in a particular session.
+
+00:15:01.589 --> 00:15:04.589
+And you might remember that in R studio, workspace was visible
+
+00:15:09.259 --> 00:15:11.259
+on the Environment tab.
+
+00:15:10.957 --> 00:15:15.957
+At the top right. And, when it comes to the history: History
+
+00:15:22.981 --> 00:15:24.981
+has all the commands typed in a session. So, once again, in RStudio, it was under history tab
+
+00:15:27.407 --> 00:15:29.407
+on the top right, once again.
+
+00:15:31.045 --> 00:15:39.045
+Now, a few other very handy functions. So, for example, if I would like to set a working directory, so basically where
+
+00:15:38.499 --> 00:15:44.499
+all the output should go to, then I could just type setwd(),
+
+00:15:51.307 --> 00:15:53.307
+and then my working directory. Then, if I would like to get a working directory, I type getwd().
+
+00:15:54.156 --> 00:15:58.156
+If I would like to save a workspace to an R data,
+
+00:16:04.351 --> 00:16:06.351
+then I type save.image(). And if you would like to, save a history, so all the commands,
+
+00:16:10.457 --> 00:16:13.457
+I type safehistory(). To load a workspace, I can just write load(),
+
+00:16:18.153 --> 00:16:22.153
+and then in the quotation marks, this R data. And if I would like to load the history, I can just type
+
+00:16:21.801 --> 00:16:29.801
+loadhistory(). And actually, once I do it, it enables me to browse through history
+
+00:16:34.526 --> 00:16:37.526
+in command line, using up and down. A few other handy functions, so source():
+
+00:16:47.583 --> 00:16:51.583
+What does source do? So, if I apply source to this R file, then basically source executes everything what's there. So functions, it just,
+
+00:16:54.608 --> 00:16:58.608
+saves variables to the environment, etc. Now, sink(). What does sink so? So, sink, first
+
+00:16:58.697 --> 00:17:04.697
+creates a file, and here the file will be called abc.txt,
+
+00:17:10.088 --> 00:17:12.088
+and then, it captures everything from the console output. So here, if I type
+
+00:17:12.669 --> 00:17:17.669
+sink(abc.txt), the file is created, then I type 3 plus 5.
+
+00:17:20.569 --> 00:17:24.569
+Then, in that particular file, I would have 8 captured. And then if I would like to close
+
+00:17:33.782 --> 00:17:36.782
+sink, then I just need to write sink(). And two other functions, very handy ones, q() and quit(), it
+
+00:17:40.120 --> 00:17:43.120
+allows us to quit R. Okay, and now let us
+
+00:17:49.527 --> 00:17:51.527
+talk about R packages. Packages are very useful, because they are bundles of functions and datasets,
+
+00:17:52.281 --> 00:17:56.281
+and before using a package, we need to install it on our machine.
+
+00:17:56.297 --> 00:18:00.297
+How do we do it? We can call this function install.packages,
+
+00:18:03.051 --> 00:18:06.051
+and then, in the quotation marks, we write the name of a package.
+
+00:18:11.791 --> 00:18:13.791
+To access a package's content, we must load it and attach it to our particular session.
+
+00:18:14.453 --> 00:18:22.453
+How do we do it? Well, we just type library(), and once again, the name of a package, or require(). And once again, the name of a package.
+
+00:18:22.882 --> 00:18:28.882
+Here, remember that every time we start a new session and we would like to access
+
+00:18:29.401 --> 00:18:36.401
+the package's content, we'd need to call it back, so using library or require, whereas installing packages
+
+00:18:40.128 --> 00:18:42.128
+is done only once. Library() throws an error,
+
+00:18:46.101 --> 00:18:48.101
+if the package is not found. Whereas, require() only gives us a warning
+
+00:18:55.153 --> 00:18:58.153
+and returns false. If you only want to use a single function from a package, you don't need to load it, actually,
+
+00:18:59.783 --> 00:19:05.783
+you can access that function directly. So how do we do it? We just type the name of a package
+
+00:19:14.468 --> 00:19:17.468
+:: and then the name of a function. Now, let us look at the example. So, I would like to install package mvtnorm,
+
+00:19:20.465 --> 00:19:22.465
+so install.packages("mvtnorm")
+
+00:19:31.005 --> 00:19:32.005
+Then, if I would like to, update packages, then I could also type update.packages.
+
+00:19:34.475 --> 00:19:37.475
+If I would like to remove packages from my machine. I could type remove.packages.
+
+00:19:38.151 --> 00:19:44.151
+Now, if I would like to show all installed libraries, I type library().
+
+00:19:43.529 --> 00:19:51.529
+And then, if I would like to load and attach library, and you are going to use it a lot while coding, then I write library("mvtnorm"),
+
+00:19:57.502 --> 00:20:01.502
+or require("mvtnorm"). Now, if I would like to use only one function from that particular package
+
+00:20:07.194 --> 00:20:12.194
+function here, dmvnorm, I call mvtnorm:: and then the name of a function, and then I call this particular
+
+00:20:21.459 --> 00:20:25.459
+function. We could also use search(), to show attached packages and data frames, and ls(2) and then here the second element, what does it do? Well, it shows us
+
+00:20:28.059 --> 00:20:30.059
+functions for the second package.
+
+00:20:30.246 --> 00:20:33.246
+How do we get help? Well, definitely, we can just type
+
+00:20:32.552 --> 00:20:43.552
+help(), and then this would display the help page for a topic. For example, if I would like to get some help for the sin function, then I just write
+
+00:20:53.273 --> 00:20:55.273
+help(sin). Question mark, and you might remember I used question mark in our video with the intro to RStudio,
+
+00:21:00.837 --> 00:21:02.837
+this is equivalent to help. If we type help.search(),
+
+00:21:02.765 --> 00:21:07.765
+then it searches the help system for a character string, so it would
+
+00:21:09.290 --> 00:21:13.290
+just basically show us all the functions, elements of the help system,
+
+00:21:19.023 --> 00:21:22.023
+where this string appears. And, ?? is equivalent to help search.
+
+00:21:28.841 --> 00:21:33.841
+help.start() opens the HTML version of R's documentation. And if we'd like to get some info about a particular package,
+
+00:21:34.438 --> 00:21:38.438
+then we could just type library(help = "name of the package").
+
+00:21:38.805 --> 00:21:42.805
+For example, if I would like to get some info about mvtnorm
+
+00:21:44.814 --> 00:21:48.814
+package, I just type library(help = "mvtnorm").
+
+00:21:58.479 --> 00:22:01.479
+Of course, to get even more help. We could just google it, or use any browser of our choice. We could look at Stack Overflow, or QuickR.
+
+00:22:01.781 --> 00:22:11.781
+Of course, nowadays, using chat boxes is extremely popular, and definitely people use it to even write entire chunks of code,
+
+00:22:16.242 --> 00:22:22.242
+it's very, very popular. And then we also have R mailing lists, but I would say these are less
+
+00:22:28.923 --> 00:22:32.923
+common among new users, I would say. Alright, and then, to sum it up, I will just conclude with a list of readings. Of course
+
+00:22:39.219 --> 00:22:42.219
+there are plenty of books and multitude of resources on R, because R is popular
+
+00:22:48.978 --> 00:22:53.978
+among many, many communities in research and industry. And there are many books, I would definitely
+
+00:22:56.898 --> 00:23:00.898
+recommend you to have a look at this Hadley Wickham's style guide.
+
+00:23:00.371 --> 00:23:05.371
+But please have a look, maybe you'll find something which is particularly
+
+00:23:15.401 --> 00:23:17.401
+amusing and interesting for you. Okay, so thank you for today, and I see you at the next video. Thank you.
+

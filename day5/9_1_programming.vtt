@@ -1,0 +1,156 @@
+WEBVTT
+
+
+00:00:09.955 --> 00:00:11.955
+Hello, welcome back to our course. And today we are going to talk about programming in R. Alright, so let us talk first about functions. Functions implement tasks
+
+00:00:17.730 --> 00:00:20.730
+you want to do repeatedly, and they help to get our code cleaner and modularize it.
+
+00:00:28.672 --> 00:00:32.672
+So basically here, I define a function, myfun, through function() and then through passing parameters to it. So basically here, my function
+
+00:00:39.800 --> 00:00:41.800
+returns X times X. And then the return statement terminates the function and returns the value inside the parenthesis.
+
+00:00:42.007 --> 00:00:50.007
+So here, now I could call a function. How do I call a function? So basically, I type the name of the function, and I pass the parameter.
+
+00:00:50.420 --> 00:00:57.420
+And then here, in the second call, I specifically ask for the name. So basically, I pass
+
+00:01:01.631 --> 00:01:05.631
+the parameter with its name. Functions may take several parameters.
+
+00:01:05.464 --> 00:01:11.464
+And different parameters are separated by comma. So here, I define another function.
+
+00:01:12.146 --> 00:01:20.146
+A function with two parameters, X and A, and then inside my function, I define this r, which is A times sin of X.
+
+00:01:20.340 --> 00:01:24.340
+And then I return r. And you can see that
+
+00:01:25.259 --> 00:01:28.259
+once I call my function, then I pass these two parameters.
+
+00:01:41.082 --> 00:01:44.082
+So, when naming and calling parameters. the order doesn't matter. So we can see that I can call my function by first stating X, then A, then I could call my function by first stating A and X.
+
+00:01:44.724 --> 00:01:49.724
+And the output is the same. Here, you can see that I could also define my function
+
+00:01:52.985 --> 00:01:54.985
+without using curly brackets if the function is short.
+
+00:02:00.922 --> 00:02:03.922
+But usually, this way, with a curly bracket, it's a very good way to define functions, because it's very easy to read
+
+00:02:10.824 --> 00:02:14.824
+what you have written in your script. Functions may have optional parameters, and optional parameters have default values.
+
+00:02:15.182 --> 00:02:28.182
+We can call the function with or without the optional parameter. So here, A is an optional parameter with default 1. And then, once again, I define my function with X, a regular parameter,
+
+00:02:28.293 --> 00:02:38.293
+and A, a default parameter. So here, what can we see? I passed my function pi over 2, 2, so I provide a different value of A.
+
+00:02:38.610 --> 00:02:42.610
+But I could also use a default value of A, so without
+
+00:02:46.961 --> 00:02:48.961
+passing A at all. A function can return an R data structure
+
+00:02:49.273 --> 00:02:56.273
+basically of any type. Scalar, vector, matrix, data frame, array, list.
+
+00:02:56.526 --> 00:03:03.526
+Whatever you defined it to return. Here, I would like to have a function with two parameters.
+
+00:03:08.203 --> 00:03:10.203
+One regular, one optional. And then I define these two elements, R1 and R2.
+
+00:03:18.173 --> 00:03:22.173
+And here, I would like to return a list with two named elements, they are named R1 and R2, and indeed, once I call this function, and I pass the parameter
+
+00:03:22.122 --> 00:03:27.122
+as an output, I get a list with two elements, R1 and R2.
+
+00:03:27.498 --> 00:03:33.498
+We could call the same function in different ways. So here, you can see that I defined a function myfun4
+
+00:03:45.546 --> 00:03:48.546
+with 3 parameters, two are default parameters, one is a regular parameter, and I'm returning this vector of R1 and R2. And here, in the first call, I'm just calling this function, and I pass X.
+
+00:03:53.319 --> 00:03:55.319
+A and B are defaults. Here, I'm, calling this function, I pass X, A and B explicitly. 
+
+00:04:00.697 --> 00:04:02.697
+Then, I call the function, and then I pass X and A, 
+
+00:04:02.391 --> 00:04:09.391
+and B is given as a default. Here, similarly, I pass X,
+
+00:04:12.449 --> 00:04:15.449
+I pass A, and B is given as a default. On the other hand, here I pass X,
+
+00:04:16.397 --> 00:04:19.397
+and I pass B, but A is given as a default.
+
+00:04:24.673 --> 00:04:29.673
+Functions shouldn't depend on variables defined outside of it. And then functions should only provide an output, but not change
+
+00:04:38.584 --> 00:04:41.584
+anything unintentionally, so no side effects. So, this is a function, and this is an example how we shouldn't really define the function. So, first of all, you can see that this function
+
+00:04:46.522 --> 00:04:49.522
+takes as an output only one parameter. But first, inside, without telling anyone
+
+00:04:54.589 --> 00:04:58.589
+it changes settings of PAR for plotting. And then, it uses Y, which was defined outside of it.
+
+00:05:06.095 --> 00:05:10.095
+So, basically here, we would get an error that if we hadn't defined Y, then we'd get an error that 
+
+00:05:14.473 --> 00:05:17.473
+the function cannot be executed, because Y is not defined. Here, it's a good practice to
+
+00:05:21.067 --> 00:05:24.067
+introduce this on.exit() expression/function inside of our functions, because,
+
+00:05:27.589 --> 00:05:31.589
+basically, it runs the expression right before the function finishes, whether it ends normally,
+
+00:05:36.010 --> 00:05:38.010
+returns early, or errors. And then, for multiple
+
+00:05:43.108 --> 00:05:47.108
+on.exit() calls, we use add=TRUE. So, how to do it better? So, how to define function in a better way?
+
+00:05:47.126 --> 00:05:51.126
+First of all, I'll pass two parameters here, X and Y.
+
+00:05:53.871 --> 00:05:56.871
+And then, here you can see that I save the graphics setting.
+
+00:05:56.771 --> 00:06:04.771
+And then you can see that now I passed this graphic setting to my on.exit. So basically, it means that I would restore them
+
+00:06:04.533 --> 00:06:12.533
+To my default setting on exit from this function. Then I make a plot, one by two,
+
+00:06:12.806 --> 00:06:16.806
+and then we have the first plot, and then the second plot.
+
+00:06:16.810 --> 00:06:24.810
+Alright, now let us talk about set operations. We can perform set operations on vectors, so here let us define two vectors, A and B.
+
+00:06:25.311 --> 00:06:39.311
+So if I would like to check which elements of A are in B, I could just check it using this percentage sign and in, so I check if A is in B, and we have false to true, because basically 1 is not in B.
+
+00:06:39.783 --> 00:06:47.783
+Then I could create a union, so basically all elements glued together, then the intersection, so basically elements both in A and B.
+
+00:06:48.333 --> 00:06:52.333
+And then the set difference, so elements not in both vectors, so this is one. Thank you!
+

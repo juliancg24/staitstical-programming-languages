@@ -1,0 +1,435 @@
+WEBVTT
+
+
+00:00:05.640 --> 00:00:08.640
+Hello! Welcome back to our course. Today, we are going to talk about variables and vectors.
+
+00:00:08.495 --> 00:00:14.495
+Alright, so variables store objects in R, and objects can have any
+
+00:00:14.393 --> 00:00:22.393
+structure and class, and then we could perform operations on variables. For example, imagine that now I would like to define
+
+00:00:22.328 --> 00:00:29.328
+variable A, and I would like to assign to A number 2, so basically we could do this arrow here.
+
+00:00:35.201 --> 00:00:37.201
+And I would like to know the exponent of A, so I apply a function X to A.
+
+00:00:38.111 --> 00:00:44.111
+Now, I would like to define the second variable, B. I would like to assign a number 3 to B.
+
+00:00:44.262 --> 00:00:52.262
+And then, I would like to know the sum of A and B, so I just write A plus B, and this
+
+00:00:57.202 --> 00:01:01.202
+gives me 5. We could also define a character variable, so basically here, you can see that I'm assigned to see "hello",
+
+00:01:08.044 --> 00:01:10.044
+but C could be also used to create new vectors. So here you can see that I created a vector
+
+00:01:10.096 --> 00:01:19.096
+by merging A and B, and you can see that the output here is just 2 and 3, because I merged two variables A and B.
+
+00:01:19.144 --> 00:01:24.144
+Alright, so this is the first way to define vectors, but what are actually
+
+00:01:26.900 --> 00:01:31.900
+vectors in R? So vectors are these data structures, equivalent to mathematical vectors.
+
+00:01:34.899 --> 00:01:37.899
+And entries in vectors must be of the same type.
+
+00:01:37.459 --> 00:01:44.459
+Numerical vectors support appropriate mathematical operations, and let us have a look at that.
+
+00:01:44.652 --> 00:01:47.652
+So, for example, here, I would like to define the vector A,
+
+00:01:54.478 --> 00:01:57.478
+and I'm just listing all elements in A. Now, I would like to also define a vector B, and then I would like to define it through
+
+00:01:57.901 --> 00:02:02.901
+a range of values. So basically, I would like to have, in B, all the values from 1 to 3,
+
+00:02:02.941 --> 00:02:07.941
+and then you can see that, indeed, once I type B, I have all the values from
+
+00:02:07.463 --> 00:02:16.463
+1 to 3. Another way to define a vector, here I'm defining vector C, is to use this function seq().
+
+00:02:16.458 --> 00:02:29.458
+Here, I'm defining the first value, 1, the last value, 3, and then by is a parameter which tells me the step size between the elements of this vector. Step size
+
+00:02:35.238 --> 00:02:37.238
+here is one. Another way to define a vector is to use the function rep().
+
+00:02:37.483 --> 00:02:43.483
+In the function rep(), I'm just telling R, I would like you to repeat
+
+00:02:49.158 --> 00:02:51.158
+this number, 1.5. And how many times? Here, 3 times. So we have 1.5, 1.5, 1.5.
+
+00:02:55.071 --> 00:02:58.071
+Now we could also define this character vector. So here, you can see that E is composed of characters.
+
+00:03:00.280 --> 00:03:03.280
+H-a-l-l-o, hello. And then finally here, in f,
+
+00:03:04.142 --> 00:03:09.142
+I created a vector, which has
+
+00:03:14.497 --> 00:03:20.497
+elements, this character A, and numbers from 2 to 4. But what has happened here? You can see that, actually, two
+
+00:03:25.697 --> 00:03:27.697
+to four were coerced to characters. Why? Because we said that, actually,
+
+00:03:39.660 --> 00:03:43.660
+entries of the vector must be of the same type. Okay, we could also define vectors in a different way. We could create a random vector from a probability distribution.
+
+00:03:43.386 --> 00:03:50.386
+And in R, to do that, we basically use this function r*, 
+
+00:03:55.441 --> 00:03:58.441
+so to have random numbers from normal distribution, we use rnorm(),
+
+00:04:03.548 --> 00:04:06.548
+from Poisson distribution, we use rpois(), and from exponential distribution, we use
+
+00:04:06.821 --> 00:04:14.821
+rexp(). So, usually, when working with random functions, you should set a seed
+
+00:04:14.395 --> 00:04:23.395
+first, to be able to then reproduce exactly the same results. So basically, to be able to reproduce exactly the same
+
+00:04:30.472 --> 00:04:32.472
+randomly generated numbers. As you can see, I'm setting a seed, set.seed1211.
+
+00:04:32.576 --> 00:04:37.576
+And then I'm just defining this vector, which is now a vector
+
+00:04:44.646 --> 00:04:46.646
+composed of three random variables, these random variables are distributed according to the normal distribution
+
+00:04:52.935 --> 00:04:56.935
+with mean 0 and standard deviation 1. And similarly, we could use function d*(), p*(), and q*(),
+
+00:04:59.714 --> 00:05:05.714
+to have a density distribution, or quantile functions from different distributions.
+
+00:05:08.628 --> 00:05:12.628
+Alright, how can I access elements of a vector?
+
+00:05:13.180 --> 00:05:17.180
+Basically, to access an element of a vector, I need to use brackets.
+
+00:05:17.543 --> 00:05:23.543
+And basically, as you can see, if I define this vector A, and I would like to access the third element,
+
+00:05:29.361 --> 00:05:31.361
+I write A[3], and then you can see that as an output, I have 1.
+
+00:05:39.303 --> 00:05:42.303
+And indeed, that was the third element of my vector. So, element indexing in R starts from 1.
+
+00:05:42.587 --> 00:05:49.587
+And here, as you can see, a negative index returns all elements but the indexed ones.
+
+00:05:49.581 --> 00:05:53.581
+So, for example, here, if we follow up with our example:
+
+00:05:58.005 --> 00:06:02.005
+Here in that bracket, I selected elements from 1 to 2, elements from 1 to 2 are these:
+
+00:06:01.977 --> 00:06:06.977
+Number 2 and 3. And as an output, I have number 2 and 3.
+
+00:06:10.736 --> 00:06:13.736
+And then, negative indexing. What do I have here? So basically, I'm telling R:
+
+00:06:13.935 --> 00:06:19.935
+Give me all the elements, show me all the elements apart from the first and the third.
+
+00:06:25.280 --> 00:06:29.280
+First element was 2, third element was 1. And what I can see, all the remaining elements, so 3 and 4
+
+00:06:30.256 --> 00:06:35.256
+from that vector. So I don't want R here, once again, to show me elements 1 and 3.
+
+00:06:35.599 --> 00:06:43.599
+All right. Now, once again, here we have this vector A, and then I would like to ask
+
+00:06:46.937 --> 00:06:48.937
+R to tell me which of the elements inside
+
+00:06:49.180 --> 00:06:57.180
+this vector are smaller than 3. And I can see that R told me that the first element is smaller,
+
+00:06:56.778 --> 00:07:01.778
+the second is not. The third is smaller, and the fourth is not.
+
+00:07:02.070 --> 00:07:08.070
+Now, I would like to also maybe ask R to tell me which indices
+
+00:07:08.145 --> 00:07:14.145
+refer to these elements, which are indeed smaller. I could use a function:
+
+00:07:13.896 --> 00:07:22.896
+which A < 3 gives me 1 and 3? Why? Because the element on the first position
+
+00:07:27.962 --> 00:07:31.962
+and on the third position was smaller than 3. Now, which gives me the indices, but
+
+00:07:35.052 --> 00:07:38.052
+if I would like to ask R, which are these numbers with the indices,
+
+00:07:38.315 --> 00:07:45.315
+which are basically here, smaller than 3, what do I do? There are two ways to do it:
+
+00:07:49.782 --> 00:07:52.782
+Here, I could do it through bracketing without the which function, so I'm telling R:
+
+00:07:55.815 --> 00:07:58.815
+This is my vector A, and now A smaller than 3, you remember,
+
+00:08:02.080 --> 00:08:07.080
+it gives us this vector with logical elements. And now, here
+
+00:08:16.665 --> 00:08:20.665
+I just put A minus 3 to my bracket. And as an output, I have 2 and 1. So in this way, I can see which are these numbers, which are smaller than 3,
+
+00:08:26.592 --> 00:08:28.592
+in vector A. Another way is to use directly a function which, so A,
+
+00:08:33.216 --> 00:08:35.216
+and then, once again, which A smaller than 3, we know that which A smaller than 3.
+
+00:08:40.354 --> 00:08:42.354
+Gives us an index. Of a number, or indices of numbers,
+
+00:08:42.893 --> 00:08:48.893
+which are smaller than 3 in vector A, so basically I'm just asking R now in the bracket
+
+00:08:54.205 --> 00:08:57.205
+to give me numbers with these indices defined through function which(),
+
+00:08:56.900 --> 00:09:01.900
+and as you can see, the result is the same, it's 2 1, so basically
+
+00:09:05.777 --> 00:09:07.777
+I can see the numbers in a vector A, which are smaller than 3.
+
+00:09:08.000 --> 00:09:17.000
+All right, so now a little bit of vector algebra. Here, I'm defining these two new vectors, A and B.
+
+00:09:22.757 --> 00:09:27.757
+They are defined through just listing the elements. And then I could definitely define
+
+00:09:26.736 --> 00:09:35.736
+an operation on this vector. For example, I could divide that vector by 2. So A divided by 2, and I have exactly
+
+00:09:35.445 --> 00:09:44.445
+all the elements divided by 2. I could multiply all the elements by 2, so here you can see all the elements multiplied by 2.
+
+00:09:44.435 --> 00:09:50.435
+I could do element-wise multiplication, so if I have two vectors of the same length
+
+00:09:56.308 --> 00:09:58.308
+and then, if I write A*B, then all the elements would be multiplied by
+
+00:10:04.517 --> 00:10:10.517
+each other. I could define an inner product, so inner product, what do I have? So I have the first element of the first vector, the first element of the second vector
+
+00:10:15.508 --> 00:10:17.508
+plus the second element of the first vector, the second element of the second vector,
+
+00:10:17.547 --> 00:10:22.547
+plus, the third element of the first vector and the third element
+
+00:10:23.002 --> 00:10:28.002
+of the second vector. So I have 1 plus 4 plus 9
+
+00:10:32.821 --> 00:10:36.821
+and then this inner product gives me 14. We could also define an outer product, so outer product here.
+
+00:10:39.399 --> 00:10:41.399
+What would it be? Basically, an outer product would be
+
+00:10:45.130 --> 00:10:47.130
+this matrix, and then how is this matrix constructed?
+
+00:10:48.852 --> 00:10:51.852
+So basically, on Ith Jth
+
+00:10:55.362 --> 00:10:58.362
+Element of this matrix. We have Ith element of vector A
+
+00:10:58.593 --> 00:11:04.593
+times Jth element of vector B. So, for example, here, what do we have? We have
+
+00:11:07.916 --> 00:11:10.916
+I-J, so we have 1-1. So we have 1 times 1.
+
+00:11:12.288 --> 00:11:18.288
+Here, we have the first vector is A, and the second vector is B. So we have
+
+00:11:23.768 --> 00:11:25.768
+1 times 2. And then, here, we have 3, because we have 1 times 3, etc.
+
+00:11:30.002 --> 00:11:34.002
+And now, we could also, transpose a vector, but please be mindful that
+
+00:11:33.502 --> 00:11:41.502
+as a result, we would obtain a matrix. So we can see that if we transpose a vector, we obtain a matrix which is 
+
+00:11:46.622 --> 00:11:48.622
+1x3 dimensional. Alright, now a little bit more about basic functions:
+
+00:11:51.566 --> 00:11:55.566
+For example, here, I'm setting the seed to be able to reproduce these results
+
+00:12:02.782 --> 00:12:04.782
+and then I'm defining a vector X. And X is a vector composed of random variables from exponential distribution.
+
+00:12:07.970 --> 00:12:12.970
+This is a vector which is 1,000 elements long, and this is just a rate parameter
+
+00:12:18.840 --> 00:12:21.840
+for the exponential distribution. Alright if I would like to know the length of X, I could just apply function length(x).
+
+00:12:21.917 --> 00:12:26.917
+If I would like to see the first elements of X, I could apply a function head(x).
+
+00:12:35.302 --> 00:12:38.302
+So, head applied to X. And then here, I write how many first elements I would like to see. I would like to see two first elements, and I can see two first elements.
+
+00:12:45.371 --> 00:12:49.371
+Now, I could also define a mean of X by using this function mean, mean of X here is given as follows.
+
+00:12:49.354 --> 00:12:56.354
+There's also a medium function. We could also ask R to give us standard deviation, std of X.
+
+00:12:56.904 --> 00:13:01.904
+And this is it. The output, we could also ask R to give us variance.
+
+00:13:02.179 --> 00:13:07.179
+We could also ask R to give us minimum and maximum.
+
+00:13:14.285 --> 00:13:16.285
+And if we ask R for a range, then actually we'll receive these two numbers together, bundled in a
+
+00:13:21.645 --> 00:13:24.645
+vector. Alright, and now two other functions. So, actually 3 other functions. We have a
+
+00:13:25.129 --> 00:13:31.129
+quantile function here, so a quantile function applied to a vector gives us, 
+
+00:13:31.356 --> 00:13:40.356
+quantiles we ask for, so I asked for 0.25 quantile and 0.75 quantile, and you can see that, indeed,
+
+00:13:45.225 --> 00:13:46.225
+R, gives us as an output, these two quantiles.
+
+00:13:46.487 --> 00:13:54.487
+Another function, interesting function, is a sort function. What does it do? If I sort my
+
+00:14:02.241 --> 00:14:05.241
+vector, and then the default is decreasing falls, so basically, I sort vector elements in an increasing order,
+
+00:14:08.364 --> 00:14:10.364
+what do I get? Basically, I obtain as an output
+
+00:14:11.085 --> 00:14:17.085
+sorted elements. So basically, this is the smallest element of all the elements in this vector.
+
+00:14:22.171 --> 00:14:24.171
+And this is the second smallest. Now, order
+
+00:14:22.603 --> 00:14:28.603
+function, so if I apply order function on X, what does it give us?
+
+00:14:31.007 --> 00:14:33.007
+Well, it gives us, actually, the index
+
+00:14:33.132 --> 00:14:40.132
+of two smallest elements. What does it mean? So basically, here, these are two smallest elements.
+
+00:14:42.320 --> 00:14:44.320
+And there, I have the index 
+
+00:14:49.560 --> 00:14:51.560
+of these two smallest elements from the original vector X here.
+
+00:14:51.337 --> 00:14:56.337
+So how do I know this is exactly the case? Because now, if I access
+
+00:15:03.403 --> 00:15:05.403
+these two elements in a vector X, I ask R: Hey, give me element 439
+
+00:15:05.843 --> 00:15:12.843
+and 881, then I precisely see the same numbers. So these two elements
+
+00:15:15.307 --> 00:15:17.307
+of vector X are the smallest elements, because
+
+00:15:24.802 --> 00:15:28.802
+I know it already by using a function sort. Okay, and now let us briefly talk about missing values. So, missing values are inevitable
+
+00:15:31.781 --> 00:15:35.781
+in data analysis, data science, etc. So here, I defined a vector
+
+00:15:35.951 --> 00:15:41.951
+which contains just numbers, and then one missing variable.
+
+00:15:42.107 --> 00:15:51.107
+Missing viable is denoted in R by this NA. NA stands for not available.
+
+00:15:52.164 --> 00:15:58.164
+Okay, so now, what happens if I apply a function mean() to a vector which has one element,
+
+00:16:01.580 --> 00:16:03.580
+which is NA. Well, I obtain NA. So, to adjust it,
+
+00:16:08.438 --> 00:16:11.438
+what do I need to do? I need to tell R to compute a mean
+
+00:16:16.601 --> 00:16:18.601
+on vector X. But I need to ask it to exclude
+
+00:16:25.419 --> 00:16:27.419
+all missing elements. So here: na.rm, so remove NA, and then we have a mean
+
+00:16:36.021 --> 00:16:40.021
+of all the remaining elements. Now, if I do a division by 0,
+
+00:16:38.822 --> 00:16:45.822
+3 over 0. Here, I obtain infinity. Why? Because infinity is the limit of 3 over 0.
+
+00:16:45.632 --> 00:16:56.632
+Now, if I apply some functions which are not defined mathematically, so for example, if I apply a function to log to minus 2,
+
+00:16:56.439 --> 00:17:00.439
+what do I get? I get a warning. A warning that
+
+00:17:05.520 --> 00:17:09.520
+not a number is produced, because that function is not defined for
+
+00:17:13.091 --> 00:17:15.091
+negative values. Similarly, if I apply square root to minus 5,
+
+00:17:23.705 --> 00:17:26.705
+I get an error, actually a warning. That not a number was produced, because once again, a square root is not defined.
+
+00:17:31.379 --> 00:17:37.379
+for minus 5, but if I define the same function, if I ask R to give me a value of square root
+
+00:17:38.047 --> 00:17:43.047
+of minus 5, plus a complex element, so square root is
+
+00:17:49.135 --> 00:17:55.135
+defined for negative values on a complex space. Then, indeed, I don't get any warning. Alright, so let me stop here.
+
+00:17:58.188 --> 00:18:01.188
+And then we are going to talk about lists and matrices.
+

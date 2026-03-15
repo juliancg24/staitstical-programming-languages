@@ -1,0 +1,468 @@
+WEBVTT
+
+
+00:00:01.028 --> 00:00:08.028
+Hello, welcome back to our course, today we are going to continue talking about string handling in R.
+
+00:00:07.517 --> 00:00:17.517
+And let us delve straight to the first example. So, here we have our poem example, and then we would like to find leading
+
+00:00:18.256 --> 00:00:24.256
+or trailing white spaces. So a leading white space is a space before a letter
+
+00:00:24.474 --> 00:00:32.474
+or a word, and trailing white space is a space after the word or after a letter.
+
+00:00:33.180 --> 00:00:39.180
+Okay, so how can I find a leading white space? So basically, I could use a function grep().
+
+00:00:47.313 --> 00:00:51.313
+And then I could define that regular expression. And inside that regular expression, I would have a current, so basically, this is to tell R that I'm looking for something at the beginning.
+
+00:00:50.857 --> 00:01:01.857
+And then, in that character class, I would like to have a space and a tab, and repeat it once or more times. And you can see that as an output, I have 1 and 3,
+
+00:01:01.514 --> 00:01:09.514
+which means that that particular pattern was found in the first and the third element of that vector.
+
+00:01:18.110 --> 00:01:20.110
+If I would like to find a trailing white space, I'm first defining that character class with a space and a tab,
+
+00:01:20.247 --> 00:01:27.247
+and then this is repeated once or more times, and now it's at the end, because it's a trailing white space.
+
+00:01:28.194 --> 00:01:37.194
+And indeed, you can see that the answer is 3, meaning that I can find it in the third line, or in the third element of that vector.
+
+00:01:38.041 --> 00:01:42.041
+We could also combine both of them and find
+
+00:01:44.181 --> 00:01:47.181
+white spaces at the beginning and at the end
+
+00:01:53.744 --> 00:01:56.744
+using this OR symbol, so this is a vertical bar, and you can see that the answer is 1 3.
+
+00:02:04.062 --> 00:02:07.062
+And, as a useful hint, it's a good idea to first start from smaller expression and then build up to larger ones.
+
+00:02:07.778 --> 00:02:18.778
+Now let us look at at this poem, and then we are going to find, HTML tags. So, HTML tags are these
+
+00:02:18.885 --> 00:02:25.885
+clusters of expressions with < > symbol
+
+00:02:29.331 --> 00:02:32.331
+at the beginning, and </b>.
+
+00:02:38.430 --> 00:02:39.430
+So we are looking for these, and how can we find them? Well, we define this regular expression, so first
+
+00:02:40.193 --> 00:02:46.193
+I'm looking for smaller than symbol, then I'm looking for anything at all, then I'd like to repeat it
+
+00:02:48.306 --> 00:02:51.306
+zero or more times, and then I would like to close it
+
+00:02:51.030 --> 00:02:57.030
+with the largest symbol, and I'm going to go back why I also inserted that question mark
+
+00:02:58.732 --> 00:03:01.732
+at the end of explaining the example. Now, I like to have a text
+
+00:03:01.981 --> 00:03:07.981
+after the higher than symbol, and then once again, I would like to find another tag.
+
+00:03:08.469 --> 00:03:12.469
+So, smaller than symbol, anything at all, repeated zero or more times,
+
+00:03:13.415 --> 00:03:17.415
+and then larger than symbol. And indeed, the output is 4, I found
+
+00:03:24.388 --> 00:03:27.388
+these two tags and the text between them. So the question marks here are used to make the asterisk quantifiers lazy
+
+00:03:27.946 --> 00:03:36.946
+or not greedy, such that they stop as soon as possible. So, dot asterisks and a question mark, matches the shortest tag,
+
+00:03:37.188 --> 00:03:43.188
+meaning this tag, yeah? So, smaller than B, larger than. Without that
+
+00:03:51.042 --> 00:03:54.042
+question mark, this would gobble up to the last larger than symbol, yeah? So we like to basically
+
+00:04:03.161 --> 00:04:06.161
+find both of them, so we need to add this question mark. Now let us look at the email address. Of course, if we think about an email address, the most striking feature is
+
+00:04:14.131 --> 00:04:19.131
+at symbol, so definitely, we would like to have in our regular expression at symbol, but before that, I could have anything at all. So I could have lowercase letter, uppercase letters,
+
+00:04:24.970 --> 00:04:27.970
+I could have, numbers, symbols, dot, underscores, etc., repeated many times, once or many times.
+
+00:04:33.508 --> 00:04:36.508
+And after underscore, similarly, I could have many symbols, please bear in mind that, for example, that dot here:
+
+00:04:37.359 --> 00:04:44.359
+Since it's enclosed in the bracket, it means that it's indeed a dot or not any symbol.
+
+00:04:51.787 --> 00:04:53.787
+And as an output we can see two, so indeed, R identified that the second element is an email.
+
+00:04:54.754 --> 00:05:01.754
+Now, let us talk about extracting patterns, so we could extract patterns using this regmatches()
+
+00:05:07.781 --> 00:05:11.781
+function, and it extracts or replaces matched substrings. So here, I would like to apply the function regmatches()
+
+00:05:19.624 --> 00:05:23.624
+to a poem, and I would like to extract a substring, which is matched through a regular expression defined by this regexpr().
+
+00:05:27.752 --> 00:05:29.752
+And indeed, you can see that I can see <b>.
+
+00:05:29.823 --> 00:05:35.823
+Now, I could also make that regular expression more complicated.
+
+00:05:36.148 --> 00:05:45.148
+And I would like to find everything between HTML tags and the text between them, so indeed you can see that as an output,
+
+00:05:48.435 --> 00:05:54.435
+R provided me with the entire expression and two tags. If there are multiple matches,
+
+00:06:02.653 --> 00:06:05.653
+then we should use gregexpr() to find our pattern through regular expressions.
+
+00:06:05.537 --> 00:06:12.537
+And here, we have a list as an output, and then in the third element of that list,
+
+00:06:19.736 --> 00:06:21.736
+there is nothing, because there weren't any matches. But in the fourth element, we have two matches, so indeed, we can see these two symbols.
+
+00:06:27.879 --> 00:06:31.879
+And of course, we don't need to insert that entire expression to
+
+00:06:30.807 --> 00:06:41.807
+function regmatches(), we could first define it as a variable, and then pass that variable to the function, and this is especially handy
+
+00:06:43.398 --> 00:06:46.398
+once the expression starts to grow.
+
+00:06:46.452 --> 00:06:54.452
+Now, we could also replace patterns. So we could replace patterns using sub() and gsub().
+
+00:07:02.518 --> 00:07:05.518
+So here, if I use sub(), and then I define that pattern through a regular expression, and then I would like to also define the replacement,
+
+00:07:12.951 --> 00:07:14.951
+then you can see that I replaced that tag with a new tag, and this is a single replacement.
+
+00:07:14.576 --> 00:07:21.576
+If I would like to carry out a multiple replacement, then we use gsub().
+
+00:07:27.685 --> 00:07:30.685
+And similarly, I'm just looking for the fourth element of the output, because I'm looking only into the fourth
+
+00:07:30.800 --> 00:07:36.800
+element of the output, because there were these HTML tags.
+
+00:07:45.047 --> 00:07:48.047
+And indeed, you can see that both are replaced. And then, there is another feature, so if I'd like to find both
+
+00:07:48.974 --> 00:07:53.974
+smaller than the larger than tag, and smaller than slash larger than tag,
+
+00:07:56.709 --> 00:08:00.709
+then you could use this \\n as a reference to nth bracket pair.
+
+00:08:01.236 --> 00:08:05.236
+Okay, what does it mean? So basically, it means that I would like to replace
+
+00:08:13.485 --> 00:08:17.485
+a pattern which starts with smaller than symbol and ends with larger than symbol, and then, just after this smaller than symbol, I have this
+
+00:08:22.620 --> 00:08:28.620
+capturing group. And this capturing group should capture what? Zero or more slashes. So basically, I put this asterisk after this
+
+00:08:28.830 --> 00:08:35.830
+forward slash. So it means that I would like to capture it in the group, capturing group,
+
+00:08:42.647 --> 00:08:45.647
+and I would like to capture zero more slashes. And now, in the replacement, I'm just telling R that I would like to replace it with
+
+00:08:49.753 --> 00:08:51.753
+smaller than, larger than. And then everything, what I found in that
+
+00:08:54.519 --> 00:08:57.519
+capturing group, so two backslashes. And then which capturing group? 1.
+
+00:09:00.424 --> 00:09:02.424
+And then I is the letter I would like to insert
+
+00:09:03.397 --> 00:09:06.397
+as a replacement. And indeed, you can see that this works,
+
+00:09:10.841 --> 00:09:11.841
+because I replaced both smaller than I, larger than.
+
+00:09:19.492 --> 00:09:22.492
+And then smaller than slash I larger than. Alright, so now we could also split text, so there is this function strsplit(),
+
+00:09:23.106 --> 00:09:34.106
+and it splits each element of X at every match of pattern. So we can use a separator of our choice, a string, or a regular expression,
+
+00:09:38.634 --> 00:09:42.634
+and then it returns a list of character vectors. So first, you can see that I defined this,
+
+00:09:42.937 --> 00:09:46.937
+the width of the output, to be 50 characters. This is just to fit the output
+
+00:09:49.781 --> 00:09:53.781
+on this slide, and then we apply this function strsplit() to poem.
+
+00:09:58.176 --> 00:10:02.176
+And then here, I would like to split with respect to separators in that particular
+
+00:10:01.854 --> 00:10:05.854
+character class, so we have a class composed of a space,
+
+00:10:05.831 --> 00:10:11.831
+semicolon, and a dot. And that can be repeated once or multiple times.
+
+00:10:11.796 --> 00:10:19.796
+Okay, so you can see that the first element here as an output is this first line, and this is split
+
+00:10:26.304 --> 00:10:31.304
+by spaces, or semicolons, or dots. And then also the second element is split by these elements enclosed in the character class.
+
+00:10:32.677 --> 00:10:37.677
+So we have chatted about functions in the base R, but they are also packages,
+
+00:10:45.658 --> 00:10:51.658
+which are very handy for handling strings. So, the first package is a package with many simple functions, so it's called stringr, and then there's a more advanced package, so stringi is a powerful
+
+00:10:52.206 --> 00:10:59.206
+engine used by stringr, and this package provides R users with platform-independent functions
+
+00:10:58.843 --> 00:11:05.843
+known to Java, Perl, Python, PHP, and Ruby programmers. And then here, I also provided you with a
+
+00:11:07.949 --> 00:11:11.949
+link to a cheat sheet and some additional resources.
+
+00:11:19.009 --> 00:11:23.009
+So here, just a small table where we compare a function from the base R to a function in a stringr package. And for example, a grep function
+
+00:11:23.017 --> 00:11:33.017
+is equivalent to str_which function in stringr, whereas grepl is equivalent to str_detect
+
+00:11:45.104 --> 00:11:47.104
+function in stringr. Alright, so let us look at how functions from stringr work. So here you can see that I'm loading the package, and then I'm selecting the first functions:
+
+00:11:46.768 --> 00:11:53.768
+str_which function I apply it to poem, and then, here I'm passing
+
+00:11:58.393 --> 00:12:01.393
+this regular expression. You can see that the answer is 4, okay, correctly, it identified that
+
+00:12:02.412 --> 00:12:07.412
+that pattern with that, defined through a regular expression, can be found in the fourth line.
+
+00:12:08.238 --> 00:12:17.238
+Now we can also insert that negate parameter, so negate parameter basically returns non-matching elements. So you might remember that these HTML tags,
+
+00:12:17.227 --> 00:12:26.227
+where only in the fourth line, so basically here, if I put the parameter negate to true, it means that it will return me
+
+00:12:37.664 --> 00:12:41.664
+the indices of elements without the tags. Here, scr_which uses different matching engines. So, the first engine is regular expression engine.
+
+00:12:42.315 --> 00:12:48.315
+So, it allows us to put the special symbols, like dots, asterisks, pluses, question marks,
+
+00:12:57.391 --> 00:13:00.391
+brackets, etc. But, if we are looking only for a constant pattern, then it's not the fastest way to look for it.
+
+00:13:00.520 --> 00:13:08.520
+The fastest way, actually, would be to use a fixed engine. Why? Because this is especially designed for
+
+00:13:17.509 --> 00:13:20.509
+patents without any special symbols. And also, there is another engine, it's called coll, and coll works best for natural language texts, like with accents, special characters.
+
+00:13:24.712 --> 00:13:26.712
+But this is the slowest. So, of course, you choose the engine which suits your purposes best.
+
+00:13:28.249 --> 00:13:34.249
+And then here we could also detect matches, so basically, str_count
+
+00:13:42.419 --> 00:13:46.419
+counts matches to how many matches we had in each element of a poe. We had zero matches in the first, second, and the third element, but two matches in the fourth element.
+
+00:13:46.732 --> 00:13:51.732
+We could also look at the position of the first match using str_locate.
+
+00:13:51.552 --> 00:13:58.552
+So you can see that it tells me the start and the end of the match, so no matches in the first, second, and the third element,
+
+00:13:58.751 --> 00:14:05.751
+but there was a match in the fourth element, so you can see that the match started in the first character and ended on the third character.
+
+00:14:06.379 --> 00:14:16.379
+And then we could also see a position of all matches. So, for example, here, if we apply this function str_locate_all,
+
+00:14:25.273 --> 00:14:28.273
+then I could once again see a list with the output. If I enter now the fourth element of this list, so it refers to the fourth fourth element of my poem,
+
+00:14:28.159 --> 00:14:34.159
+it tells me that I had two matches, two lines. The first started on the first character, and then the third,
+
+00:14:33.880 --> 00:14:38.880
+and the second started on the 16th character and ended on the 19th character.
+
+00:14:42.753 --> 00:14:47.753
+We could also ask R to give us subsets of strings. So, for example, here
+
+00:14:55.816 --> 00:14:59.816
+this str_subset returns strings where the pattern matches. So, for example, here, we are looking for a pattern through this regular expression
+
+00:15:00.309 --> 00:15:05.309
+and then it returned us this entire string, so entire element, fourth element.
+
+00:15:12.289 --> 00:15:14.289
+Here, str_extract actually returned us the first matched
+
+00:15:14.229 --> 00:15:19.229
+patterns. So, for example, here I applied to poem, I asked for a pattern
+
+00:15:23.677 --> 00:15:27.677
+defined through that regular expression, and it gives me NA, not available in the first, second, and third
+
+00:15:27.833 --> 00:15:33.833
+element, but we have a match here, and it also returns us the first match.
+
+00:15:33.992 --> 00:15:41.992
+And then, if I select str_extract_all, then it returns us all matched patterns.
+
+00:15:48.937 --> 00:15:50.937
+So you can see that, once again, if I access the fourth element of the list with the results, we can see both matches.
+
+00:15:59.749 --> 00:16:03.749
+And then, here, str_match returns us with the first match, so here in slightly different way, we can see that we have, once again, 4 elements, and
+
+00:16:04.259 --> 00:16:09.259
+in the fourth element, we have the first match, and this is the match we saw in the poem.
+
+00:16:13.878 --> 00:16:16.878
+Some patterns can be created with a capturing group. So, for example, here
+
+00:16:16.518 --> 00:16:23.518
+if we look at str_match applied to a poem, and now I'm looking for
+
+00:16:34.086 --> 00:16:37.086
+a pattern with that particular structure, but I also define a capturing group. So my capturing group is everything between the first and the last HTML tag.
+
+00:16:36.797 --> 00:16:40.797
+So you can see that as an output, I get this matrix:
+
+00:16:45.302 --> 00:16:47.302
+I have NAs in the first, second, and the third line, because they refer to the first, second, and third
+
+00:16:46.540 --> 00:16:51.540
+element of the vector poem where I didn't have HTML tags.
+
+00:16:51.415 --> 00:16:57.415
+But in the fourth row of that matrix, I have first
+
+00:17:01.405 --> 00:17:04.405
+that entire expression with both a capturing group, and two HTML tags,
+
+00:17:08.798 --> 00:17:11.798
+and then, in the second column, I have expression, which was captured by capturing group.
+
+00:17:16.313 --> 00:17:18.313
+And then, here this str_match_all,
+
+00:17:17.845 --> 00:17:26.845
+it returns all matched patterns as a list. So here, once again, I have an output res, I'm accessing fourth element of the list,
+
+00:17:37.874 --> 00:17:39.874
+and then you can see that I have here as an output a matrix, and then rows refer to the matches and the columns, the first column refers to
+
+00:17:40.307 --> 00:17:46.307
+entire pattern, and then, the second column refers to the captured group.
+
+00:17:53.228 --> 00:17:54.228
+Now we could also use
+
+00:18:00.194 --> 00:18:06.194
+this package and the function, str_split to split text through regular expressions and boundary parameters.
+
+00:18:06.081 --> 00:18:11.081
+And then here, first, let us look at str_split.
+
+00:18:10.412 --> 00:18:16.412
+I would like to split poem with respect to a boundary parameter,
+
+00:18:17.461 --> 00:18:22.461
+which here can be either character, word, line break, or sentence. So here, if I put a sentence
+
+00:18:23.290 --> 00:18:28.290
+and I access the first element of the list, you can see that there is no split, because I selected
+
+00:18:28.234 --> 00:18:32.234
+as a split entire sentence, so we had only one sentence.
+
+00:18:32.181 --> 00:18:37.181
+But if I select word, then you can see that, indeed, the sentence is split
+
+00:18:48.993 --> 00:18:50.993
+into different elements. Now, what do I have here? I have str_split poem, but now the split is defined through this regular expression. So here, the regular expression, what is it?
+
+00:18:51.382 --> 00:18:57.382
+We have a character class with a space, semicolon, and a dot,
+
+00:18:57.076 --> 00:19:02.076
+repeated once or multiple times, and then this n = 8
+
+00:19:09.312 --> 00:19:13.312
+tells me that I should have at most 8 pieces per element. And then I asked R to show me the first and the fourth element.
+
+00:19:13.965 --> 00:19:21.965
+The first element, so this is, once again, the entire output would be a list, and I'm asking for the first element first, so let us look at it:
+
+00:19:29.688 --> 00:19:32.688
+Indeed, this is just split by spaces, and then you can see that I have at most, 8 elements, 1, 2, 3, 4, 5, 6, 7, 8.
+
+00:19:33.063 --> 00:19:39.063
+And then, the fourth element of that list is that fourth line, and you can see that everything here is.
+
+00:19:45.633 --> 00:19:47.633
+I have only one and two elements, because that was only the shortest element of that particular
+
+00:19:56.704 --> 00:19:58.704
+vector. And then, we could also split text with fixed number of splits. For example, here we have a function
+
+00:20:06.510 --> 00:20:09.510
+str_split_fixed, I applied it to poem, and then my split element would be a space, and I would like to have, at most
+
+00:20:13.147 --> 00:20:16.147
+four number of splits. So here you can see that we have
+
+00:20:16.304 --> 00:20:23.304
+1, 2, 3, and the fourth element in the first line. So basically, in the first line, we had
+
+00:20:32.149 --> 00:20:37.149
+first, A, then there is a space defined through that particular parameter, there's a thing, a space, of, a space, and then, since I asked to have at most 4,
+
+00:20:37.128 --> 00:20:42.128
+all the rest is bundled together. But now, if we look at, for example,
+
+00:20:41.885 --> 00:20:47.885
+the third line, in the third line, I had only 3 words, so you can see that
+
+00:20:47.695 --> 00:20:57.695
+I have, I have the first word in the first column, the second word in the second column, the third word in the third column, but there is nothing in the fourth column, because
+
+00:21:06.423 --> 00:21:08.423
+this is still below the limit I had. Okay, thank you for today, and, I see you in the next class.
+

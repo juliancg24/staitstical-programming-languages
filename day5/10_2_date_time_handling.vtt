@@ -1,0 +1,156 @@
+WEBVTT
+
+
+00:00:01.462 --> 00:00:06.462
+Hello, welcome back to our course, and today we are going to continue talking about
+
+00:00:06.279 --> 00:00:23.279
+time and date handling and time series. Alright, so let us introduce this package, Lubridate. So, Lubridate makes it easier, possible, to do things in R with date and times, and here I provided you with a link to cheat sheet, and then in this
+
+00:00:23.423 --> 00:00:30.423
+cheat sheet, you can learn how to round dates, work with time zones, extract elements, etc.
+
+00:00:30.426 --> 00:00:37.426
+It also provides you with some functions regarding doing maths with date and times.
+
+00:00:36.692 --> 00:00:43.692
+Because actually, in Lubricate there are 3 time span classes: periods, durations, and intervals.
+
+00:00:43.749 --> 00:00:52.749
+And all this is explained in that cheat sheet. Today, we are going to only go through a short intro. So here, I'm just attaching
+
+00:00:53.676 --> 00:00:57.676
+the dataset to my RStudio session, and you can see that
+
+00:01:00.357 --> 00:01:03.357
+some objects are masked from package base R but this is alright.
+
+00:01:03.621 --> 00:01:09.621
+And then here, what can we do with this Lubridate? So basically, we can very easily extract
+
+00:01:20.870 --> 00:01:25.870
+current time by function, by using function now(). And current date by using function today(). And, it could also easily  parse date and times. For example, it could identify the component order
+
+00:01:26.170 --> 00:01:35.170
+in my data: year, month, day, hour, minute, second. And you can, we can use a function whose name mirror that order. For example,
+
+00:01:38.926 --> 00:01:40.926
+if I pass to my function, year, month, date, hour,
+
+00:01:47.620 --> 00:01:49.620
+minutes, second, format which mirrors exactly, year, because the year it's the first month, because month it's the second,
+
+00:01:50.594 --> 00:02:00.594
+day, because the day is the third, then indeed I will obtain, as an output, this POSIX format, so usual format we got before.
+
+00:02:00.194 --> 00:02:07.194
+Here, we could also use Libridate to extract certain elements. So here we have an object
+
+00:02:07.161 --> 00:02:12.161
+in POSIX now, and then we would like to extract a certain date.
+
+00:02:11.813 --> 00:02:16.813
+So indeed, I can just apply function date to my T element.
+
+00:02:17.215 --> 00:02:24.215
+If I would like to extract week, then I could apply function week to t. And then we could also replace
+
+00:02:36.495 --> 00:02:39.495
+certain elements. So, for example, if I now ask R to apply function date t, and then, I assign to that day 9, then you can see that I replaced an original day 3
+
+00:02:39.507 --> 00:02:43.507
+To day 9. And then there are many other examples of functions:
+
+00:02:43.235 --> 00:02:50.235
+month, day, weekday, etc, etc. We could basically play with all these
+
+00:02:50.058 --> 00:02:58.058
+around. Now, let us look at time spans. So, Lubridate provides three classes of timespans:
+
+00:03:03.106 --> 00:03:08.106
+periods, period; durations, duration, and intervals, this within. So, first, let us add 14-day duration.
+
+00:03:08.180 --> 00:03:15.180
+So this exactly 14 times the number of seconds in a day. So you can see that here we have this
+
+00:03:20.419 --> 00:03:22.419
+year, month, day passed to our function, and then we add the duration. Indeed, you can see that
+
+00:03:23.164 --> 00:03:28.164
+everything works perfectly, because I had first day, now I have 15 days.
+
+00:03:28.053 --> 00:03:34.053
+Now, we could also add a period of 3 months and 12 days. This is
+
+00:03:36.685 --> 00:03:40.685
+A calendar aware span, so basically you can see that if I have a month free, and I add
+
+00:03:41.598 --> 00:03:46.598
+12 days, then what I obtain as an output is 3 months, 12 days, and 0 hours,
+
+00:03:47.647 --> 00:03:54.647
+minutes and seconds. Now, a duration object, this is exactly 14 days in seconds. So, once again.
+
+00:03:54.453 --> 00:03:58.453
+this is, ddays duration, and then you will see that
+
+00:03:59.252 --> 00:04:05.252
+this is, precisely 14 days in seconds, but attention, because it ignores
+
+00:04:17.969 --> 00:04:21.969
+day light saving time and clock changes. Now, let us look at the creation of the interval. So, for example, here, I would like to create an interval from this first day of January to the third day of April.
+
+00:04:21.976 --> 00:04:27.976
+How can I do it? Well, I just pass to function interval, the boundaries.
+
+00:04:27.822 --> 00:04:36.822
+So basically, this first day of January and third day of April, and you can see that, indeed, I get the interval here.
+
+00:04:37.272 --> 00:04:46.272
+So basically, you can see that now I have these values printed as an output, so I get an interval from
+
+00:04:47.762 --> 00:04:50.762
+that first day of January to the third day of April.
+
+00:04:55.216 --> 00:04:59.216
+We could also use a slightly different syntax. Instead of applying function interval, we could apply this
+
+00:04:59.648 --> 00:05:06.648
+percentage sign, two dashes, percentage sign, and indeed as an output, we also get an interval. Now, printed out.
+
+00:05:07.032 --> 00:05:11.032
+Alright, so now let us briefly start talking about time series.
+
+00:05:19.950 --> 00:05:24.950
+So here, I would like to create a time series object, so I'm now passing this address, and then I'm basically attaching the library Rio.
+
+00:05:24.909 --> 00:05:29.909
+And I would like to import that, the data stored under this address.
+
+00:05:30.656 --> 00:05:35.656
+And then you can see that if I now print a few elements from my vector.
+
+00:05:35.475 --> 00:05:40.475
+Xt, then you can see that there are certain values, and actually they
+
+00:05:41.542 --> 00:05:47.542
+refer to sales of a shampoo, and then if I apply to XT
+
+00:05:46.950 --> 00:05:54.950
+TS() function, I create time series objects. So basically, here you can see that I am applying this function
+
+00:05:55.563 --> 00:06:04.563
+to my vector, I select the starting value, and I select the frequency. And now, if I print T, you can see that I have different months,
+
+00:06:10.259 --> 00:06:15.259
+different years, and then I have this shampoo sales stored as follows. We could also, compute certain summary statistics
+
+00:06:15.365 --> 00:06:19.365
+here you can see that if I apply summary to T, then I get:
+
+00:06:26.631 --> 00:06:29.631
+minimum, quantiles, median, maximum, and mean. And then we could also plot that time series object. So, for example, here you can see that I plotted the time series object, and,
+
+00:06:34.940 --> 00:06:37.940
+on the x-axis, I have time, t, basically and on the y-axis, I have shampoo sales. Let me finish there, and then we are going to see each other in our next video. Thank you!
+

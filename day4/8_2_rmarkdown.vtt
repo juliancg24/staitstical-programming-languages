@@ -1,0 +1,156 @@
+WEBVTT
+
+
+00:00:01.153 --> 00:00:06.153
+Hello, welcome back to the course, today we are going to continue talking about text formatting.
+
+00:00:05.854 --> 00:00:13.854
+Let us start from this general rules of the syntax. So, for example, to type
+
+00:00:19.687 --> 00:00:22.687
+text, we just type plain text. If we'd like to have our text in italics, then we use this single asterisk and single underscores.
+
+00:00:22.515 --> 00:00:32.515
+If you would like to have our text in bold, then we use double asterisk or double underscores, and then we have also other options for
+
+00:00:38.123 --> 00:00:40.123
+the syntax of our text, but I think what's most important here is how to
+
+00:00:42.391 --> 00:00:45.391
+create a link with the text
+
+00:00:46.106 --> 00:00:54.106
+associated with that link. So basically I put the text in the bracket, and then I put the link into parentheses, and you can see that now I have a text
+
+00:00:59.993 --> 00:01:03.993
+with the link associated with it. When it comes to creating headers, we basically use hashtags, and the more hashtags we use,
+
+00:01:03.607 --> 00:01:10.607
+the smaller the header becomes. And, for example, for creating this particular header
+
+00:01:15.650 --> 00:01:18.650
+in this slide, I used two hashtags. When it comes to the creation of an unordered list,
+
+00:01:19.297 --> 00:01:25.297
+we could first select a symbol we would like to use. For example, I would like to start from an asterisk,
+
+00:01:24.374 --> 00:01:34.374
+or I would like to start from a plus, we could basically swap them. And then what's important when it comes to an unordered list is the spacing from
+
+00:01:34.486 --> 00:01:41.486
+the beginning of the line. So the spacing for elements of the same list should be the same. So you can see that
+
+00:01:42.362 --> 00:01:51.362
+the symbols here are basically on the same level, and then the symbols, like pluses here, are also, like, spaced equally from the beginning of the line.
+
+00:01:57.067 --> 00:02:01.067
+When it comes to ordered lists or definition lists, it's very intuitive, I just start typing the numbers or the letters.
+
+00:02:01.013 --> 00:02:06.013
+And once again, the spacing is important, the spacing from the beginning of the line.
+
+00:02:05.829 --> 00:02:11.829
+And then for the definition lists, first I defined
+
+00:02:12.112 --> 00:02:19.112
+that definition, what that is, so remark, term, etc. And then I write the text of the definition.
+
+00:02:23.851 --> 00:02:26.851
+Alright, when it comes to the creation of tables, we have these vertical bars and dashes to create them.
+
+00:02:28.789 --> 00:02:33.789
+So the number of dashes defines the width of a particular column.
+
+00:02:33.969 --> 00:02:45.969
+And then, alignment is defined through placing colons. So basically, if the colon is placed on the right, the text is aligned to the right.
+
+00:02:45.337 --> 00:02:51.337
+Similarly, if the colon is placed to the left, the text is aligned to the left.
+
+00:02:54.151 --> 00:02:57.151
+By default, we have left alignment.
+
+00:02:57.179 --> 00:03:03.179
+When it comes to embedding mathematical formulas, this can be done with LaTeX.
+
+00:03:10.567 --> 00:03:15.567
+So, for example, we could put our formula in that two dollar signs, and then our formula will appear in the next line.
+
+00:03:16.046 --> 00:03:21.046
+If we would like to have an inline formula, then we could use just single dollars,
+
+00:03:21.252 --> 00:03:25.252
+and then inside the formula between them. You can see now, that
+
+00:03:29.148 --> 00:03:32.148
+that formula is inserted inline to our text. And here, you have a link, with a math
+
+00:03:40.448 --> 00:03:43.448
+cheat sheet, there's one hint I would like to give you. So, if you know LaTeX, then you can embed LaTeX commands in R Markdown.
+
+00:03:43.393 --> 00:03:49.393
+But this works properly when generating PDFs, but not for HTMLs.
+
+00:03:50.507 --> 00:03:56.507
+We could also insert slide breaks and footnotes using these three asterisks.
+
+00:03:56.635 --> 00:04:02.635
+And we could also create footnotes and remarks. So to create a footnote or remark,
+
+00:04:02.479 --> 00:04:08.479
+we used this bracket, and then caret, and then the number of the
+
+00:04:13.846 --> 00:04:16.846
+footnote. When it comes to the
+
+00:04:22.250 --> 00:04:27.250
+text input and output for embedding R: Let's just have a look. So basically here, this is how I would
+
+00:04:24.393 --> 00:04:30.393
+write an R chunk, so you can see, if I write it in this way,
+
+00:04:39.199 --> 00:04:44.199
+then I can see this line of text, and I can also see it in the console. So you can see that this is also written as a character in the console.
+
+00:04:43.593 --> 00:04:49.593
+If I would like to avoid having text from the script
+
+00:04:51.835 --> 00:04:55.835
+written, then I need to select echo parameter to be false.
+
+00:05:04.534 --> 00:05:06.534
+Now, how can we embed a plot into our R chunk? So basically, here you can see that I
+
+00:05:04.875 --> 00:05:08.875
+started my R chunk, then I selected the height of the plot,
+
+00:05:08.974 --> 00:05:13.974
+and basically, I selected the background to be light gray.
+
+00:05:14.215 --> 00:05:20.215
+And then here you can see that I just used our plot function to create that plot, and you can see that
+
+00:05:24.957 --> 00:05:26.957
+this is something I can see now in my R Markdown document embedded.
+
+00:05:26.670 --> 00:05:32.670
+When it comes to creation of the tables from R,
+
+00:05:40.575 --> 00:05:43.575
+it's possible, so basically here we have this tab, which is basically a table for the species from IRIS data, and then I could create a table using this
+
+00:05:52.151 --> 00:05:56.151
+kable function from knitr package. And here we can also customize, which particular element we would like to display in our table.
+
+00:05:56.714 --> 00:06:01.714
+And here is a list of some chunk options.
+
+00:06:01.841 --> 00:06:10.841
+Instead of me going through all these options, I definitely advise you to try them yourself.
+
+00:06:10.790 --> 00:06:17.790
+Because some of them will be more useful for you, some of them will be less useful for you, but definitely,
+
+00:06:17.886 --> 00:06:22.886
+you know, try it out, have a look, and have fun while programming.
+

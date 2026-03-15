@@ -1,0 +1,267 @@
+WEBVTT
+
+
+00:00:01.017 --> 00:00:07.017
+Hello, welcome back to our course. Today, we are going to talk about graphics in R.
+
+00:00:06.855 --> 00:00:13.855
+Alright, so the very first function to use, once we would like to plot something, is the function plot()
+
+00:00:14.088 --> 00:00:18.088
+and then we need to pass it two vectors of the same length.
+
+00:00:17.918 --> 00:00:21.918
+For example, here you can see that I passed to it a vector x
+
+00:00:21.574 --> 00:00:28.574
+and then a vector y and, as a result, you can see that I have this plot with x on the x-axis
+
+00:00:36.412 --> 00:00:39.412
+and y on the y-axis. And here you can see that I also inserted that line par() where I set bg = "grey"
+
+00:00:39.471 --> 00:00:44.471
+and this is for a better visibility because of the captions.
+
+00:00:50.051 --> 00:00:52.051
+We could also pass a simple two-column data frame or a matrix to plot().
+
+00:00:51.459 --> 00:01:02.459
+So here you can see that I loaded the pressure dataset and then I would like to see how the pressure dataset looks like. So a first few lines are temperature
+
+00:01:02.834 --> 00:01:07.834
+and pressure and you can see that there are numeric values.
+
+00:01:08.150 --> 00:01:14.150
+And now, once I pass it to plot function plot(), you can see that, indeed, on the
+
+00:01:14.055 --> 00:01:23.055
+x-axis, I have temperature, on the y-axis, I have pressure and then my curve is actually here, plotted using this
+
+00:01:23.427 --> 00:01:34.427
+points. There are many different ways in which I could save my plot, but there is a handy way in R using these graphics devices.
+
+00:01:34.547 --> 00:01:39.547
+So here, I could save a plot to a PDF, PNG, or another format
+
+00:01:54.302 --> 00:01:56.302
+and then after, basically, asking R to save it, I need to close the device. So here you can see an example, so if I ask to save it to PDF, I need to select the name of the file and then the width and the height of the plot, then I
+
+00:01:56.394 --> 00:02:01.394
+select what I would like to save and then I need to close that device.
+
+00:02:01.373 --> 00:02:12.373
+There are many different ways we could customize our R plots and then here we could basically pass many parameters.
+
+00:02:22.294 --> 00:02:25.294
+For example, we could adjust labels, so here, axes labels, xlab and ylab. We could adjust the size of the labels, using this cex.lab .
+
+00:02:24.408 --> 00:02:30.408
+We could also adjust the range of the axes
+
+00:02:30.779 --> 00:02:37.779
+using xlim, ylim and there are many different parameters. You can have a look at the help function using this ?par .
+
+00:02:38.445 --> 00:02:45.445
+But there are also other customization we could do. For example, we could change the point symbol, colors
+
+00:02:45.664 --> 00:02:52.664
+size, etc. For example, to change a point symbol, we use this parameter pch()
+
+00:02:54.961 --> 00:03:03.961
+and then we have many symbols, from 0 to 25, then we could change a color, using color(), and then we could also change the size, using this cex
+
+00:03:09.816 --> 00:03:11.816
+parameter. We could also add to our plot, to our graphics,
+
+00:03:12.082 --> 00:03:23.082
+the title and of course we could change the titles of our axes. So, for example, to add the title to our plot we use this parameter main
+
+00:03:24.642 --> 00:03:29.642
+and to adjust the titles of the axes we use xlab and ylab.
+
+00:03:30.136 --> 00:03:36.136
+Alternative way to add a title of a plot is just to use the separate function title().
+
+00:03:38.115 --> 00:03:43.115
+And, here there are many different types our curve on a plot can look like:
+
+00:03:43.244 --> 00:03:48.244
+"p" stands for points (you have already seen it in the very first plot), "l" for
+
+00:03:47.594 --> 00:03:55.594
+this solid lines,"b" for both, "h" for histogram (basically vertical bars) etc, etc.
+
+00:03:55.606 --> 00:03:59.606
+Okay, let us look at the examples: So here, once again
+
+00:03:59.501 --> 00:04:06.501
+I'm plotting this pressure data and now I'm selecting type = "p", so this stands for
+
+00:04:06.993 --> 00:04:11.993
+points, once again, and then as my title, I'm selecting main = "pressure data"
+
+00:04:11.515 --> 00:04:17.515
+and you can see that now I have my plot with a title.
+
+00:04:17.756 --> 00:04:22.756
+If I'd like to change the type of the curve
+
+00:04:22.672 --> 00:04:32.672
+from points to a solid line, then I could select a select type = "l" and then you can see that now I can see that solid line.
+
+00:04:38.136 --> 00:04:43.136
+We could also select type = "b", which means both points and the lines and then here you can see that I also added
+
+00:04:43.452 --> 00:04:51.452
+the title to the plot and I passed the title through that parameter main = "pressure data".
+
+00:04:53.117 --> 00:04:59.117
+Here you can see that, instead of a line, I have this vertical bars
+
+00:05:03.160 --> 00:05:06.160
+and (if this is something you would fancy) then definitely could choose it.
+
+00:05:12.737 --> 00:05:16.737
+And we could also add another symbols and lines to our plot. For example, we could add grid and a legend.
+
+00:05:19.574 --> 00:05:22.574
+So if you would like to add vertical and horizontal lines
+
+00:05:22.799 --> 00:05:29.799
+we could use this abline(h = seq(.,.,.)) and select the particular vector
+
+00:05:35.583 --> 00:05:40.583
+for telling where the line should be. And then we could also use this abline(v = seq(.,.,.)) to add vertical lines. And once again,
+
+00:05:45.375 --> 00:05:47.375
+I could pass them through that parameter v and then I could basically tell R at which
+
+00:05:53.316 --> 00:05:57.316
+points that vertical line should be added. So here, once again, let us look at the example: So, we have
+
+00:06:03.000 --> 00:06:06.000
+once again our plot. I passed pressure data, and now the type = "p", so I have points
+
+00:06:06.219 --> 00:06:12.219
+and then here you can see that I would like to add this horizontal lines.
+
+00:06:11.898 --> 00:06:23.898
+So, I passed to parameter h the sequence from 50 to 200 and then the step size is 50. So we can see that I added horizontal lines
+
+00:06:23.727 --> 00:06:33.727
+from 50 to 200, and then the step size is 50, yeah? So we have this horizontal lines added. Now, I would like to also add vertical lines.
+
+00:06:42.637 --> 00:06:44.637
+I would like to add vertical lines from 100 to 600 by 100, so you can see that I added the first line, then the second line
+
+00:06:49.997 --> 00:06:55.997
+and the third line. And then there is also another way, we could also use this parameter grid( ), where,
+
+00:07:00.879 --> 00:07:04.879
+basically, it shows me the grid in my plotting window. So here I added the grid, here you can see this is in this,
+
+00:07:04.954 --> 00:07:11.954
+blue color, light blue color, so basically nx and ny
+
+00:07:16.318 --> 00:07:19.318
+are to select the number of cells and then here you can see that we will have
+
+00:07:22.116 --> 00:07:27.116
+two cells on the this x-dimension, 1 and 2, and then four cells
+
+00:07:30.035 --> 00:07:34.035
+for the y-axis: 1, 2, 3, 4.
+
+00:07:34.155 --> 00:07:39.155
+And we can also add a legend, so then we are going to see how to add the legend.
+
+00:07:42.341 --> 00:07:48.341
+We could also add text to our plotting window. So here, once again, I'm calling my data pressure
+
+00:07:53.900 --> 00:07:55.900
+and then I would like to add a line
+
+00:08:01.465 --> 00:08:07.465
+but instead of selecting type = "l": How can I do it? I just plot pressure without any parameters
+
+00:08:06.659 --> 00:08:13.659
+and then I add this another function, lines(pressure). So you can see that lines(),
+
+00:08:14.036 --> 00:08:22.036
+basically, it's for plotting lines in our plotting windows, so here, the default was a plot with
+
+00:08:22.384 --> 00:08:29.384
+points and now, by selecting this lines(pressure), I added on top of that
+
+00:08:29.714 --> 00:08:40.714
+a line. And then here, I could also add a text, as I said. How can I do it? Well, I select the position of the text. So, the position of the text, the first
+
+00:08:48.537 --> 00:08:52.537
+I select X axis, so here, on the x-axis I have 150, okay? And then, on the y-axis, here, we selected 200, so that
+
+00:08:56.039 --> 00:08:58.039
+corresponds to that particular place. And what is the label? The label here would be "Hello".
+
+00:09:04.599 --> 00:09:09.599
+We could also add mathematical expressions to our plot. We could include symbols in the text and the labels of the plots
+
+00:09:09.652 --> 00:09:15.652
+and symbols are available as expressions and there is this handy function called
+
+00:09:27.762 --> 00:09:30.762
+bquote(), we could use here. Alright, so now let us define this new vector X and I'm defining it using the sequence function, so I would like to have values from minus 2 to 2 and then the length is 200.
+
+00:09:33.733 --> 00:09:36.733
+And then here, I would like to plot on the x-axis x
+
+00:09:36.695 --> 00:09:40.695
+and then on the y-axis, I would like to plot density
+
+00:09:40.680 --> 00:09:45.680
+of these points and then I'm assuming that these points
+
+00:09:45.866 --> 00:09:54.866
+coming from a normal distribution, so I would like to plot the density of a normal distribution and then the type = "l",
+
+00:09:54.694 --> 00:10:03.694
+so line. Now, how can I add a text? So here, we define these two parameters, mu is zero, variance is 1.
+
+00:10:10.406 --> 00:10:12.406
+And then, I could add text using this text function, so basically first, once again, I need to select the position where
+
+00:10:12.642 --> 00:10:19.642
+the text appears, so I would need to find 0 on the x-axis, 0.2 on the y-axis
+
+00:10:20.265 --> 00:10:31.265
+and the position tells me the position of the label relative to x and y. So, pos = 1 puts the label just below the point 0, 0.2.
+
+00:10:31.772 --> 00:10:37.772
+And then, how can I add the label? So, we use that function bquote() to label.
+
+00:10:37.738 --> 00:10:47.738
+Then, I use paste() and then what label I would like to add. I would like to write that there is a "normal density", then I would like to paste it with mu. Mu will be
+
+00:10:47.857 --> 00:10:52.857
+a mathematical symbol, mu, and then here we can see that that notation
+
+00:10:52.904 --> 00:11:02.904
+with a dot and a mu in parentheses ".(mu)" refers to my mu defined here. So, you'll see in the plot 0
+
+00:11:02.688 --> 00:11:12.688
+similarly, for sigma squared, here we would have this sigma squared in the plot as a symbol and then the variance here, you can see
+
+00:11:12.792 --> 00:11:17.792
+that would refer to that second parameter. Okay, so how does it look like?
+
+00:11:18.175 --> 00:11:27.175
+It looks like this, so indeed, we had these values from minus 2 to 2 on the x-axis,
+
+00:11:26.845 --> 00:11:33.845
+the density on the y-axis, then we indeed have a normal density and then
+
+00:11:34.118 --> 00:11:43.118
+we selected the place where the text should appear and then our text is "normal density mu=0", and "sigma^2=1".
+
+00:11:43.249 --> 00:11:49.249
+Okay, let me stop here and then we are going to come back to graphics in the next video. Thank you!
+

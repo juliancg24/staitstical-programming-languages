@@ -1,0 +1,222 @@
+WEBVTT
+
+
+00:00:05.356 --> 00:00:08.356
+Hello, welcome back to our course. Today, we are going to talk about reading and writing data.
+
+00:00:08.807 --> 00:00:17.807
+There are many sources of data. We could think about data in human-readable format, like CSV or TXT,
+
+00:00:17.403 --> 00:00:27.403
+data in binary format, like Excel, SPSS, STATA, or data from relational databases like Oracle and SAP.
+
+00:00:32.056 --> 00:00:36.056
+And R has more than 100 built-in datasets, which can be displayed by executing
+
+00:00:41.034 --> 00:00:44.034
+ls("package:datasets"). So here you can see very first few
+
+00:00:44.107 --> 00:00:51.107
+datasets in R, and actually many packages provide their own datasets.
+
+00:00:59.822 --> 00:01:04.822
+Data() shows all datasets of loaded packages. So here, of course, an example. If we, for example, call data(iris),
+
+00:01:06.744 --> 00:01:08.744
+then this loads dataset IRIS.
+
+00:01:08.637 --> 00:01:14.637
+And then here, if we'd like to see how these data look like,
+
+00:01:15.105 --> 00:01:20.105
+we could basically apply a function head() to iris, and then we can just see the first
+
+00:01:19.540 --> 00:01:26.540
+4 rows. So you can see that this is a dataset with different species of irises.
+
+00:01:29.569 --> 00:01:34.569
+And these species actually differ by sepal and petal
+
+00:01:43.898 --> 00:01:45.898
+lengths, and widths. And, as you can see, a class of this dataset is a data frame, so you can see that data frames are indeed very useful.
+
+00:01:53.639 --> 00:01:55.639
+How can we handle external data not data already included in R, but external data? Well,
+
+00:01:56.134 --> 00:02:02.134
+we have two main functions for doing that, read.table() and write.table(),
+
+00:02:05.280 --> 00:02:08.280
+a very general function and for all kinds of text-based data.
+
+00:02:11.645 --> 00:02:14.645
+And we also have read.csv, and write.csv, this is for CSV files.
+
+00:02:14.877 --> 00:02:24.877
+And then there are also specific functions for reading data from Excel, SQL, and they are available through specific packages.
+
+00:02:26.027 --> 00:02:32.027
+So let us study in detail, the syntax of the function read.table.
+
+00:02:31.996 --> 00:02:37.996
+So first, we need to select the file. The file is the name of the file to be read.
+
+00:02:45.642 --> 00:02:50.642
+Then, we have this parameter header. It's a logical value indicating whether the file contains the names of the variables or not.
+
+00:02:50.616 --> 00:02:55.616
+sep is the field separator character, so basically we tell R
+
+00:03:03.584 --> 00:03:06.584
+what was the character for separating different variables. Was it a tabulated file? Was it a comma, semicolon, space, etc?
+
+00:03:09.779 --> 00:03:15.779
+That stands for the decimal point used for, basically, reading the digits of a number.
+
+00:03:19.322 --> 00:03:23.322
+And row.names is a vector of row names. And similarly, the syntax is very similar for read.csv.
+
+00:03:33.531 --> 00:03:37.531
+When it comes to write.table, the syntax is similar, but before even file, we have this X. X is the object to be written. Imagine that we are programming, and then we
+
+00:03:38.081 --> 00:03:42.081
+had a data frame we wanted to save, that would be that X.
+
+00:03:42.062 --> 00:03:47.062
+Then the file is once again a character string naming the file
+
+00:03:53.682 --> 00:03:55.682
+including the file extension. Separator string is, here denoted by SEP,
+
+00:03:55.987 --> 00:04:00.987
+Na is the string to use for missing values in our data.
+
+00:04:00.248 --> 00:04:06.248
+Dec is once again a character to use in the file for decimal points.
+
+00:04:06.917 --> 00:04:12.917
+And row.names, it's a logical variable. Default is TRUE, so if we don't want to have our
+
+00:04:13.150 --> 00:04:20.150
+rows named one two, I don't know, the number of the rows, we just indicate row.names
+
+00:04:23.819 --> 00:04:29.819
+FALSE. And similar syntax is valid for write.csv. How can we access
+
+00:04:29.381 --> 00:04:36.381
+folders, for example, to then write a specific directory for our file?
+
+00:04:36.482 --> 00:04:43.482
+Per default, R accesses your working directory to read or write data.
+
+00:04:48.443 --> 00:04:51.443
+If you'd like to access a file in a subfolder, you can just write file, and then in this quotation mark
+
+00:04:51.518 --> 00:04:56.518
+.\ the name of this subfolder, and the name of the file.
+
+00:04:56.728 --> 00:05:00.728
+If you would like to access a file in the parent directory,
+
+00:05:05.036 --> 00:05:07.036
+then, we have this ..\ and my file.
+
+00:05:11.320 --> 00:05:13.320
+We could, of course, type the entire file path
+
+00:05:19.720 --> 00:05:22.720
+if our file is not either in this subfolder or in the parent folder.
+
+00:05:23.302 --> 00:05:31.302
+And now here we have an example, so here we would like to read a table, we would like to read a file called iris.txt.
+
+00:05:35.033 --> 00:05:37.033
+The header of this file is TRUE, meaning that we have the names of the variables.
+
+00:05:39.681 --> 00:05:43.681
+Separator is a space, decimal point is dot. And row names, we don't have them, so NULL.
+
+00:05:45.661 --> 00:05:48.661
+The class of the iris is data.frame. And we could see that, indeed,
+
+00:05:51.787 --> 00:05:54.787
+we have, a data frame with different variables
+
+00:06:03.715 --> 00:06:07.715
+and different rows as observations. The dimension of our dataset can be checked applying function DIM to the iris, so we can see that it's 150 rows
+
+00:06:07.286 --> 00:06:15.286
+and 5 columns. And now, if I would like to create a new dataset, for example, I would like to create a
+
+00:06:22.698 --> 00:06:24.698
+subset of my dataset, we could, apply bracketing here. So, I would like to now create a subset
+
+00:06:29.666 --> 00:06:33.666
+of data, in which, sepal.length is larger equal to 3. How do I do it? Well, I
+
+00:06:36.102 --> 00:06:40.102
+open the bracket next to the name of my dataset. And then I select
+
+00:06:39.754 --> 00:06:46.754
+those rows for which sepal.width was larger equal than 3, and this is on the first place of my
+
+00:06:50.370 --> 00:06:53.370
+first bracket. And then we leave the second place in the bracket empty.
+
+00:06:54.042 --> 00:06:57.042
+And now we can see that indeed the dimension of my new
+
+00:07:00.242 --> 00:07:02.242
+dataset is smaller. And now, if I would like to write this
+
+00:07:05.497 --> 00:07:08.497
+table, this dataset, to any file, how do I proceed? I first select
+
+00:07:08.601 --> 00:07:13.601
+what I like to write, so this is our object, this is our data frame, so this is new.diris
+
+00:07:17.499 --> 00:07:19.499
+Then I select the name of the file
+
+00:07:25.542 --> 00:07:30.542
+and iris.txt, then a separator, that would be a space. How do I handle missing data? So we call missing data NAs.
+
+00:07:31.015 --> 00:07:36.015
+Decimal point is a dot, and row names is FALSE, because I wouldn't like to have any
+
+00:07:45.995 --> 00:07:50.995
+row names in my new data set. And this is a summary function. Summary function is useful for checking some summary statistics
+
+00:07:50.905 --> 00:07:56.905
+for variables in our dataset, so you can see that if I apply this function to our dataset,
+
+00:08:03.342 --> 00:08:07.342
+I have some general summary statistics for each variable, I have minimum, I have two quartiles, I have median, I have mean,
+
+00:08:15.194 --> 00:08:17.194
+and I have maximum. And for the last column, you can see that this is
+
+00:08:16.400 --> 00:08:21.400
+not a numeric variable, so we can see that we have length,
+
+00:08:26.228 --> 00:08:28.228
+we have a class, and we have a mode of this particular variable.
+
+00:08:28.958 --> 00:08:32.958
+And when it comes to reading files in R from other sources,
+
+00:08:32.682 --> 00:08:38.682
+there are specific packages for that. For example, for reading Excel files, we have a package, xlsx
+
+00:08:38.257 --> 00:08:45.257
+or read_excel(). For SPSS files, we can select a
+
+00:08:50.654 --> 00:08:52.654
+function from package foreign. For SAS files, we have a sas7bdat file package,
+
+00:09:00.042 --> 00:09:07.042
+and for EViews, we have another package hexView, etc. So, you can see that R is very flexible when it comes to reading data from various sources.
+
+00:09:06.495 --> 00:09:11.495
+Okay, that's it for today. Thank you, and see you in the next video.
+

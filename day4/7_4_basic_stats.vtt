@@ -1,0 +1,369 @@
+WEBVTT
+
+
+00:00:01.228 --> 00:00:08.228
+Hello, welcome back to our course, and today we are going to continue talking about basic statistics and exploratory data analysis.
+
+00:00:08.218 --> 00:00:15.218
+Okay, so let us come back to testing. So first, we would like to see how this chi-square goodness of fit tests work.
+
+00:00:15.244 --> 00:00:21.244
+Here you can see that we have an assumption that all expected observations are larger equal than 5.
+
+00:00:21.548 --> 00:00:31.548
+And then under the null hypothesis, we are testing the following: That X follows a discrete uniform distribution, and then on the alternative, this is not longer the case.
+
+00:00:39.205 --> 00:00:43.205
+Okay, so imagine that now we have this, Problem or question: Is our dice fair? So how can we test it? Well, we can basically throw dice 90 times
+
+00:00:43.809 --> 00:00:49.809
+and then, if our dice is fair, then all the faces, 1, 2, 3, 4, 5, 6,
+
+00:00:52.636 --> 00:00:55.636
+are equally likely, because basically the probability of having one particular number is 1 over 6.
+
+00:00:55.086 --> 00:01:04.086
+So, basically, the expected counts here would be around 15 for all the values from 1 to 6.
+
+00:01:04.368 --> 00:01:10.368
+But now in our experiment, out of 90 throws, I get different numbers.
+
+00:01:10.298 --> 00:01:17.298
+So how can we, now, check if these numbers are significantly different from the expected ones?
+
+00:01:17.196 --> 00:01:26.196
+While we could compute this chi squared test statistic, which is given by sum of observed minus expect squared
+
+00:01:26.174 --> 00:01:30.174
+over the expected, and then by manual computation, I get 2.26.
+
+00:01:30.041 --> 00:01:39.041
+And then the p-value here is basically taken as this probability from chi-squared distribution with 5 degrees of freedom,
+
+00:01:39.319 --> 00:01:45.319
+and then this is given by 0.81. So basically, we do not reject the null hypothesis.
+
+00:01:45.438 --> 00:02:01.438
+Similarly, we could obtain the same values using this chi-square test function applied to observed and expected, and you can see that, indeed, I get exactly the same test statistic and a p-value, and I could conclude that I cannot reject my null hypothesis and.
+
+00:02:11.553 --> 00:02:13.553
+which means that. X might follow this discrete uniform distribution. Alright, so now, another instance of the application of chi-square goodness of fit tests:
+
+00:02:13.589 --> 00:02:18.589
+So here, the assumption is the same, but now under the first null hypothesis,
+
+00:02:25.732 --> 00:02:28.732
+I assume that X follows a given distribution. And under alternative, this is not longer true. And then here, the distribution must be specified, including the parameters.
+
+00:02:28.490 --> 00:02:32.490
+Okay, so now imagine that under the null hypothesis, I'm assuming that
+
+00:02:39.286 --> 00:02:41.286
+the number of customers per hour is distributed according to Poisson distribution, and then we have 50 hours observed, and then you can see that
+
+00:02:41.532 --> 00:02:50.532
+for 3 hours, I didn't have any customers. For 6 hours, I had 1. For 20 hours, I had 2. For 17, I had 3, etc.
+
+00:02:50.005 --> 00:03:01.005
+These customers basically are this category labels for the hourly counts, and these are basically observed how many hours are in each category.
+
+00:03:06.575 --> 00:03:09.575
+But remember that Poisson distribution is defined for all the naturals, so basically here we would have
+
+00:03:11.913 --> 00:03:14.913
+0 to 5, and then 6 stands for 6 or more.
+
+00:03:15.489 --> 00:03:21.489
+Okay, so now I would like to compute the lambda parameter, lambda parameter is basically the average number of people, customers,
+
+00:03:21.678 --> 00:03:29.678
+per hour, so basically I just compute this: average customers times observed sum over the sum over observed, and then we get this number, 2.6.
+
+00:03:30.181 --> 00:03:37.181
+And then, the expected here are the probabilities of having a particular number of customers, so of having zero, one,
+
+00:03:38.167 --> 00:03:43.167
+3, 4, 5, etc. And then for having 6 and more, I need to do this
+
+00:03:42.272 --> 00:03:51.272
+1 minus sum of expected. Why? Because I said that Poisson is defined for all the naturals, so basically that would
+
+00:03:57.229 --> 00:03:59.229
+mean that I'm including 6 and all the other natural values. Okay, and now I'm using this chi-square test,
+
+00:04:11.319 --> 00:04:13.319
+not manual derivations anymore. So here you can see, that I get a warning that assumptions may not be fulfilled. Why? Because if I check the expected values, you can see that some of them are smaller than 5,
+
+00:04:18.187 --> 00:04:21.187
+and as usual, it's not expected to have these values smaller than 1, and definitely not too many smaller than 5.
+
+00:04:21.440 --> 00:04:31.440
+Two solutions to deal with that: Either we merge first and last categories, so for example, here you can see that I merged the first and last categories,
+
+00:04:31.651 --> 00:04:36.651
+and then here, once again, I need to compute the probability
+
+00:04:37.355 --> 00:04:43.355
+for having 0 to 4, and then given that lambda, and then once again, I need to bin
+
+00:04:50.633 --> 00:04:52.633
+the largest values. And then here, if I apply chi-square test to observed 5 vector, then I don't get any warning.
+
+00:05:00.857 --> 00:05:05.857
+The assumption most likely is fulfilled now. And then, you can see that now my test statistic is close to 6, my p-value is close to 0.20,
+
+00:05:06.936 --> 00:05:11.936
+so there is no evidence to reject the null hypothesis that X follows Poisson distribution with this
+
+00:05:12.319 --> 00:05:22.319
+lambda parameter. Another approach is to estimate p-value by Monte Carlo simulation instead of assuming a chi-square distribution. What does it mean? It means that basically
+
+00:05:28.854 --> 00:05:33.854
+I'm estimating the entire distribution, and I'm selecting this cutoff value. And here you can see that, indeed, the output looks slightly different, because I don't have any degrees of freedom.
+
+00:05:34.595 --> 00:05:38.595
+And then once again, we dealt with the situation of not fulfilled assumptions.
+
+00:05:38.466 --> 00:05:46.466
+Okay, so in the first test, just a remark that degrees of freedom should be reduced by the number of estimated parameters,
+
+00:05:46.025 --> 00:05:52.025
+because I lost one piece of information, so basically here we reduce it by one.
+
+00:05:52.501 --> 00:05:58.501
+And then, in that particular situation, if the assumptions are not satisfied, we either could use
+
+00:05:58.764 --> 00:06:03.764
+another test, or basically refer to one of these solutions.
+
+00:06:04.035 --> 00:06:13.035
+Okay, and another instance of using chi-square test, is chi-square independent tests. So here the assumption is, once again,
+
+00:06:26.241 --> 00:06:29.241
+to have all expected observations larger equal than 5. And then, under the denial hypothesis, I'm testing whether X and Y are independent, so basically here, you're seeing that I'm testing now two different variables,
+
+00:06:29.357 --> 00:06:38.357
+and under alternative, this is no longer true. Okay, so here I'm taking two values from this GSS dataset:
+
+00:06:47.848 --> 00:06:51.848
+Size and sex, and then I map the original value to categorical covariate, basically with five categories, 3, 4, 5, 6, 7,
+
+00:06:52.715 --> 00:07:01.715
+and then, for sex, I have two categories, and you can see that I cross-tabulated all the observations, and then I can see that all of them fall to one of the categories.
+
+00:07:08.250 --> 00:07:13.250
+So these are my observed values, so number of people falling into category 1 for sex and category 4 for this lsize.
+
+00:07:26.128 --> 00:07:28.128
+What is the expected value? So the expected value for chi-square test is this row totals times column totals over n. So basically here, row total would be summing over columns for the first value of row.
+
+00:07:28.175 --> 00:07:34.175
+And then column total would be summing over a rows for the, for example, first, second, column. So that would be my
+
+00:07:41.574 --> 00:07:45.574
+expected. And once again here, the test statistic is the same as before, so observed minus expected squared over expected, and then I could
+
+00:07:44.771 --> 00:07:51.771
+compute it using this function, chi-square test, and you can see that chi-square test is equal to approximately 7,
+
+00:07:54.900 --> 00:07:59.900
+p-value 0.12, so basically there's no statistical evidence to reject the null hypothesis that X and Y are independent.
+
+00:08:00.001 --> 00:08:06.001
+Okay, so now let us talk briefly about multiple linear regression. So, here the linear regression
+
+00:08:13.717 --> 00:08:15.717
+is given as follows, so we have this observed Y, and then observed Y could be explained by intercept, and then some coefficients times
+
+00:08:15.691 --> 00:08:26.691
+our variable, and then a residual, and then we have a model that our random variable Y can be explained by this linear regression and some random noise.
+
+00:08:27.130 --> 00:08:32.130
+The least squares estimator is BLUE, best linear unbiased estimator
+
+00:08:32.169 --> 00:08:39.169
+under the following assumption: So, the expected value of the noise is 0, the variance of the expected noise is
+
+00:08:38.871 --> 00:08:44.871
+the same for all the instances of the noise, so this is called homoscedasticity.
+
+00:08:45.181 --> 00:08:50.181
+And then, the covariance between the instances of the noise is zero.
+
+00:08:50.261 --> 00:08:53.261
+On top of that, we assume that Xi is not random.
+
+00:08:53.372 --> 00:08:57.372
+X is often called a design matrix,
+
+00:09:01.913 --> 00:09:06.913
+Ui describes only random effects. So, all the systematic effects are captured by Xi's.
+
+00:09:14.613 --> 00:09:19.613
+And between Xi's, there's no functional relationship, so no multicollinearity. Please bear in mind that a regression function is linear in parameters, so we allow for
+
+00:09:26.509 --> 00:09:29.509
+squares and cubes of our variables. And then for inference, so for testing and for confidence intervals, we also need testing normality for our errors,
+
+00:09:29.857 --> 00:09:37.857
+or we assume that the noise follows a certain distribution,
+
+00:09:38.422 --> 00:09:43.422
+and then it's large enough such that a central limit theorem kicks off.
+
+00:09:42.916 --> 00:09:49.916
+Alright, so here we have this output of multiple linear regression
+
+00:09:49.845 --> 00:09:54.845
+applied to Boston data, so here I have, as a target variable, or
+
+00:09:55.759 --> 00:09:59.759
+my dependent variable, I have medv, so median house price.
+
+00:10:01.758 --> 00:10:05.758
+For the independent variables, I have this percentage of lower-status people,
+
+00:10:08.079 --> 00:10:11.079
+and rm average number of rooms. And then here we regress these two
+
+00:10:20.057 --> 00:10:23.057
+features of our target variable. And then, once we look at the summary here once again, we can see a call of the function, we could see some summary statistics for residuals,
+
+00:10:25.417 --> 00:10:29.417
+and we could also see the estimates of my three parameters,
+
+00:10:29.587 --> 00:10:37.587
+standard errors, then the t-value, t-value is just the estimate of a standard error, and then the p-value, so probability that
+
+00:10:46.800 --> 00:10:58.800
+a quantile from t-distribution is larger, smaller than, basically this absolute value of the t-value. And then we have also some output on the standard error of residuals of the multiple R squared, and then F-statistic. So F statistics, basically
+
+00:11:00.347 --> 00:11:03.347
+tell us if there is any evidence that one of these
+
+00:11:03.747 --> 00:11:08.747
+variables were helpful in the explanation of the variability of Y.
+
+00:11:08.595 --> 00:11:16.595
+Let us look at the interpretation of the output. So, for example, if the residuals are normal
+
+00:11:25.534 --> 00:11:30.534
+symmetric, the median should be close to zero, and this third quartile should be approximately minus the first one, and this is not the case here. You can see
+
+00:11:35.056 --> 00:11:40.056
+now, the estimated regression model here is given as follows. And how can we interpret that? So basically
+
+00:11:39.981 --> 00:11:45.981
+with an increase by one unit of this percentage of lower-status people,
+
+00:11:46.222 --> 00:11:53.222
+we get the decrease of the value of the price of the house, because we have the negative coefficient here.
+
+00:11:53.538 --> 00:11:57.538
+But with the increase of the number of rooms, then we have positive values
+
+00:11:57.653 --> 00:12:09.653
+of our coefficient, so we get a positive effect on the price of the house, which kind of makes sense when it comes to how the market works.
+
+00:12:12.621 --> 00:12:16.621
+So these t-tests, and t-value, here they test
+
+00:12:23.069 --> 00:12:26.069
+if the regression coefficients are 0. So we can see that beta1, beta2 are rejected, so indeed there is statistical evidence that they are not zero, but
+
+00:12:32.957 --> 00:12:35.957
+there is no statistical evidence that beta0 is not rejected because p-value is larger than our
+
+00:12:36.315 --> 00:12:44.315
+critical level, R squared is approximately 64%, so basically approximately 64% of the variance is explained.
+
+00:12:44.582 --> 00:12:49.582
+Adjusted R squared, so the adjusted R squared takes into account the number of
+
+00:12:56.656 --> 00:12:59.656
+parameters I include into my model, because R squared, not adjusted version, it always increases if I just insert more
+
+00:12:59.848 --> 00:13:05.848
+covariates, more variables, to my model, and this version just adjusts for it, so it penalizes
+
+00:13:06.187 --> 00:13:12.187
+my coefficient, if I add more and more, variables.
+
+00:13:13.194 --> 00:13:18.194
+And this F-test, as I said, it basically tests that there was an evidence
+
+00:13:18.140 --> 00:13:24.140
+that any of my variables were helpful in explaining the variability.
+
+00:13:30.813 --> 00:13:32.813
+In other words, if any of my beta i's are not zero, and then indeed we reject
+
+00:13:33.234 --> 00:13:38.234
+the null hypothesis, so there was an evidence that
+
+00:13:38.629 --> 00:13:47.629
+my X's were helpful in explaining the variance of Y's. All right, let us look at some plots. So, basically, I can plot this
+
+00:13:59.532 --> 00:14:08.532
+output of my linear regression modeling in R, so here you can see that these plots are very helpful when it comes to identifying some problems with my assumptions, so on the left-hand side, we can see that these could be helpful in detecting nonlinearity, because you can see that I'm plotting residuals versus fitted.
+
+00:14:21.037 --> 00:14:23.037
+And then you can see that my data, my residuals, do not appear to be really linearly distributed around zero. There is a pattern, a curvature, similarly, below.
+
+00:14:30.139 --> 00:14:34.139
+And also, another thing we could detect here is the lack of homoscedasticity, because we could see this megafon-shaped
+
+00:14:34.586 --> 00:14:42.586
+pattern, meaning that the residuals grow with fitted values, which shouldn't be the case.
+
+00:14:41.896 --> 00:14:50.896
+On the right-hand side, at the top, we check for normality, and indeed, we could see this right tail over here.
+
+00:14:59.615 --> 00:15:01.615
+And then, at the bottom right, we check for any outlying observations, so we have cook distance, and we have some potential outliers.
+
+00:15:12.634 --> 00:15:17.634
+Alright. And then, a few useful functions for linear modeling, so imagine that this is my linear model, and then how do I extract X and Y? Well, I can just access it through a dollar sign and model,
+
+00:15:17.393 --> 00:15:26.393
+then I could also get fitted values of the linear model through applying function fitted, or access it through a dollar sign.
+
+00:15:26.754 --> 00:15:31.754
+Then I could also get residuals of the linear model. Once again, I applying function resid()
+
+00:15:31.410 --> 00:15:37.410
+or I just access them through a dollar sign, then I also get
+
+00:15:46.158 --> 00:15:51.158
+coefficients and their variances through coef() function, or accessing them from dollar sign, I could also get variance, covariance matrix of the model, via this vcov(),
+
+00:16:00.326 --> 00:16:03.326
+a function applied to my LM object. And then I could also get predictions on current data, so basically, here the estimated values, given the model, and on new data. So basically, if I
+
+00:16:08.144 --> 00:16:10.144
+pass to my function predict
+
+00:16:08.614 --> 00:16:18.614
+vector or, like, a matrix with new data. All right, and here are a few useful hints how can we formulate
+
+00:16:25.118 --> 00:16:29.118
+in R a particular regression model. So, for example if I write Y tilde X, then I would have a regression model with 1 covariate X, and an intercept.
+
+00:16:41.288 --> 00:16:44.288
+This is equivalent to writing X plus 1. If I don't want to have an intercept, then I need to subtract one. If I'd like to have X plus Z, so two different variables, then I add X plus Z. Here, if I write X
+
+00:16:44.535 --> 00:16:55.535
+colon Z, it means that I get an interaction term. Here, you can see that if I write X * Z, then I get a model with X, Z, and the interaction.
+
+00:16:58.109 --> 00:17:01.109
+Here you can see that if I rewrite this formulation with a caret
+
+00:17:01.536 --> 00:17:06.536
+to the cube, then I get all the main effects, X, Z, A, all the interactions,
+
+00:17:06.870 --> 00:17:24.870
+two wise interactions, so two variables, XZ, XA, and AZ, and then threewise interaction. Then here, we could also see another formulation for having the model with beta0 and beta1, X and Z. Then here, we could see that, if I apply caret here,
+
+00:17:33.409 --> 00:17:36.409
+then I could actually have a model with X squared. And then, here also I could use that syntax with poly to get a model with X, X squared, and X cubed.
+

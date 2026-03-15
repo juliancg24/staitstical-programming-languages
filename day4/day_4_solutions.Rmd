@@ -1,0 +1,358 @@
+---
+author: Katarzyna Reluga
+title: SPL 2025 - Day 4
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+##  Exercise 1 (Basic Statistics)
+
+### a) Read the General Social Survey (slide 22)
+
+```{r 1a}
+library(rio)
+durl <- "https://gss.norc.org/Documents/stata/"
+gss <- import(paste0(durl, "2018_stata.zip"))
+```
+
+### b) Create appropriate plots 
+We attach the data set to access the variables directly, which is not problematic in case (b).
+
+However, note that in general one has to be careful when using `attach`: changes in the data set are **not applied automatically**.  
+That is, if we modify a variable, we have to attach the data set again; otherwise, the previous (non-modified) version of the variable will still be used whenever it is accessed directly.
+
+To avoid a very long message about masked objects (which would list all variables of `gss`, 
+since it is already attached), we will first `detach()` the data set whenever  we change variables. This will be the case later, e.g., c).
+
+```{r 1b, fig.height = 3}
+attach(gss)
+par(mfrow = c(1, 2), mar = c(5, 4, 1, 2) + 0.1) 
+# "mar" controls the margins of the plot (order: below, left, above, right) with default
+# mar = c(5, 4, 4, 2) + 0.1; We don't have titles, i.e., we don't need much space above
+# the plots (higher respective mar-value would lead to empty space)
+hist(sibs)
+hist(educ)
+par(mfrow = c(1, 1))
+summary(sibs)
+summary(educ)
+```
+
+- Both distributions are quite skewed.  
+- A good measure of location is the **median**.  
+- To obtain a good summary, one should consider multiple statistics.
+
+### c) Consider income (rincome)
+#### (i) Examine the variable using the function `str()`
+```{r 1ci_examine}
+str(rincome)
+```
+The variable has class `numeric` rather than `factor`. However, it also has several attributes.  
+The last attribute, `"labels"`, itself has an additional attribute `"names"`, i.e., it is a named vector.  
+
+These names provide reasonable labels when transforming the variable to class `factor`.  
+Note that only the first 12 labels appear in the vector (see `table(rincome)` below);  
+therefore, we only use the first 12 names as labels.
+
+Dig deeper: execute `names(rincome)`. Do you obtain vector of names? Most likely not -- 
+sometimes `str()` shows that a variable has a `"names"` attribute, but calling `names()` directly returns `NULL`.  
+
+This happens when the `"names"` are not attached to the variable itself, but to one of its attributes (often `"labels"`). Compare: 
+
+```{r 1ci_names}
+names(rincome)
+names(attr(rincome, "labels"))
+```
+
+```{r 1ci_transform}
+attr(rincome, "labels")
+table(rincome)
+detach(gss) # detach data before making changes
+gss$rincome <- factor(gss$rincome, 
+                      labels = names(attr(gss$rincome, "labels"))[1:12])
+# Alternative:
+# attr(gss$rincome, "labels") <- attr(gss$rincome, "labels")[1:12]
+# gss$rincome <- factorize(gss$rincome)
+```
+
+#### (ii) Create a numeric variable `rincmdol` 
+```{r 1cii}
+# rincmdol  -- respondent’s income in US$ where you replace the
+# category value by the class center, e.g. $1,000 to $2,999 by the numeric value 2000. 
+# For the last category use 25000.
+
+# New vector
+gss$rincmdol <- gss$rincome
+levels(gss$rincmdol)
+
+##########################
+# Add centres manually ###
+##########################
+levels(gss$rincmdol) <- c("500", "2000", "3500", "4500", "5500", "6500",
+                        "7500", "9000", "12500", "17500", "22500","25000")
+
+# Try first as.numeric directly: not successful coercion 
+
+gss$rincmdol <- as.numeric(as.character(gss$rincmdol)) 
+# as.character accesses the labels 
+# as.numeric transforms it to numeric
+attach(gss) # attach updated data
+
+#########################
+# Add centers by coding #
+#########################
+
+# Remove the thousands separator ","
+# gsub replaces "," with "" several times
+# levels(gss$rincmdol) <- gsub(",", "", levels(gss$rincmdol))
+# levels(gss$rincmdol)
+
+# Extract numbers from labels and convert them to numeric
+# regmatches extracts matched substrings
+# regexpr returns the position of ea in the lines
+# boundaries <- regmatches(levels(gss$rincmdol), gregexpr("[0-9]+", 
+# levels(gss$rincmdol)))
+# boundaries
+
+# Change to numeric
+# boundaries <- lapply(boundaries, as.numeric)
+# boundaries
+# Compute centers
+# centers <- c(boundaries[[1]]/2, # left boundary corresponds to 0
+#             sapply(boundaries[2:11], function(x) round(mean(x))),
+#             boundaries[[12]]) # last value is just the value itself
+# centers
+# levels(gss$rincmdol) <- centers
+
+# attach(gss) # attach updated data
+```
+
+#### (iii) Compute the average respondent's income
+```{r 1ciii}
+# ?aggregate
+# Compute Summary Statistics of Data Subsets
+aggregate(rincmdol, by = list(degree), FUN = mean, na.rm = TRUE)
+
+# Alternative: tapply(rincmdol, degree, mean, na.rm = TRUE)
+
+mean(rincmdol, na.rm = TRUE)
+attr(gss$degree, "labels")
+```
+The average income for all respondents is `r format(mean(gss$rincmdol, na.rm = TRUE), scientific = FALSE)`, for people with less than a high school degree `r format(tapply(rincmdol, degree, mean, na.rm = TRUE)[1])` and for people with a graduate degree `r format(tapply(gss$rincmdol, gss$degree, mean, na.rm = TRUE)[5])`.
+
+#### (iv) Do you think that staying in school pays off?
+
+The mean increases with degree of education, so yes.
+
+### d) Consider the variable `age`.
+#### (i) create a histogram with total area 
+#### (ii)  overlay the histogram with the density of an appropriate normal distribution. Does it look like normally distributed? 
+
+```{r 1d, fig.height=3.5,fig.align='left'}
+hist(age, freq = FALSE, ylim = c(0, 0.03))
+m <- mean(age, na.rm = TRUE)
+sd_dat <- sd(age, na.rm = TRUE)
+seq <- seq(min(age, na.rm = TRUE), max(age, na.rm = TRUE), length.out = 100)
+lines(seq, dnorm(x = seq, mean = m, sd = sd_dat), col = "blue")
+```
+Does not seem normally distributed, looks rather bimodal.
+
+> Key point for students: `lines()`/`points()`/`abline()` must run **after the initial plot in the same device** (i.e., the same chunk when knitting).
+
+### e) Analyse the variable `age` with boxplots grouped by `life`. 
+The transformation to `factor` is analogous to that of `rincome` in exercise c) (i).  
+Here, only the first 3 labels appear in the vector; therefore, we only use the first 3 names as labels.
+
+```{r 1e}
+str(life)
+table(life)
+detach(gss) # detach data before making changes
+gss$life <- factor(gss$life, labels = names(attr(gss$life, "labels"))[1:3])
+# Alternative:
+# attr(gss$life, "labels") <- attr(gss$life, "labels")[1:3]
+# gss$life <- factorize(gss$life)
+attach(gss) # attach updated data
+boxplot(age ~ life, data = gss)
+```
+
+#### (i) Which group has the largest dispersion? Which criterion do you use for dispersion?
+```{r 1ei}
+aggregate(age, by = list(life), sd, na.rm = TRUE)
+
+# Alternative: tapply(age, life, sd, na.rm = TRUE)
+```
+Using the standard deviation as criterion for dispersion, the first group ("exciting") has the largest dispersion. Other criteria (e.g., variance, range, interquartile range, coefficient of variation) can be used, as well.
+
+#### (ii) Is the distribution in one or more groups symmetric?
+Based on the boxplots, none of the distributions looks symmetric.
+
+#### (iii)
+```{r 1eiii}
+aggregate(age, by = list(life), median, na.rm = TRUE)
+
+#Alternative: tapply(age, life, median, na.rm = TRUE)
+```
+#### (iv)
+It is difficult to infer anything from this plot -- further analysis is needed. 
+
+### f) Consider the relationship between how happy a person is in general (`happy`) and the happiness of his or her marriage (`hapmar`).
+#### (i) Transform both variables to class factor and create a Mosaic plot
+```{r 1fi}
+str(happy)
+table(happy)
+detach(gss) # detach data before making changes
+gss$happy <- factor(gss$happy, labels = names(attr(gss$happy, "labels"))[1:3])
+
+# Alternative:
+# attr(gss$happy, "labels") <- attr(gss$happy, "labels")[1:3]
+# gss$happy <- factorize(gss$happy)
+
+str(gss$hapmar)
+table(gss$hapmar)
+gss$hapmar <- factor(gss$hapmar, labels = names(attr(gss$hapmar, "labels"))[1:3])
+
+# Alternative:
+# attr(gss$hapmar, "labels") <- attr(gss$hapmar, "labels")[1:3]
+# gss$hapmar <- factorize(gss$hapmar)
+
+attach(gss) # attach updated data
+
+# Mosaic plot recap: 
+# width of bars: proportional to margin frequencies P(X = x)
+# height of bars: proportional to cond. frequencies P(Y = y|X = x)
+# area: prop to joint
+
+tab <- table(happy, hapmar)
+plot(t(tab))
+```
+The variables `happy` and `hapmar` are not independent.
+
+#### (ii) Perform a chi square independence test. 
+```{r 1fii}
+ctab <- table(happy, hapmar)
+ctab
+chisq_res <- chisq.test(ctab)
+chisq_res
+# expected counts in chi-squared E_ij = (row total_i) (col_total_j)/N 
+# test stat V = sum((observed - expected)^2 / expected)
+chisq_res$exp
+# run Fisher's exact test
+fisher_res <- fisher.test(ctab)
+fisher_res
+```
+Chi-squared test: `r  paste0(ifelse(chisq_res$p.value < 0.0001, "*p*-value < 0.0001", paste0("*p*-value = ", round(chisq_res$p.value, 3))), ifelse(fisher_res$p.value < 0.05, " < 0.05", ""))` $\rightarrow$ the null hypothesis of independence of `happy` and `hapmar` can be rejected, i.e., they do not appear to be independent.
+However, as the rule of thumb that all expected counts are at least 5 is not fulfilled, the test might not be appropriate for this table. An alternative test, Fisher's exact test, also rejects the null hypothesis of independence with `r  paste0(ifelse(fisher_res$p.value < 0.0001, "*p*-value < 0.0001", paste0("*p*-value = ", round(fisher_res$p.value, 3))), ifelse(fisher_res$p.value < 0.05, " < 0.05", ""))`.
+
+#### (iii) Compute Cramers $\Phi$, V and the contingency coefficients. 
+```{r 1fiii}
+library(DescTools)
+
+# Cramer's Phi: range -1 to 1
+Phi(happy, hapmar)
+
+# Cramer's V : range 0 to 1
+CramerV(happy, hapmar)
+
+# contingency coeff : 0 to 1 
+ContCoef(happy, hapmar)
+
+# corrected contingency coeff: 0 1 
+ContCoef(happy, hapmar, correct = TRUE)
+```
+All values suggest a moderate association between `happy` and `hapmar`.
+
+### g) Compute the correlation between `paeduc` and `maeduc`.
+
+```{r 1g}
+# Kendall's : rank association between concordant and discordant pairs 
+cor(paeduc, maeduc, use = "complete.obs", method = "kendall") 
+```
+The number of years of education seems to be moderately correlated.
+
+
+### h) Select full-tiem workers only (wrkstat = 1)
+```{r 1h}
+subdat <- gss[wrkstat == 1, ]
+```
+
+####  (i) Create a scatter plot with hrs1 and educ. Change the colour of the data poins according to `sex`
+
+```{r 1hi }
+plot(subdat$educ, subdat$hrs1, col = (subdat$sex + 2))
+```
+
+The argument `col = subdat$sex` tells R to use the values of `sex` to assign colours.  
+
+The variable `subdat$sex` takes only two values (say `1` for male, `2` for female).  
+
+R interprets these numbers as colour codes:  
+
+- `1` --> the first colour in R’s default palette (usually black)  
+- `2` --> the second colour (usually red)  
+
+I added $+2$ to 1 and 2 to have more vibrant colours. 
+
+#### (ii) Run simple linear regressions for both sexes together and separately 
+```{r 1hii}
+lms <- list(
+  "both"   = lm(hrs1 ~ educ, data = subdat),
+  "male"   = lm(hrs1 ~ educ, data = subset(subdat, sex == 1)),
+  "female" = lm(hrs1 ~ educ, data = subset(subdat, sex == 2))
+)
+
+# Alterantive: 
+# lms <- lapply(list("both" = subdat,
+#                    "male" = subset(subdat, sex == 1), 
+#                    "female" = subset(subdat, sex == 2)),
+#               lm, formula = hrs1 ~ educ)
+
+# (iii)
+plot(subdat$educ, subdat$hrs1, col = (subdat$sex + 2))
+abline(lms$both, col = "black")
+abline(lms$male, col = 3)
+abline(lms$female, col = 4)
+```
+
+
+### i) Test whether Clinton and Trump supporters (pres16) differ in age and education
+
+```{r 1i}
+table(pres16)
+attr(pres16, "labels")
+# Selected those who voted for Trump or Clinton: pres16 = 1 or 2
+ind <- pres16 %in% c(1, 2)
+t.test(age[ind] ~ pres16[ind])
+# Runs a two-sample t-test comparing mean age between Clinton (pres16 = 1) 
+# and Trump (pres16 = 2) supporters.
+t.test(educ[ind] ~ pres16[ind])
+# The same for age
+```
+Both *p*-values are smaller than 0.05, i.e., in both tests the null hypothesis of identical means can be rejected.
+Thus, we conclude that Clinton and Trump supporters differ in average age and education.
+
+### j) Use t-test to identify possible differences of averages in `age`,  `educ` `tvhours` for different groups in `richwork``
+
+```{r 1l}
+table(richwork)
+t.test(age ~ richwork)
+# 2.46e-10 < 0.05 => null hypothesis of identical means can be rejected
+t.test(educ ~ richwork)
+# 0.2843 > 0.05 => null hypothesis of identical means can not be rejected
+t.test(tvhours ~ richwork)
+# 0.02016 < 0.05 => null hypothesis of identical means can be rejected
+```
+
+
+### k) Run a regression model
+
+```{r 1k_model}
+m <- lm(educ ~ speduc + paeduc + rincmdol + tvhours, data = gss)
+```
+In order to check the normality assumption, one can, e.g., use a Normal Q-Q plot:
+```{r 1k_normality}
+plot(m, which = 2)
+```
+
